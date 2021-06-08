@@ -17,8 +17,6 @@ type Props = {
 };
 
 export default function Post({ post }: Props): JSX.Element {
-  console.log(post);
-
   return (
     <Layout>
       <Container>
