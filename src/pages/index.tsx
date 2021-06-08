@@ -1,7 +1,16 @@
 import React from 'react';
 
-function HomePage(): JSX.Element {
-  return <div>Welcome to Next.js!</div>;
-}
+import Container from '../components/Container';
+import Layout from '../components/Layout';
 
-export default HomePage;
+export default function HomePage(): JSX.Element {
+  return (
+    <>
+      <Layout>
+        <Container>
+          <p>Hello, Splitter!</p>
+        </Container>
+      </Layout>
+    </>
+  );
+}
