@@ -6,7 +6,6 @@ import type { Post as PostType } from '../../types';
 
 import Container from '../../components/Container';
 import Date from '../../components/Date';
-import Header from '../../components/Header';
 import Layout from '../../components/Layout';
 import { getPostBySlug, getAllPostSlugs } from '../../lib/queries';
 import { sanityClient, getClient } from '../../lib/sanity.server';
@@ -20,20 +19,25 @@ export default function Post({ post }: Props): JSX.Element {
   return (
     <Layout>
       <Container>
-        <Header />
         <article>
-          <h1 className="font-bold text-lg">{post.title}</h1>
-          <Date dateString={post.publishedAt} />
-          {post.image && (
-            <img
-              src={urlForImage(post.image)
-                .height(500)
-                .width(500)
-                .fit('crop')
-                .url()}
-            />
-          )}
-          <BlockContent blocks={post.body} />
+          <header>
+            <h1 className="font-bold text-lg">{post.title}</h1>
+            <p className="italic">
+              <Date dateString={post.publishedAt} />
+            </p>
+          </header>
+          <section>
+            {post.image && (
+              <img
+                src={urlForImage(post.image)
+                  .height(500)
+                  .width(500)
+                  .fit('crop')
+                  .url()}
+              />
+            )}
+            <BlockContent blocks={post.body} />
+          </section>
         </article>
       </Container>
     </Layout>
