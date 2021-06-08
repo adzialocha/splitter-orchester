@@ -4,10 +4,13 @@
   "description": "Website for Splitter Orchester Berlin",
   "main": "index.js",
   "scripts": {
-    "sanity:start": "cd studio && sanity start",
+    "build": "concurrently npm:sanity:build npm:next:build",
+    "next:build": "next build",
     "next:start": "next dev",
-    "start": "concurrently npm:sanity:start npm:next:start",
-    "postinstall": "lerna bootstrap"
+    "postinstall": "lerna bootstrap",
+    "sanity:build": "cd studio && sanity build",
+    "sanity:start": "cd studio && sanity start",
+    "start": "concurrently npm:sanity:start npm:next:start"
   },
   "repository": {
     "type": "git",
@@ -20,7 +23,8 @@
   "devDependencies": {
     "@sanity/cli": "^2.10.5",
     "concurrently": "^6.2.0",
-    "lerna": "^4.0.0"
+    "lerna": "^4.0.0",
+    "vercel": "^23.0.0"
   },
   "dependencies": {
     "next": "^10.2.3",
