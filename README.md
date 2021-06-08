@@ -16,6 +16,13 @@ npm install
 # Run development servers concurrently. Open localhost:3000 for website,
 # localhost:3333 for Sanity CMS backend
 npm start
+
+# Deploy page on Vercel
+npm run vercel:deploy
+npm run vercel:deploy:production
+
+# Alternatively build project for static page hosting
+npm run build
 ```
 
 ## Deployment via Vercel
