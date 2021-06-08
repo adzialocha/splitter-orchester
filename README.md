@@ -17,6 +17,9 @@ npm install
 # localhost:3333 for Sanity CMS backend
 npm start
 
+# Check linter errors
+npm run lint
+
 # Deploy page on Vercel
 npm run vercel:deploy
 npm run vercel:deploy:production
