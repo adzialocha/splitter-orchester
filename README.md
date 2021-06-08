@@ -20,6 +20,7 @@ npm start
 
 ## Deployment via Vercel
 
+* Run `npm run vercel` to initialize and deploy the project.
 * Make sure to set the [*Development Command*](https://vercel.com/docs/build-step#development-command) in the Build Steps of your Vercel Project to `npm run vercel:dev`.
 
 ## License
