@@ -6,5 +6,9 @@ type Props = {
 };
 
 export default function Date({ dateString }: Props): JSX.Element {
-  return <>{format(parseISO(dateString), 'dd.MM.yyyy')}</>;
+  return (
+    <time dateTime={dateString}>
+      {format(parseISO(dateString), 'dd.MM.yyyy')}
+    </time>
+  );
 }
