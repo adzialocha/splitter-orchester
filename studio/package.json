@@ -1,0 +1,33 @@
+{
+  "name": "splitterorchester",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "package.json",
+  "author": "Andreas Dzialocha <x30@adz.garden>",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "sanity start",
+    "build": "sanity build"
+  },
+  "keywords": [
+    "sanity"
+  ],
+  "dependencies": {
+    "@sanity/base": "^2.10.5",
+    "@sanity/components": "^2.2.6",
+    "@sanity/core": "^2.10.5",
+    "@sanity/default-layout": "^2.10.5",
+    "@sanity/default-login": "^2.10.5",
+    "@sanity/desk-tool": "^2.10.5",
+    "@sanity/vision": "^2.10.5",
+    "prop-types": "^15.7",
+    "react": "^17.0",
+    "react-dom": "^17.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:adzialocha/splitter-orchester.git"
+  }
+}
