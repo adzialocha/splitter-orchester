@@ -5,9 +5,7 @@ export default class AppDocument extends Document {
   render(): JSX.Element {
     return (
       <Html lang="en">
-        <Head>
-          <title>Splitter Orchester</title>
-        </Head>
+        <Head />
         <body>
           <Main />
           <NextScript />
