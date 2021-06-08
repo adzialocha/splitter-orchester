@@ -9,7 +9,7 @@
     "next:start": "next dev",
     "next:start:vercel": "next --port $PORT",
     "postinstall": "lerna bootstrap",
-    "sanity:build": "cd studio && sanity build",
+    "sanity:build": "cd studio && sanity build ../public/studio -y",
     "sanity:start": "cd studio && sanity start",
     "start": "concurrently npm:sanity:start npm:next:start",
     "vercel:dev": "concurrently npm:next:start:vercel npm:sanity:start"
