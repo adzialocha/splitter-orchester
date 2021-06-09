@@ -4,6 +4,10 @@
   "description": "Website for Splitter Orchester Berlin",
   "main": "package.json",
   "types": "src/types.d.ts",
+  "engines": {
+    "node": "~14.17.0",
+    "npm": "~7.13.0"
+  },
   "scripts": {
     "build": "concurrently npm:sanity:build npm:next:build",
     "lint": "eslint '*/**/*.{ts,tsx}'",
