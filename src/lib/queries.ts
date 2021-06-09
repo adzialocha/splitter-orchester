@@ -4,7 +4,12 @@ const postFields = groq`
   _id,
   title,
   image,
-  body,
+  body[]{
+    asset->{
+      ...,
+      "_key": _id
+    }
+  },
   publishedAt,
   "slug": slug.current
 `;
