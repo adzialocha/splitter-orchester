@@ -45,7 +45,7 @@ npm run lint
   npm run vercel:deploy:production
   ```
 
-## Static page hosting
+### Static page hosting
 
 Build and export all files which can be directly used for any static page hosting (without Vercel):
 
