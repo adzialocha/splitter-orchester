@@ -26,9 +26,6 @@ npm run lint
 # Deploy page on Vercel
 npm run vercel:deploy
 npm run vercel:deploy:production
-
-# Alternatively build project for static page hosting
-npm run build
 ```
 
 ## Deployment via Vercel
