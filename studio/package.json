@@ -4,9 +4,9 @@
   "description": "Sanity CMS Backend for Splitter Orchester Website",
   "main": "package.json",
   "scripts": {
-    "build": "sanity build public -y",
-    "start": "sanity start",
-    "test": "sanity check"
+    "sanity:build": "sanity build ../public/studio -y",
+    "sanity:start": "sanity start",
+    "sanity:test": "sanity check"
   },
   "repository": {
     "type": "git",

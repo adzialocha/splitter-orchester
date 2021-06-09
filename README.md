@@ -1,7 +1,7 @@
 splitter-orchester
 ===
 
-Website of the [Splitter Orchester](https://splitter.berlin) from Berlin built with Next.js, TailwindCSS, TypeScript and Sanity Studio CMS.
+Website of the [Splitter Orchester](https://splitter.berlin) from Berlin built with React, Next.js, Vercel, TailwindCSS, TypeScript and Sanity Studio CMS.
 
 ## Requirements
 
@@ -17,9 +17,6 @@ npm install
 
 # Copy .env.example to .env and adjust variables
 cp .env.example .env
-
-# Use the same variables for Sanity Studio
-ln .env studio/.env.production
 
 # Run development servers concurrently. Open localhost:3000 for website,
 # localhost:3333 for Sanity CMS backend
@@ -41,6 +38,18 @@ npm run lint
   npm run vercel:deploy
   npm run vercel:deploy:production
   ```
+
+# Optional static page export
+
+Build and export all files which can be directly used for any static page hosting (without Vercel):
+
+```bash
+# Build Next.js and Sanity project
+npm run build
+
+# Exports static files to `out` folder (required step)
+npm run next:export
+```
 
 ## License
 
