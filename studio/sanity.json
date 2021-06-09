@@ -1,7 +1,7 @@
 {
   "root": true,
   "project": {
-    "name": "Splitter Orchester Studio",
+    "name": "Splitter Orchester",
     "basePath": "/studio"
   },
   "plugins": [
