@@ -8,8 +8,8 @@ const config: ClientConfig = {
    *
    * https://nextjs.org/docs/basic-features/environment-variables
    **/
-  dataset: process.env.SANITY_STUDIO_API_DATASET || 'production',
-  projectId: process.env.SANITY_STUDIO_API_PROJECT_ID,
+  dataset: 'production',
+  projectId: 'a8gjiary',
   apiVersion: '2021-03-25',
   useCdn: process.env.NODE_ENV === 'production',
 };

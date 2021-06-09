@@ -3,7 +3,7 @@ import { createImageUrlBuilder } from 'next-sanity';
 import type { ImageUrlBuilder } from '@sanity/image-url/lib/types/builder';
 import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
-import sanityConfig from './config';
+import sanityConfig from '~/lib/config';
 
 export const imageBuilder = createImageUrlBuilder(sanityConfig);
 

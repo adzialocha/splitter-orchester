@@ -20,7 +20,7 @@
     "jsx": "preserve",
     "paths": {
       "~/*": ["./*"],
-      "sanity-schema": ["../sanity-schema.d.ts"],
+      "sanity-schema": ["../sanity-schema.d.ts"]
     }
   },
   "include": [
