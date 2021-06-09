@@ -17,6 +17,10 @@ npm install
 
 # Copy .env.example to .env and adjust variables
 cp .env.example .env
+
+# Introduce the same variables to Sanity Studio project
+ln .env studio/.env.development
+ln .env studio/.env.production
 ```
 
 ## Development
