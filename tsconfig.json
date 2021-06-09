@@ -20,12 +20,12 @@
     "jsx": "preserve",
     "paths": {
       "~/*": ["./*"],
-      "splitter-schemas": ["../schemas.d.ts"],
+      "sanity-schema": ["../sanity-schema.d.ts"],
     }
   },
   "include": [
     "next-env.d.ts",
-    "schemas.d.ts",
+    "sanity-schema.d.ts",
     "**/*.ts",
     "**/*.tsx"
   ],

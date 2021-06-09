@@ -28,22 +28,30 @@ export type {
 
 /**
  * Post
+ *
+ *
  */
 export interface Post extends SanityDocument {
   _type: 'post';
 
   /**
    * Title — `string`
+   *
+   *
    */
   title?: string;
 
   /**
    * Slug — `slug`
+   *
+   *
    */
   slug?: { _type: 'slug'; current: string };
 
   /**
    * Main image — `image`
+   *
+   *
    */
   image?: {
     _type: 'image';
@@ -54,11 +62,15 @@ export interface Post extends SanityDocument {
 
   /**
    * Published at — `datetime`
+   *
+   *
    */
   publishedAt?: string;
 
   /**
    * Body — `blockContent`
+   *
+   *
    */
   body?: BlockContent;
 }

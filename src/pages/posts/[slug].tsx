@@ -2,7 +2,7 @@ import BlockContent from '@sanity/block-content-to-react';
 import React from 'react';
 
 import type { GetStaticPaths, GetStaticProps } from 'next';
-import type { Post as PostSchema } from 'splitter-schemas';
+import type { Post as PostSchema } from 'sanity-schema';
 
 import Article from '~/components/Article';
 import Container from '~/components/Container';
