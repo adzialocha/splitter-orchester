@@ -38,10 +38,9 @@ npm run lint
 
 ### Vercel
 
-* Run `npm run vercel` to initialize and deploy the project, you can alternatively do this through the Vercel web dashboard.
-* Make sure to set the [*Development Command*](https://vercel.com/docs/build-step#development-command) in the *Build Steps* of your Vercel Project to `npm run vercel:dev`.
-* Make sure to set the `.env` [*Environment variables*](https://vercel.com/docs/environment-variables) also in Vercel.
-* After setup you can run the following (optional) commands for deployment:
+1. Run `npm run vercel` to initialize and deploy the project, you can alternatively do this through the Vercel web dashboard.
+2. Make sure to use the [*Environment variables*](https://vercel.com/docs/environment-variables) from `.env` also in Vercel.
+3. After setup you can run the following (optional) commands for deployment:
 
   ```bash
   # Deploy page on Vercel (optional)
