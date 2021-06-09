@@ -2,8 +2,7 @@ import BlockContent from '@sanity/block-content-to-react';
 import React from 'react';
 
 import type { GetStaticPaths, GetStaticProps } from 'next';
-
-import type { Post as PostType } from '~/types';
+import type { Post as PostSchema } from 'splitter-schemas';
 
 import Article from '~/components/Article';
 import Container from '~/components/Container';
@@ -18,7 +17,7 @@ import { getAllPostSlugs, getPostBySlug } from '~/lib/queries';
 import { getClient, sanityClient } from '~/lib/sanity.server';
 
 type Props = {
-  post?: PostType;
+  post?: PostSchema;
 };
 
 export default function Post({ post }: Props): JSX.Element {

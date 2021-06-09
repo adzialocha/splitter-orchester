@@ -19,11 +19,13 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "paths": {
-      "~/*": ["./*"]
+      "~/*": ["./*"],
+      "splitter-schemas": ["../schemas.d.ts"],
     }
   },
   "include": [
     "next-env.d.ts",
+    "schemas.d.ts",
     "**/*.ts",
     "**/*.tsx"
   ],

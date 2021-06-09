@@ -6,7 +6,9 @@
   "scripts": {
     "sanity:build": "sanity build ../public/studio -y",
     "sanity:start": "sanity start",
-    "sanity:test": "sanity check"
+    "sanity:test": "sanity check",
+    "sanity:types": "sanity-codegen",
+    "sanity:types:watch": "nodemon --watch ./schemas --ext ts --exec \"npm run sanity:types\""
   },
   "repository": {
     "type": "git",
@@ -29,6 +31,8 @@
     "react-dom": "^17.0"
   },
   "devDependencies": {
-    "@sanity/cli": "^2.10.5"
+    "@sanity/cli": "^2.10.5",
+    "nodemon": "^2.0.7",
+    "sanity-codegen": "^0.9.3"
   }
 }
