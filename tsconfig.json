@@ -28,6 +28,7 @@
     "**/*.tsx"
   ],
   "exclude": [
+    "studio",
     "node_modules"
   ]
 }
