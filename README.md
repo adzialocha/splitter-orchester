@@ -9,21 +9,11 @@ Website of the [Splitter Orchester](https://splitter.berlin) from Berlin built w
 * Sanity Account for Headless CMS
 * Vercel Account for deployment (recommended)
 
-## Setup
+## Development
 
 ```bash
 # Install dependencies
 npm install
-
-# Copy .env.example to .env and adjust variables
-cp .env.example .env
-
-# Introduce the same variables to Sanity Studio project
-ln .env studio/.env.development
-ln .env studio/.env.production
-```
-
-## Development
 
 ```bash
 # Run development servers concurrently. Open localhost:3000 for website,
@@ -42,8 +32,7 @@ npm run sanity:types
 ### Vercel
 
 1. Run `npm run vercel` to initialize and deploy the project, you can alternatively do this through the Vercel web dashboard.
-2. Make sure to insert all [*Environment variables*](https://vercel.com/docs/environment-variables) from `.env` also in Vercel.
-3. After setup you can run the following (optional) commands for deployment:
+2. After setup you can run the following (optional) commands for deployment:
 
     ```bash
     # Deploy page on Vercel (optional)

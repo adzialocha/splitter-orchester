@@ -1,8 +1,6 @@
-.env
 .next
 .vercel
 node_modules
 out
 public/studio
-studio/.env.*
 studio/dist
