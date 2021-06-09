@@ -1,5 +1,9 @@
 import React from 'react';
 
-export default function Footer(): JSX.Element {
-  return <footer></footer>;
+type Props = {
+  children?: React.ReactNode;
+};
+
+export default function Footer({ children }: Props): JSX.Element {
+  return <footer>{children}</footer>;
 }

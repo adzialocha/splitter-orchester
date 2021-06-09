@@ -2,7 +2,8 @@
   "name": "splitter-orchester",
   "version": "0.1.0",
   "description": "Website for Splitter Orchester Berlin",
-  "main": "index.js",
+  "main": "package.json",
+  "types": "src/types.d.ts",
   "scripts": {
     "build": "concurrently npm:sanity:build npm:next:build",
     "lint": "eslint '*/**/*.{ts,tsx}'",

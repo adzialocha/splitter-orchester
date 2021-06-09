@@ -2,7 +2,7 @@ import { createClient } from 'next-sanity';
 
 import type { SanityClient } from '@sanity/client';
 
-import config from './config';
+import config from '~/lib/config';
 
 // Set up the client for fetching data in the getProps page functions
 export const sanityClient = createClient(config);

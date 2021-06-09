@@ -5,7 +5,7 @@ import type {
   SanityImageSource,
 } from '@sanity/image-url/lib/types/types';
 
-import { urlForImage } from '../lib/sanity';
+import { urlForImage } from '~/lib/sanity';
 
 type Props = {
   fit?: FitMode;
