@@ -32,9 +32,7 @@ export default function Post({ post }: Props): JSX.Element {
             </Paragraph>
           </Header>
           <Section>{post.image && <Image source={post.image} />}</Section>
-          <Section>
-            <BlockContent blocks={post.body} />
-          </Section>
+          <BlockContent blocks={post.body} />
         </Article>
       </Container>
     </Layout>
