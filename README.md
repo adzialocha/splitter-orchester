@@ -45,8 +45,8 @@ npm run lint
 
   ```bash
   # Deploy page on Vercel (optional)
-  npm run vercel:deploy
-  npm run vercel:deploy:production
+  npm run vercel
+  npm run vercel:production
   ```
 
 ### Static page hosting
