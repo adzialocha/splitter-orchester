@@ -1,12 +1,12 @@
 export default {
-  name: 'video',
+  name: 'audio',
   type: 'object',
-  title: 'Video',
+  title: 'Audio',
   fields: [
     {
       name: 'url',
       type: 'url',
-      title: 'YouTube / Vimeo video URL',
+      title: 'SoundCloud URL',
     },
     {
       name: 'caption',
