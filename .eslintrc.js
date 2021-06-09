@@ -17,14 +17,15 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
-    // Uses the recommended rules from @eslint-plugin-react
+    // 'plugin:import/recommended',
+    // 'plugin:import/typescript',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
     // Keep prettier rules last to make sure its style changes are not
     // overwritten by other rules
     'plugin:prettier/recommended',
   ],
-  plugins: ['@typescript-eslint', 'prettier'],
+  plugins: ['prettier', 'import'],
   rules: {
     // Always require dangling commas for multiline objects and arrays
     'comma-dangle': ['error', 'always-multiline'],
@@ -42,5 +43,32 @@ module.exports = {
     'prettier/prettier': 1,
     // We don't need prop-types when we are using Typescript
     'react/prop-types': 0,
+    // Unresolved imports are already handled
+    'import/no-unresolved': 0,
+    // Enforce grouping and order in imports
+    'import/order': [
+      'error',
+      {
+        groups: [
+          'builtin',
+          'external',
+          'type',
+          ['internal', 'parent', 'sibling', 'index'],
+        ],
+        pathGroups: [
+          {
+            pattern: '~/*',
+            group: 'internal',
+          },
+        ],
+        'newlines-between': 'always',
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true,
+        },
+      },
+    ],
+    // Also order imports with multiple members
+    'sort-imports': ['error', { ignoreDeclarationSort: true }],
   },
 };

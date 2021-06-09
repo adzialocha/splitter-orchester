@@ -1,15 +1,20 @@
 import BlockContent from '@sanity/block-content-to-react';
 import React from 'react';
 
-import type { GetStaticProps, GetStaticPaths } from 'next';
 import type { Post as PostType } from '../../types';
+import type { GetStaticPaths, GetStaticProps } from 'next';
 
+import Article from '../../components/Article';
 import Container from '../../components/Container';
 import Date from '../../components/Date';
+import Header from '../../components/Header';
+import Heading from '../../components/Heading';
+import Image from '../../components/Image';
 import Layout from '../../components/Layout';
-import { getPostBySlug, getAllPostSlugs } from '../../lib/queries';
-import { sanityClient, getClient } from '../../lib/sanity.server';
-import { urlForImage } from '../../lib/sanity';
+import Paragraph from '../../components/Paragraph';
+import Section from '../../components/Section';
+import { getAllPostSlugs, getPostBySlug } from '../../lib/queries';
+import { getClient, sanityClient } from '../../lib/sanity.server';
 
 type Props = {
   post?: PostType;
@@ -19,26 +24,18 @@ export default function Post({ post }: Props): JSX.Element {
   return (
     <Layout>
       <Container>
-        <article>
-          <header>
-            <h1 className="font-bold text-lg">{post.title}</h1>
-            <p className="italic">
+        <Article>
+          <Header>
+            <Heading>{post.title}</Heading>
+            <Paragraph>
               <Date dateString={post.publishedAt} />
-            </p>
-          </header>
-          <section>
-            {post.image && (
-              <img
-                src={urlForImage(post.image)
-                  .height(500)
-                  .width(500)
-                  .fit('crop')
-                  .url()}
-              />
-            )}
+            </Paragraph>
+          </Header>
+          <Section>{post.image && <Image source={post.image} />}</Section>
+          <Section>
             <BlockContent blocks={post.body} />
-          </section>
-        </article>
+          </Section>
+        </Article>
       </Container>
     </Layout>
   );
