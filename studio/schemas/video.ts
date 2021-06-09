@@ -9,14 +9,17 @@ export default {
       title: 'YouTube / Vimeo video URL',
     },
     {
-      name: 'title',
+      name: 'caption',
       type: 'string',
-      title: 'Video caption',
+      title: 'Caption',
+      options: {
+        isHighlighted: true,
+      },
     },
   ],
   preview: {
     select: {
-      url: 'url',
+      title: 'title',
     },
   },
 };

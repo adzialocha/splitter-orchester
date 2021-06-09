@@ -5,6 +5,7 @@ const postFields = groq`
   title,
   image,
   body[]{
+    ...,
     asset->{
       ...,
       "_key": _id
