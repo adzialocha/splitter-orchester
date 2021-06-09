@@ -4,10 +4,6 @@
     "name": "Splitter Orchester Studio",
     "basePath": "/studio"
   },
-  "api": {
-    "projectId": "a8gjiary",
-    "dataset": "production"
-  },
   "plugins": [
     "@sanity/base",
     "@sanity/components",

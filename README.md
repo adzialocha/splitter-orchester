@@ -15,6 +15,7 @@ npm install
 
 # Copy .env.example to .env and adjust variables
 cp .env.example .env
+ln .env studio/.env.production
 
 # Run development servers concurrently. Open localhost:3000 for website,
 # localhost:3333 for Sanity CMS backend

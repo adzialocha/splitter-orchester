@@ -3,4 +3,5 @@
 .vercel
 node_modules
 public/studio
+studio/.env.*
 studio/dist
