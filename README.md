@@ -32,6 +32,9 @@ npm start
 
 # Check linter errors
 npm run lint
+
+# Helper script to generate TypeScript definitions from Sanity schema
+npm run sanity:types
 ```
 
 ## Deployment
@@ -39,14 +42,14 @@ npm run lint
 ### Vercel
 
 1. Run `npm run vercel` to initialize and deploy the project, you can alternatively do this through the Vercel web dashboard.
-2. Make sure to use the [*Environment variables*](https://vercel.com/docs/environment-variables) from `.env` also in Vercel.
+2. Make sure to insert all [*Environment variables*](https://vercel.com/docs/environment-variables) from `.env` also in Vercel.
 3. After setup you can run the following (optional) commands for deployment:
 
-  ```bash
-  # Deploy page on Vercel (optional)
-  npm run vercel
-  npm run vercel:production
-  ```
+    ```bash
+    # Deploy page on Vercel (optional)
+    npm run vercel
+    npm run vercel:production
+    ```
 
 ### Static page hosting
 
