@@ -26,7 +26,7 @@ export function useVideo(url: string): VideoThumbnail {
   useEffect(() => {
     const fetchThumbnail = async () => {
       try {
-        const data = await window.fetch(`http://noembed.com/embed?url=${url}`);
+        const data = await window.fetch(`https://noembed.com/embed?url=${url}`);
         const result = await data.json();
 
         // Handle errors from noembed service
