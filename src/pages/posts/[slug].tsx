@@ -4,14 +4,14 @@ import type { GetStaticPaths, GetStaticProps } from 'next';
 import type { Post as PostSchema } from 'sanity-schema';
 
 import Article from '~/components/Article';
-import BlockContent from '~/components/BlockContent';
 import Container from '~/components/Container';
 import Date from '~/components/Date';
 import Header from '~/components/Header';
 import Heading from '~/components/Heading';
-import Image from '~/components/Image';
 import Layout from '~/components/Layout';
 import Paragraph from '~/components/Paragraph';
+import SanityBlockContent from '~/components/SanityBlockContent';
+import SanityImage from '~/components/SanityImage';
 import Section from '~/components/Section';
 import { getAllPostSlugs, getPostBySlug } from '~/lib/queries';
 import { getClient, sanityClient } from '~/lib/sanity.server';
@@ -31,8 +31,8 @@ export default function Post({ post }: Props): JSX.Element {
               <Date dateString={post.publishedAt} />
             </Paragraph>
           </Header>
-          <Section>{post.image && <Image source={post.image} />}</Section>
-          <BlockContent blocks={post.body} />
+          <Section>{post.image && <SanityImage source={post.image} />}</Section>
+          <SanityBlockContent blocks={post.body} />
         </Article>
       </Container>
     </Layout>

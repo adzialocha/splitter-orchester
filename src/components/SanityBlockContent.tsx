@@ -1,4 +1,4 @@
-import * as SanityBlockContent from '@sanity/block-content-to-react';
+import BlockContent from '@sanity/block-content-to-react';
 import React from 'react';
 
 import type { BlockContent as BlockContentSchema } from 'sanity-schema';
@@ -29,9 +29,9 @@ const imageOptions = {
   fit: 'max',
 };
 
-export default function BlockContent({ blocks }: Props): JSX.Element {
+export default function SanityBlockContent({ blocks }: Props): JSX.Element {
   return (
-    <SanityBlockContent
+    <BlockContent
       blocks={blocks}
       imageOptions={imageOptions}
       serializers={serializers}
