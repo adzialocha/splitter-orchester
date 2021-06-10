@@ -15,7 +15,9 @@
     "sanity:build": "lerna run build --stream",
     "sanity:start": "lerna run start --stream",
     "sanity:types": "lerna run types --stream",
-    "start": "concurrently npm:sanity:start npm:next:start",
+    "start": "concurrently npm:sanity:start npm:next:start npm:tsc:watch",
+    "tsc": "tsc",
+    "tsc:watch": "tsc --noEmit --watch --preserveWatchOutput",
     "vercel": "vercel",
     "vercel:production": "vercel --prod"
   },
