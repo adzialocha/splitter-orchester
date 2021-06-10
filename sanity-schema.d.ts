@@ -75,6 +75,56 @@ export interface Post extends SanityDocument {
   body?: BlockContent;
 }
 
+/**
+ * Site Settings
+ *
+ *
+ */
+export interface SiteConfig extends SanityDocument {
+  _type: 'siteConfig';
+
+  /**
+   * Main Navigation — `array`
+   *
+   * Select items for the main navigation
+   */
+  mainNavigation?: Array<SanityKeyedReference<Post>>;
+}
+
+export type Audio = {
+  _type: 'audio';
+  /**
+   * SoundCloud URL — `url`
+   *
+   *
+   */
+  url?: string;
+
+  /**
+   * Caption — `string`
+   *
+   *
+   */
+  caption?: string;
+};
+
+export type Video = {
+  _type: 'video';
+  /**
+   * YouTube / Vimeo video URL — `url`
+   *
+   *
+   */
+  url?: string;
+
+  /**
+   * Caption — `string`
+   *
+   *
+   */
+  caption?: string;
+};
+
 export type BlockContent = Array<
   | SanityKeyed<SanityBlock>
   | SanityKeyed<{
@@ -83,6 +133,8 @@ export type BlockContent = Array<
       crop?: SanityImageCrop;
       hotspot?: SanityImageHotspot;
     }>
+  | SanityKeyed<Video>
+  | SanityKeyed<Audio>
 >;
 
-export type Documents = Post;
+export type Documents = Post | SiteConfig;
