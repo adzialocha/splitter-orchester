@@ -15,7 +15,6 @@ Website of the [Splitter Orchester](https://splitter.berlin) from Berlin built w
 # Install dependencies
 npm install
 
-```bash
 # Run development servers concurrently. Open localhost:3000 for website,
 # localhost:3333 for Sanity CMS backend
 npm start
