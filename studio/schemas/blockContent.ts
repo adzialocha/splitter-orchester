@@ -63,5 +63,8 @@ export default {
     {
       type: 'video',
     },
+    {
+      type: 'audio',
+    },
   ],
 };
