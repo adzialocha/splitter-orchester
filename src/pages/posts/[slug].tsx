@@ -20,12 +20,17 @@ import { getClient, sanityClient } from '~/lib/sanity.server';
 
 type Props = {
   post?: PostSchema;
-  mainNavigation?: PostSchema[];
+  mainNavigation: PostSchema[];
+  footerNavigation: PostSchema[];
 };
 
-export default function Post({ post, mainNavigation }: Props): JSX.Element {
+export default function Post({
+  post,
+  mainNavigation,
+  footerNavigation,
+}: Props): JSX.Element {
   return (
-    <Layout mainNavigation={mainNavigation}>
+    <Layout mainNavigation={mainNavigation} footerNavigation={footerNavigation}>
       <Container>
         <Article>
           <Header>
@@ -44,6 +49,7 @@ export default function Post({ post, mainNavigation }: Props): JSX.Element {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const mainNavigation = await getNavigation('mainNavigation');
+  const footerNavigation = await getNavigation('footerNavigation');
 
   const post = await getClient().fetch(getPostBySlug, {
     slug: params.slug,
@@ -53,6 +59,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       post,
       mainNavigation,
+      footerNavigation,
     },
   };
 };

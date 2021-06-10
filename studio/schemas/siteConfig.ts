@@ -15,5 +15,17 @@ export default {
         },
       ],
     },
+    {
+      title: 'Footer Navigation',
+      name: 'footerNavigation',
+      description: 'Select items for the footer navigation',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'post' }],
+        },
+      ],
+    },
   ],
 };

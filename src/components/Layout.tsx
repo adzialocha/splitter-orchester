@@ -9,11 +9,13 @@ import Navigation from '~/components/Navigation';
 type Props = {
   children: React.ReactNode;
   mainNavigation?: Post[];
+  footerNavigation?: Post[];
 };
 
 export default function Layout({
   children,
   mainNavigation,
+  footerNavigation,
 }: Props): JSX.Element {
   return (
     <>
@@ -21,7 +23,9 @@ export default function Layout({
         <Navigation items={mainNavigation} />
       </Header>
       <main>{children}</main>
-      <Footer />
+      <Footer>
+        <Navigation items={footerNavigation} />
+      </Footer>
     </>
   );
 }

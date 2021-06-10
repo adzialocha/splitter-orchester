@@ -21,7 +21,12 @@ export const getNavigations = groq`
       _id,
       slug,
       title,
-    }
+    },
+    footerNavigation[]->{
+      _id,
+      slug,
+      title,
+    },
   }
 `;
 
