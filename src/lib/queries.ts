@@ -12,7 +12,17 @@ const postFields = groq`
     }
   },
   publishedAt,
-  "slug": slug.current
+  "slug": slug.current,
+`;
+
+export const getNavigations = groq`
+  *[_type == "siteConfig"] {
+    mainNavigation[]->{
+      _id,
+      slug,
+      title,
+    }
+  }
 `;
 
 export const getAllPosts = groq`

@@ -3,6 +3,8 @@ import React from 'react';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import type { Post as PostSchema } from 'sanity-schema';
 
+import { getNavigation } from '~/helpers';
+
 import Article from '~/components/Article';
 import Container from '~/components/Container';
 import Date from '~/components/Date';
@@ -18,11 +20,12 @@ import { getClient, sanityClient } from '~/lib/sanity.server';
 
 type Props = {
   post?: PostSchema;
+  mainNavigation?: PostSchema[];
 };
 
-export default function Post({ post }: Props): JSX.Element {
+export default function Post({ post, mainNavigation }: Props): JSX.Element {
   return (
-    <Layout>
+    <Layout mainNavigation={mainNavigation}>
       <Container>
         <Article>
           <Header>
@@ -40,6 +43,8 @@ export default function Post({ post }: Props): JSX.Element {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const mainNavigation = await getNavigation('mainNavigation');
+
   const post = await getClient().fetch(getPostBySlug, {
     slug: params.slug,
   });
@@ -47,6 +52,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     props: {
       post,
+      mainNavigation,
     },
   };
 };

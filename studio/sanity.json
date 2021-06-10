@@ -29,11 +29,11 @@
     },
     {
       "name": "part:@sanity/desk-tool/structure",
-      "path": "./deskStructure.ts"
+      "path": "./deskStructure"
     },
     {
       "implements": "part:@sanity/base/document-actions/resolver",
-      "path": "./resolveDocumentActions.ts"
+      "path": "./resolveDocumentActions"
     }
   ]
 }
