@@ -1,16 +1,11 @@
-import React, { useEffect } from 'react';
-import SoundCloudAudio from 'soundcloud-audio';
+import React from 'react';
 
 import Image from '~/components/Image';
-import { useAudioPlayerState } from '~/store/audio';
-
-const CLIENT_ID = 'b8a71a1bbc08a31096a72300e47f4569';
-
-let audioPlayer;
+import { useTrackedAudioPlayer } from '~/store/audio';
 
 export default function AudioPlayer(): JSX.Element {
-  const [audioState, dispatch] = useAudioPlayerState();
-  const { url, isPlaying, waveformUrl } = audioState;
+  const [audioState, dispatch] = useTrackedAudioPlayer();
+  const { url, isPlaying, transport, track } = audioState;
 
   const handlePause = () => {
     dispatch({ type: 'pause' });
@@ -24,64 +19,41 @@ export default function AudioPlayer(): JSX.Element {
     dispatch({ type: 'stop' });
   };
 
+  const handleSeek = (position) => {
+    dispatch({ type: 'seek', position });
+  };
+
   return (
-    <>
-      <AudioPlayerSoundcloud url={url} isPlaying={isPlaying} />
-      {url && (
-        <>
-          <AudioPlayerWaveform waveformUrl={waveformUrl} />
-          {!isPlaying && <button onClick={handleResume}>Resume</button>}
-          {isPlaying && <button onClick={handlePause}>Pause</button>}
-          <button onClick={handleStop}>Stop</button>
-        </>
-      )}
-    </>
+    url && (
+      <>
+        {track.title}
+        <AudioPlayerWaveform
+          url={track.waveformUrl}
+          total={transport.total}
+          current={transport.current}
+          onSeek={handleSeek}
+        />
+        {!isPlaying && <button onClick={handleResume}>Resume</button>}
+        {isPlaying && <button onClick={handlePause}>Pause</button>}
+        <button onClick={handleStop}>Stop</button>
+      </>
+    )
   );
 }
 
-function AudioPlayerWaveform({ waveformUrl }): JSX.Element {
-  return <Image src={waveformUrl} />;
-}
+function AudioPlayerWaveform({ url, total, current, onSeek }): JSX.Element {
+  const handleClick = ({ target, clientX }) => {
+    const percentage = (clientX - target.offsetLeft) / target.offsetWidth;
+    const position = Math.round(percentage * total);
+    onSeek(position);
+  };
 
-function AudioPlayerSoundcloud({ url, isPlaying }): JSX.Element {
-  const [, dispatch] = useAudioPlayerState();
-
-  useEffect(() => {
-    if (!audioPlayer) {
-      audioPlayer = new SoundCloudAudio(CLIENT_ID);
-
-      audioPlayer.on('timeupdate', () => {
-        dispatch({
-          type: 'updateTime',
-          timeCurrent: audioPlayer.audio.currentTime,
-          timeDuration: audioPlayer.audio.duration,
-        });
-      });
-
-      audioPlayer.on('ended', () => {
-        dispatch({ type: 'pause' });
-      });
-    }
-
-    if (!url) {
-      audioPlayer.stop();
-      return;
-    }
-
-    if (isPlaying) {
-      audioPlayer.resolve(url, (track) => {
-        dispatch({
-          type: 'updateTrack',
-          title: track.title,
-          waveformUrl: track.waveform_url,
-        });
-
-        audioPlayer.play();
-      });
-    } else {
-      audioPlayer.pause();
-    }
-  }, [isPlaying, url]);
-
-  return null;
+  return (
+    <>
+      <div onClick={handleClick}>
+        <Image src={url} />
+        {`${current} / ${total}`}
+      </div>
+    </>
+  );
 }

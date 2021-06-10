@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useAudioPlayerState } from '~/store/audio';
+import { useTrackedAudioPlayer } from '~/store/audio';
 
 type Props = {
   url: string;
@@ -8,8 +8,7 @@ type Props = {
 };
 
 export default function EmbedAudio({ url }: Props): JSX.Element {
-  const [audioState, dispatch] = useAudioPlayerState();
-  const { isPlaying } = audioState;
+  const [, dispatch] = useTrackedAudioPlayer();
 
   const handleClick = () => {
     dispatch({ type: 'play', url });
@@ -18,9 +17,7 @@ export default function EmbedAudio({ url }: Props): JSX.Element {
   return (
     <>
       {url}
-      <button onClick={handleClick}>
-        {isPlaying ? 'Playing' : 'Not Playing'}
-      </button>
+      <button onClick={handleClick}>Play</button>
     </>
   );
 }
