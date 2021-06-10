@@ -16,7 +16,7 @@ export default function Navigation({ items }: Props): JSX.Element {
         </li>
         {items.map((item) => {
           return (
-            <li key={item.slug.current}>
+            <li key={item._id}>
               <Link href={`/posts/${item.slug.current}`}>{item.title}</Link>
             </li>
           );

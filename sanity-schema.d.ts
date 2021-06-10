@@ -89,6 +89,13 @@ export interface SiteConfig extends SanityDocument {
    * Select items for the main navigation
    */
   mainNavigation?: Array<SanityKeyedReference<Post>>;
+
+  /**
+   * Footer Navigation — `array`
+   *
+   * Select items for the footer navigation
+   */
+  footerNavigation?: Array<SanityKeyedReference<Post>>;
 }
 
 export type Audio = {
