@@ -2,10 +2,16 @@ import defaultResolve, {
   PublishAction,
 } from 'part:@sanity/base/document-actions';
 
-// eslint-disable-next-line
-// @ts-ignore: We don't know the types here ..
-// eslint-disable-next-line
-export default function resolveDocumentActions(props) {
+type DocumentAction = {
+  title: string;
+  disabled: boolean;
+};
+
+type Props = {
+  type: string;
+};
+
+export default function resolveDocumentActions(props: Props): DocumentAction[] {
   if (props.type === 'siteConfig') {
     return [PublishAction];
   }
