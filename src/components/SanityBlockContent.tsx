@@ -43,7 +43,7 @@ export default function SanityBlockContent({ blocks }: Props): JSX.Element {
 
 function BlockContentLink({ children, mark }): JSX.Element {
   return (
-    <Link href={mark.href} className="underline">
+    <Link className="underline" href={mark.href}>
       {children}
     </Link>
   );
@@ -54,9 +54,9 @@ function BlockContentContainer({ children }): JSX.Element {
 }
 
 function BlockContentAudio({ node }): JSX.Element {
-  return <EmbedAudio url={node.url} caption={node.caption} />;
+  return <EmbedAudio caption={node.caption} url={node.url} />;
 }
 
 function BlockContentVideo({ node }): JSX.Element {
-  return <EmbedVideo url={node.url} caption={node.caption} />;
+  return <EmbedVideo caption={node.caption} url={node.url} />;
 }

@@ -29,9 +29,9 @@ export default function AudioPlayer(): JSX.Element {
       <>
         {track.title}
         <AudioPlayerWaveform
-          url={track.waveformUrl}
-          total={transport.total}
           current={transport.current}
+          total={transport.total}
+          url={track.waveformUrl}
           onSeek={handleSeek}
         />
         {!isPlaying && <button onClick={handleResume}>Resume</button>}

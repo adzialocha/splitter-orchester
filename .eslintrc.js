@@ -45,6 +45,13 @@ module.exports = {
     'prettier/prettier': 1,
     // We don't need prop-types when we are using Typescript
     'react/prop-types': 0,
+    // Sort all props in React components
+    'react/jsx-sort-props': [
+      'error',
+      {
+        callbacksLast: true,
+      },
+    ],
     // Unresolved imports are already handled
     'import/no-unresolved': 0,
     // Enforce grouping and order in imports

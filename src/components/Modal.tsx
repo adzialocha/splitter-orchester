@@ -16,13 +16,13 @@ export default function Modal({
 }: Props): JSX.Element {
   return (
     <Transition
-      show={isOpen}
       enter="transition-opacity duration-75"
       enterFrom="opacity-0"
       enterTo="opacity-100"
       leave="transition-opacity duration-150"
       leaveFrom="opacity-100"
       leaveTo="opacity-0"
+      show={isOpen}
     >
       <ModalContainer>
         <ModalOverlay onClose={onClose} />
@@ -36,10 +36,10 @@ export default function Modal({
 function ModalContainer({ children }): JSX.Element {
   return (
     <Box
-      className="fixed z-10 inset-0 overflow-y-auto"
       aria-labelledby="modal-title"
-      role="dialog"
       aria-modal="true"
+      className="fixed z-10 inset-0 overflow-y-auto"
+      role="dialog"
     >
       <Box className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
         {children}
@@ -51,8 +51,8 @@ function ModalContainer({ children }): JSX.Element {
 function ModalOverlay({ onClose }): JSX.Element {
   return (
     <Box
-      className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
       aria-hidden="true"
+      className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
       onClick={onClose}
     />
   );
@@ -62,8 +62,8 @@ function ModalOverlay({ onClose }): JSX.Element {
 function ModalCenterHack(): JSX.Element {
   return (
     <span
-      className="hidden sm:inline-block sm:align-middle sm:h-screen"
       aria-hidden="true"
+      className="hidden sm:inline-block sm:align-middle sm:h-screen"
     >
       &#8203;
     </span>
