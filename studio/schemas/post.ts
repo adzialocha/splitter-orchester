@@ -7,6 +7,7 @@ export default {
       name: 'title',
       title: 'Title',
       type: 'string',
+      validation: (Rule): any => Rule.required(),
     },
     {
       name: 'slug',
@@ -16,17 +17,26 @@ export default {
         source: 'title',
         maxLength: 96,
       },
+      validation: (Rule): any => Rule.required(),
     },
     {
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',
       initialValue: new Date().toISOString(),
+      validation: (Rule): any => Rule.required(),
+    },
+    {
+      name: 'body',
+      title: 'Body',
+      type: 'blockContent',
     },
     {
       name: 'feature',
       title: 'Feature',
       type: 'object',
+      description:
+        'Feature this post on the homepage with an image and / or audio file',
       options: {
         collapsible: true,
         collapsed: true,
@@ -52,11 +62,6 @@ export default {
           initialValue: false,
         },
       ],
-    },
-    {
-      name: 'body',
-      title: 'Body',
-      type: 'blockContent',
     },
   ],
   preview: {

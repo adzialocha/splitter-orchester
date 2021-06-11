@@ -39,6 +39,8 @@ module.exports = {
         forbid: ['>', '}'],
       },
     ],
+    // Sometimes we just want to not mind
+    '@typescript-eslint/no-explicit-any': 0,
     // Warn on prettier violations and continue with build
     'prettier/prettier': 1,
     // We don't need prop-types when we are using Typescript
