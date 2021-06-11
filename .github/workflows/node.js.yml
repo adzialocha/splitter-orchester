@@ -19,3 +19,4 @@ jobs:
         node-version: '${{ steps.nvmrc.outputs.NODE_VERSION }}'
     - run: npm ci
     - run: npm run lint
+    - run: npm run tsc
