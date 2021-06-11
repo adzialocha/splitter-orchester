@@ -1,7 +1,8 @@
 import React from 'react';
 
+import { useTrackedAudioPlayer } from '~/state';
+
 import Image from '~/components/Image';
-import { useTrackedAudioPlayer } from '~/store/audio';
 
 export default function AudioPlayer(): JSX.Element {
   const [audioState, dispatch] = useTrackedAudioPlayer();

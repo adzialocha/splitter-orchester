@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useTrackedAudioPlayer } from '~/store/audio';
+import { useTrackedAudioPlayer } from '~/state';
 
 type Props = {
   url: string;

@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import ReactPlayerVimeo from 'react-player/vimeo';
 import ReactPlayerYouTube from 'react-player/youtube';
 
+import { useVideo } from '~/hooks';
+
 import Image from '~/components/Image';
 import Modal from '~/components/Modal';
-import { useVideo } from '~/hooks/video';
 
 type Props = {
   url: string;

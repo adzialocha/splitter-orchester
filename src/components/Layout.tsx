@@ -2,11 +2,12 @@ import React from 'react';
 
 import type { Post } from 'sanity-schema';
 
+import { AudioPlayerProvider } from '~/state';
+
 import AudioPlayer from '~/components/AudioPlayer';
 import Footer from '~/components/Footer';
 import Header from '~/components/Header';
 import Navigation from '~/components/Navigation';
-import { AudioPlayerProvider } from '~/store/audio';
 
 type Props = {
   children: React.ReactNode;
