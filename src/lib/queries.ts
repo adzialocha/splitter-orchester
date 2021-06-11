@@ -15,17 +15,19 @@ const postFields = groq`
   "slug": slug.current,
 `;
 
+const navigationFields = groq`
+  _id,
+  "slug": slug.current,
+  title,
+`;
+
 export const getNavigations = groq`
-  *[_type == "siteConfig"] {
+  *[_type == "siteConfig" && _id == "defaultSiteConfig"][0] {
     mainNavigation[]->{
-      _id,
-      slug,
-      title,
+      ${navigationFields}
     },
     footerNavigation[]->{
-      _id,
-      slug,
-      title,
+      ${navigationFields}
     },
   }
 `;

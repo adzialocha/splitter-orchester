@@ -46,7 +46,7 @@ export interface Post extends SanityDocument {
    *
    *
    */
-  slug?: { _type: 'slug'; current: string };
+  slug?: string;
 
   /**
    * Published at — `datetime`

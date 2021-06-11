@@ -1,25 +1,21 @@
 import React from 'react';
 
 import type { GetStaticProps } from 'next';
-import type { Post } from 'sanity-schema';
 
-import { getNavigation } from '~/helpers';
+import { getNavigations } from '~/helpers';
+import type { Navigations } from '~/types';
 
 import Container from '~/components/Container';
 import Layout from '~/components/Layout';
 import Paragraph from '~/components/Paragraph';
 
 type Props = {
-  mainNavigation: Post[];
-  footerNavigation: Post[];
+  navigations: Navigations;
 };
 
-export default function NotFoundError({
-  mainNavigation,
-  footerNavigation,
-}: Props): JSX.Element {
+export default function NotFoundError({ navigations }: Props): JSX.Element {
   return (
-    <Layout mainNavigation={mainNavigation} footerNavigation={footerNavigation}>
+    <Layout navigations={navigations}>
       <Container>
         <Paragraph>404</Paragraph>
       </Container>
@@ -28,13 +24,9 @@ export default function NotFoundError({
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const mainNavigation = await getNavigation('mainNavigation');
-  const footerNavigation = await getNavigation('footerNavigation');
-
   return {
     props: {
-      mainNavigation,
-      footerNavigation,
+      navigations: await getNavigations(),
     },
   };
 };

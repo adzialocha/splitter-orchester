@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import React from 'react';
 
-import type { Post } from 'sanity-schema';
+import type { NavigationItem } from '~/types';
 
 type Props = {
-  items: Post[];
+  items: NavigationItem[];
 };
 
 export default function Navigation({ items }: Props): JSX.Element {
@@ -16,8 +16,8 @@ export default function Navigation({ items }: Props): JSX.Element {
         </li>
         {items.map((item) => {
           return (
-            <li key={item._id}>
-              <Link href={`/${item.slug.current}`}>{item.title}</Link>
+            <li key={item.slug}>
+              <Link href={`/${item.slug}`}>{item.title}</Link>
             </li>
           );
         })}

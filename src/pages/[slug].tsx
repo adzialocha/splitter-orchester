@@ -3,7 +3,8 @@ import React from 'react';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import type { Post as PostSchema } from 'sanity-schema';
 
-import { getNavigation } from '~/helpers';
+import { getNavigations } from '~/helpers';
+import type { Navigations } from '~/types';
 
 import Article from '~/components/Article';
 import Container from '~/components/Container';
@@ -20,17 +21,12 @@ import { getClient, sanityClient } from '~/lib/sanity.server';
 
 type Props = {
   post?: PostSchema;
-  mainNavigation: PostSchema[];
-  footerNavigation: PostSchema[];
+  navigations: Navigations;
 };
 
-export default function Post({
-  post,
-  mainNavigation,
-  footerNavigation,
-}: Props): JSX.Element {
+export default function Post({ post, navigations }: Props): JSX.Element {
   return (
-    <Layout mainNavigation={mainNavigation} footerNavigation={footerNavigation}>
+    <Layout navigations={navigations}>
       <Container>
         <Article>
           <Header>
@@ -44,7 +40,7 @@ export default function Post({
               <SanityImage source={post.feature.image} />
             )}
           </Section>
-          <SanityBlockContent blocks={post.body} />
+          {post.body && <SanityBlockContent blocks={post.body} />}
         </Article>
       </Container>
     </Layout>
@@ -52,9 +48,7 @@ export default function Post({
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const mainNavigation = await getNavigation('mainNavigation');
-  const footerNavigation = await getNavigation('footerNavigation');
-
+  const navigations = await getNavigations();
   const post = await getClient().fetch(getPostBySlug, {
     slug: params.slug,
   });
@@ -62,8 +56,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     props: {
       post,
-      mainNavigation,
-      footerNavigation,
+      navigations,
     },
   };
 };
