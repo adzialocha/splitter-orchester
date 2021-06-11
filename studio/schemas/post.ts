@@ -18,17 +18,40 @@ export default {
       },
     },
     {
-      name: 'image',
-      title: 'Main image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-    },
-    {
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',
+      initialValue: new Date().toISOString(),
+    },
+    {
+      name: 'feature',
+      title: 'Feature',
+      type: 'object',
+      options: {
+        collapsible: true,
+        collapsed: true,
+      },
+      fields: [
+        {
+          name: 'image',
+          title: 'Image',
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+        },
+        {
+          name: 'audio',
+          title: 'Audio',
+          type: 'audio',
+        },
+        {
+          name: 'isFeatured',
+          title: 'Visible on homepage',
+          type: 'boolean',
+          initialValue: false,
+        },
+      ],
     },
     {
       name: 'body',

@@ -2,9 +2,11 @@ import React from 'react';
 
 import type { Post } from 'sanity-schema';
 
+import AudioPlayer from '~/components/AudioPlayer';
 import Footer from '~/components/Footer';
 import Header from '~/components/Header';
 import Navigation from '~/components/Navigation';
+import { AudioPlayerProvider } from '~/store/audio';
 
 type Props = {
   children: React.ReactNode;
@@ -22,7 +24,10 @@ export default function Layout({
       <Header>
         <Navigation items={mainNavigation} />
       </Header>
-      <main>{children}</main>
+      <AudioPlayerProvider>
+        <main>{children}</main>
+        <AudioPlayer />
+      </AudioPlayerProvider>
       <Footer>
         <Navigation items={footerNavigation} />
       </Footer>

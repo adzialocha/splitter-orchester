@@ -3,7 +3,7 @@ import { groq } from 'next-sanity';
 const postFields = groq`
   _id,
   title,
-  image,
+  feature,
   body[]{
     ...,
     asset->{
@@ -32,6 +32,12 @@ export const getNavigations = groq`
 
 export const getAllPosts = groq`
   *[_type == "post"] | order(publishedAt desc, _updatedAt desc) {
+    ${postFields}
+  }
+`;
+
+export const getFeaturedPosts = groq`
+  *[_type == "post" && feature.isFeatured == true] | order(publishedAt desc, _updatedAt desc) {
     ${postFields}
   }
 `;

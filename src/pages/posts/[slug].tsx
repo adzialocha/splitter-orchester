@@ -39,7 +39,11 @@ export default function Post({
               <Date dateString={post.publishedAt} />
             </Paragraph>
           </Header>
-          <Section>{post.image && <SanityImage source={post.image} />}</Section>
+          <Section>
+            {post.feature && post.feature.image && (
+              <SanityImage source={post.feature.image} />
+            )}
+          </Section>
           <SanityBlockContent blocks={post.body} />
         </Article>
       </Container>

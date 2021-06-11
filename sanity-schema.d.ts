@@ -49,23 +49,45 @@ export interface Post extends SanityDocument {
   slug?: { _type: 'slug'; current: string };
 
   /**
-   * Main image — `image`
-   *
-   *
-   */
-  image?: {
-    _type: 'image';
-    asset: SanityAsset;
-    crop?: SanityImageCrop;
-    hotspot?: SanityImageHotspot;
-  };
-
-  /**
    * Published at — `datetime`
    *
    *
    */
   publishedAt?: string;
+
+  /**
+   * Feature — `object`
+   *
+   *
+   */
+  feature?: {
+    _type: 'feature';
+    /**
+     * Main image — `image`
+     *
+     *
+     */
+    image?: {
+      _type: 'image';
+      asset: SanityAsset;
+      crop?: SanityImageCrop;
+      hotspot?: SanityImageHotspot;
+    };
+
+    /**
+     * Main audio — `audio`
+     *
+     *
+     */
+    audio?: Audio;
+
+    /**
+     * Featured on homepage — `boolean`
+     *
+     *
+     */
+    isFeatured?: boolean;
+  };
 
   /**
    * Body — `blockContent`

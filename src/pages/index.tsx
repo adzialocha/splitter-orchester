@@ -8,7 +8,7 @@ import { getNavigation } from '~/helpers';
 import Container from '~/components/Container';
 import Layout from '~/components/Layout';
 import Paragraph from '~/components/Paragraph';
-import { getAllPosts } from '~/lib/queries';
+import { getFeaturedPosts } from '~/lib/queries';
 import { getClient } from '~/lib/sanity.server';
 
 type Props = {
@@ -39,7 +39,7 @@ export default function HomePage({
 export const getStaticProps: GetStaticProps = async () => {
   const mainNavigation = await getNavigation('mainNavigation');
   const footerNavigation = await getNavigation('footerNavigation');
-  const posts = await getClient().fetch(getAllPosts);
+  const posts = await getClient().fetch(getFeaturedPosts);
 
   return {
     props: {
