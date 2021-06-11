@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 
 interface VideoThumbnailData {
-  html?: string;
   isError: boolean;
   thumbnailUrl?: string;
   title?: string;
@@ -17,6 +16,7 @@ type Cache = {
 
 const cache: Cache = {};
 
+// Get data like `thumbnailUrl` and `title` from YouTube or Vimeo URLs
 export function useVideo(url: string): VideoThumbnail {
   const [video, setVideo] = useState<VideoThumbnailData>({
     isError: false,
@@ -44,7 +44,6 @@ export function useVideo(url: string): VideoThumbnail {
         cache[url] = {
           isError: false,
           thumbnailUrl: resultUrl,
-          html: result.html,
           title: result.title,
         };
       } catch {

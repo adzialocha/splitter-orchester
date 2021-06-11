@@ -9,6 +9,7 @@ function extractNavigation(navigations: SiteConfig, key: string) {
   return navigations && key in navigations ? navigations[key] : [];
 }
 
+// Helper method for frontend to retrieve navigation items from database
 export async function getNavigations(): Promise<Navigations> {
   const config: SiteConfig = await getClient().fetch(query);
 
