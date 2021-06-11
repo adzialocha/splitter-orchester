@@ -1,3 +1,5 @@
+import type { Rule } from '@sanity/validation';
+
 export default {
   name: 'audio',
   type: 'object',
@@ -7,7 +9,7 @@ export default {
       name: 'url',
       type: 'url',
       title: 'SoundCloud URL',
-      validation: (Rule): any => Rule.required(),
+      validation: (rule): typeof Rule => rule.required(),
     },
     {
       name: 'caption',

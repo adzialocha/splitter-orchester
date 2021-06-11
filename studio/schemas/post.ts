@@ -1,3 +1,5 @@
+import type { Rule } from '@sanity/validation';
+
 export default {
   name: 'post',
   title: 'Post',
@@ -7,7 +9,7 @@ export default {
       name: 'title',
       title: 'Title',
       type: 'string',
-      validation: (Rule): any => Rule.required(),
+      validation: (rule): typeof Rule => rule.required(),
     },
     {
       name: 'slug',
@@ -17,14 +19,14 @@ export default {
         source: 'title',
         maxLength: 96,
       },
-      validation: (Rule): any => Rule.required(),
+      validation: (rule): typeof Rule => rule.required(),
     },
     {
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',
       initialValue: new Date().toISOString(),
-      validation: (Rule): any => Rule.required(),
+      validation: (rule): typeof Rule => rule.required(),
     },
     {
       name: 'body',
