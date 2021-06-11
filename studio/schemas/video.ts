@@ -1,5 +1,7 @@
 import type { Rule } from '@sanity/validation';
 
+import EmbedVideoPreview from '../components/EmbedVideoPreview';
+
 export default {
   name: 'video',
   type: 'object',
@@ -22,10 +24,15 @@ export default {
       title: 'caption',
       url: 'url',
     },
-    prepare({ title, url }: { title: string; url: string }): { title: string } {
+    prepare({ title, url }: { title: string; url: string }): {
+      title: string;
+      url: string;
+    } {
       return {
         title: title || url,
+        url,
       };
     },
+    component: EmbedVideoPreview,
   },
 };

@@ -18,12 +18,18 @@ const cache: Cache = {};
 
 // Get data like `thumbnailUrl` and `title` from YouTube or Vimeo URLs
 export function useVideo(url: string): VideoThumbnail {
+  // Keep the unmounted state her to avoid any race conditions where the result
+  // arrives after the component got removed
+  let isUnmounted = false;
+
   const [video, setVideo] = useState<VideoThumbnailData>({
     isError: false,
   });
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    isUnmounted = false;
+
     const fetchThumbnail = async () => {
       try {
         const data = await window.fetch(`https://noembed.com/embed?url=${url}`);
@@ -51,8 +57,10 @@ export function useVideo(url: string): VideoThumbnail {
           isError: true,
         };
       } finally {
-        setVideo(cache[url]);
-        setIsLoading(false);
+        if (!isUnmounted) {
+          setVideo(cache[url]);
+          setIsLoading(false);
+        }
       }
     };
 
@@ -65,6 +73,10 @@ export function useVideo(url: string): VideoThumbnail {
 
       fetchThumbnail();
     }
+
+    return () => {
+      isUnmounted = true;
+    };
   }, [url]);
 
   return {
