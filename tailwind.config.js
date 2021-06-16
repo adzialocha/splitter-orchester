@@ -5,7 +5,14 @@ module.exports = {
   ],
   darkMode: false,
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        gray: '#231f20',
+      },
+      fontFamily: {
+        sans: ['Futura', 'Trebuchet MS', 'Arial', 'sans-serif'],
+      },
+    },
   },
   variants: {
     extend: {},

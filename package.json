@@ -53,6 +53,7 @@
   "dependencies": {
     "@sanity/block-content-to-react": "^3.0.0",
     "@tailwindui/react": "^0.1.1",
+    "clsx": "^1.1.1",
     "date-fns": "^2.22.1",
     "next": "^11.0.0",
     "next-sanity": "^0.2.0",

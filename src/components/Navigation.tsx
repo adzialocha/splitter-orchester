@@ -12,7 +12,7 @@ export default function Navigation({ items }: Props): JSX.Element {
     <nav>
       <ul>
         <li>
-          <Link href={`/`}>Home</Link>
+          <Link href="/">Home</Link>
         </li>
         {items.map((item) => {
           return (
