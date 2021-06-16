@@ -2,24 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: 'Futura';
-  src: url('../../public/fonts/futura-medium.eot');
-  src: url('../../public/fonts/futura-medium.eot?#iefix') format('embedded-opentype'),
-    url('../../public/fonts/futura-medium.woff') format('woff'),
-    url('../../public/fonts/futura-medium.ttf') format('truetype'),
-    url('../../public/fonts/futura-medium.svg#FuturaMedium') format('svg');
-  font-weight: 500;
-  font-style: normal;
+@layer base {
+  @font-face {
+    font-family: 'Futura';
+    src: url('../../public/fonts/futura-medium.eot');
+    src: url('../../public/fonts/futura-medium.eot?#iefix') format('embedded-opentype'),
+      url('../../public/fonts/futura-medium.woff') format('woff'),
+      url('../../public/fonts/futura-medium.ttf') format('truetype'),
+      url('../../public/fonts/futura-medium.svg#FuturaMedium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Futura';
+    src: url('../../public/fonts/futura-heavy.eot');
+    src: url('../../public/fonts/futura-heavy.eot?#iefix') format('embedded-opentype'),
+      url('../../public/fonts/futura-heavy.woff') format('woff'),
+      url('../../public/fonts/futura-heavy.ttf') format('truetype'),
+      url('../../public/fonts/futura-heavy.svg#FuturaMedium') format('svg');
+    font-weight: 900;
+    font-style: normal;
+  }
 }
 
-@font-face {
-  font-family: 'Futura';
-  src: url('../../public/fonts/futura-heavy.eot');
-  src: url('../../public/fonts/futura-heavy.eot?#iefix') format('embedded-opentype'),
-    url('../../public/fonts/futura-heavy.woff') format('woff'),
-    url('../../public/fonts/futura-heavy.ttf') format('truetype'),
-    url('../../public/fonts/futura-heavy.svg#FuturaMedium') format('svg');
-  font-weight: 900;
-  font-style: normal;
+@layer utilities {
+  .clip-arrow-up {
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  }
+
+  .clip-arrow-down {
+    clip-path: polygon(100% 0%, 50% 100%, 0% 0%);
+  }
 }

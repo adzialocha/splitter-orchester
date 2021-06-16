@@ -12,6 +12,9 @@ module.exports = {
       fontFamily: {
         sans: ['Futura', 'Trebuchet MS', 'Arial', 'sans-serif'],
       },
+      rotate: {
+        60: '60deg',
+      },
     },
   },
   variants: {

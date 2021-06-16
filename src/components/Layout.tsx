@@ -4,11 +4,13 @@ import { AudioPlayerProvider } from '~/state';
 import type { Navigations } from '~/types';
 
 import AudioPlayer from '~/components/AudioPlayer';
+import Box from '~/components/Box';
 import Container from '~/components/Container';
 import Footer from '~/components/Footer';
 import Header from '~/components/Header';
 import Logo from '~/components/Logo';
 import Navigation from '~/components/Navigation';
+import NavigationFooter from '~/components/NavigationFooter';
 
 type Props = {
   children: React.ReactNode;
@@ -18,18 +20,22 @@ type Props = {
 export default function Layout({ children, navigations }: Props): JSX.Element {
   return (
     <>
-      <Header className="py-5 sm:py-10">
+      <Header className="py-5 sm:py-10 fixed w-full">
         <Container>
           <Logo />
-          <Navigation items={navigations.main} />
+          <Box className="p-5 flex justify-center">
+            <Navigation items={navigations.main} />
+          </Box>
         </Container>
       </Header>
       <AudioPlayerProvider>
-        <main>{children}</main>
+        <main className="pt-60">{children}</main>
         <AudioPlayer />
       </AudioPlayerProvider>
-      <Footer>
-        <Navigation items={navigations.footer} />
+      <Footer className="py-5 sm:py-10">
+        <Container>
+          <NavigationFooter items={navigations.footer} />
+        </Container>
       </Footer>
     </>
   );

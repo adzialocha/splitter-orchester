@@ -2,8 +2,9 @@ import React from 'react';
 
 type Props = {
   children?: React.ReactNode;
+  className?: string;
 };
 
-export default function Footer({ children }: Props): JSX.Element {
-  return <footer>{children}</footer>;
+export default function Footer({ children, className }: Props): JSX.Element {
+  return <footer className={className}>{children}</footer>;
 }
