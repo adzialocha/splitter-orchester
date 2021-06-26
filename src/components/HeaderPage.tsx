@@ -30,7 +30,7 @@ export default function HeaderPage({ items }: Props): JSX.Element {
       <Header className="absolute md:fixed pt-5 sm:pt-10 w-full pointer-events-none">
         <Container>
           <Logo onClick={handleClose} />
-          <Box className="flex justify-center p-5">
+          <Box className="flex justify-center sm:pt-5 sm:pr-96">
             <Navigation
               isOpen={isOpen}
               items={items}

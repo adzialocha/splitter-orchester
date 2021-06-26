@@ -57,7 +57,7 @@ function NavigationMenu({ items, isOpen, onClick }): JSX.Element {
 
 function NavigationItems({ items, onClick }): JSX.Element {
   return (
-    <ul className="md:absolute py-24 w-96 h-80 leading-snug text-center text-gray bg-white drop-shadow-xl pointer-events-none clip-arrow-up md:navigation-position">
+    <ul className="sm:absolute py-24 w-96 h-80 leading-snug text-center text-gray bg-white drop-shadow-xl pointer-events-none clip-arrow-up sm:navigation-position">
       <NavigationItem href="/" index={0} onClick={onClick}>
         Home
       </NavigationItem>
