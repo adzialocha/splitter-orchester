@@ -15,6 +15,9 @@ module.exports = {
       rotate: {
         60: '60deg',
       },
+      height: {
+        112: '28rem',
+      },
     },
   },
   variants: {

@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic';
 import React from 'react';
 
 import type { GetStaticProps } from 'next';
@@ -13,40 +14,52 @@ import { getFeaturedPosts, getMainImage } from '~/lib/queries';
 import { getClient } from '~/lib/sanity.server';
 
 type Props = {
+  featuredPosts?: Post[];
   mainImage?: SanityImageType;
   navigations: Navigations;
-  posts?: Post[];
 };
 
+const DynamicPostPreview = dynamic(() => import('~/components/PostPreview'), {
+  ssr: false,
+});
+
 export default function HomePage({
+  featuredPosts,
   mainImage,
   navigations,
-  posts,
 }: Props): JSX.Element {
   return (
     <Layout navigations={navigations}>
       <Container>
         {mainImage && <SanityImage className="m-auto" source={mainImage} />}
-        <ul>
-          {posts.map((post) => {
-            return <li key={post.slug}>{post.title}</li>;
-          })}
-        </ul>
       </Container>
+      {featuredPosts.map((post) => {
+        return (
+          <DynamicPostPreview
+            alternativeTitle={post.feature.title}
+            audio={post.feature.audio}
+            image={post.feature.image}
+            key={post.slug}
+            slug={post.slug}
+            text={post.feature.text}
+            title={post.title}
+          />
+        );
+      })}
     </Layout>
   );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const navigations = await getNavigations();
-  const posts = await getClient().fetch(getFeaturedPosts);
+  const featuredPosts = await getClient().fetch(getFeaturedPosts);
   const { mainImage } = await getClient().fetch(getMainImage);
+  const navigations = await getNavigations();
 
   return {
     props: {
-      navigations,
-      posts,
+      featuredPosts,
       mainImage,
+      navigations,
     },
   };
 };

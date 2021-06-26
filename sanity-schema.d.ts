@@ -26,6 +26,13 @@ export type {
   SanityKeyed,
 };
 
+export interface Image {
+  _type: 'image';
+  asset: SanityAsset;
+  crop?: SanityImageCrop;
+  hotspot?: SanityImageHotspot;
+}
+
 /**
  * Post
  *
@@ -63,28 +70,27 @@ export interface Post extends SanityDocument {
   feature?: {
     _type: 'feature';
     /**
-     * Main image — `image`
-     *
-     *
+     * Alternative title
      */
-    image?: {
-      _type: 'image';
-      asset: SanityAsset;
-      crop?: SanityImageCrop;
-      hotspot?: SanityImageHotspot;
-    };
+    title?: string;
+
+    /**
+     * Text
+     */
+    text?: string;
+
+    /**
+     * Main image — `image`
+     */
+    image?: Image;
 
     /**
      * Main audio — `audio`
-     *
-     *
      */
     audio?: Audio;
 
     /**
      * Featured on homepage — `boolean`
-     *
-     *
      */
     isFeatured?: boolean;
   };
@@ -108,12 +114,7 @@ export interface SiteConfig extends SanityDocument {
   /**
    * Main Image — `image`
    */
-  mainImage?: {
-    _type: 'image';
-    asset: SanityAsset;
-    crop?: SanityImageCrop;
-    hotspot?: SanityImageHotspot;
-  };
+  mainImage?: Image;
 
   /**
    * Main Navigation — `array`
@@ -166,12 +167,7 @@ export type Video = {
 
 export type BlockContent = Array<
   | SanityKeyed<SanityBlock>
-  | SanityKeyed<{
-      _type: 'image';
-      asset: SanityAsset;
-      crop?: SanityImageCrop;
-      hotspot?: SanityImageHotspot;
-    }>
+  | SanityKeyed<Image>
   | SanityKeyed<Video>
   | SanityKeyed<Audio>
 >;

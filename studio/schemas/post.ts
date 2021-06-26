@@ -37,13 +37,24 @@ export default {
       name: 'feature',
       title: 'Feature',
       type: 'object',
-      description:
-        'Feature this post on the homepage with an image and / or audio file',
+      description: 'Feature this post on the homepage',
       options: {
         collapsible: true,
         collapsed: true,
       },
       fields: [
+        {
+          name: 'title',
+          title: 'Alternative title',
+          type: 'string',
+          validation: (rule): typeof Rule => rule.max(100),
+        },
+        {
+          name: 'text',
+          title: 'Extra text',
+          type: 'string',
+          validation: (rule): typeof Rule => rule.max(100),
+        },
         {
           name: 'image',
           title: 'Image',
