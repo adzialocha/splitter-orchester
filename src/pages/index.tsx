@@ -13,15 +13,15 @@ import { getFeaturedPosts, getMainImage } from '~/lib/queries';
 import { getClient } from '~/lib/sanity.server';
 
 type Props = {
+  mainImage?: SanityImageType;
   navigations: Navigations;
   posts?: Post[];
-  mainImage?: SanityImageType;
 };
 
 export default function HomePage({
+  mainImage,
   navigations,
   posts,
-  mainImage,
 }: Props): JSX.Element {
   return (
     <Layout navigations={navigations}>

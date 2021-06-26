@@ -1,5 +1,6 @@
 import { Transition } from '@tailwindui/react';
-import React, { useState } from 'react';
+import clsx from 'clsx';
+import React, { useMemo, useState } from 'react';
 
 import type { NavigationItem } from '~/types';
 
@@ -15,6 +16,9 @@ type Props = {
 
 export default function HeaderPage({ items }: Props): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
+  const randomPosition = useMemo(() => {
+    return Math.random() > 0.5 ? 'sm:pr-96' : 'sm:pl-96';
+  }, []);
 
   const handleToggle = () => {
     setIsOpen((value) => !value);
@@ -30,7 +34,7 @@ export default function HeaderPage({ items }: Props): JSX.Element {
       <Header className="absolute md:fixed pt-5 sm:pt-10 w-full pointer-events-none">
         <Container>
           <Logo onClick={handleClose} />
-          <Box className="flex justify-center sm:pt-5 sm:pr-96">
+          <Box className={clsx('flex justify-center sm:pt-5', randomPosition)}>
             <Navigation
               isOpen={isOpen}
               items={items}
