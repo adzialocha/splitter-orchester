@@ -16,7 +16,7 @@ export default {
           to: [{ type: 'post' }],
         },
       ],
-      validation: (rule): typeof Rule => rule.max(7),
+      validation: (rule): typeof Rule => rule.max(8),
     },
     {
       title: 'Footer Navigation',

@@ -41,7 +41,10 @@ function NavigationHeaderTriangle({ onClick }): JSX.Element {
 
 function NavigationHeaderMenu({ items, onClick }): JSX.Element {
   return (
-    <ul className="absolute -bottom-56 -left-16 py-28 w-96 h-80 text-center text-gray bg-white clip-arrow-up">
+    <ul
+      className="absolute py-24 w-96 h-80 leading-snug text-center text-gray bg-white clip-arrow-up"
+      style={{ bottom: '-12.8rem', left: '-3.25rem' }}
+    >
       <NavigationHeaderItem href="/" index={0} onClick={onClick}>
         Home
       </NavigationHeaderItem>
@@ -64,7 +67,7 @@ function NavigationHeaderMenu({ items, onClick }): JSX.Element {
 function NavigationHeaderItem({ children, href, onClick, index }): JSX.Element {
   // Since the navigation is a weird triangle we make sure the text of each
   // navigation item is not wider than the border of the shape
-  const minMaxWidth = 130;
+  const minMaxWidth = 115;
   const extraWidthPerStep = 28;
   const maxWidth = minMaxWidth + index * extraWidthPerStep;
 
