@@ -17,15 +17,16 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
-    // 'plugin:import/recommended',
-    // 'plugin:import/typescript',
+    'plugin:import/recommended',
+    'plugin:import/typescript',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:tailwindcss/recommended',
     // Keep prettier rules last to make sure its style changes are not
     // overwritten by other rules
     'plugin:prettier/recommended',
   ],
-  plugins: ['prettier', 'import'],
+  plugins: ['prettier', 'import', 'tailwindcss'],
   rules: {
     // Always require dangling commas for multiline objects and arrays
     'comma-dangle': ['error', 'always-multiline'],
