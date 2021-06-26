@@ -4,12 +4,9 @@ import { AudioPlayerProvider } from '~/state';
 import type { Navigations } from '~/types';
 
 import AudioPlayer from '~/components/AudioPlayer';
-import Box from '~/components/Box';
 import Container from '~/components/Container';
 import Footer from '~/components/Footer';
-import Header from '~/components/Header';
-import Logo from '~/components/Logo';
-import Navigation from '~/components/Navigation';
+import HeaderPage from '~/components/HeaderPage';
 import NavigationFooter from '~/components/NavigationFooter';
 
 type Props = {
@@ -20,14 +17,7 @@ type Props = {
 export default function Layout({ children, navigations }: Props): JSX.Element {
   return (
     <>
-      <Header className="fixed py-5 sm:py-10 w-full">
-        <Container>
-          <Logo />
-          <Box className="flex justify-center p-5">
-            <Navigation items={navigations.main} />
-          </Box>
-        </Container>
-      </Header>
+      <HeaderPage items={navigations.main} />
       <AudioPlayerProvider>
         <main className="pt-60">{children}</main>
         <AudioPlayer />

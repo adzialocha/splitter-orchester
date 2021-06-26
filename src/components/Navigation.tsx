@@ -1,36 +1,36 @@
+import { Transition } from '@tailwindui/react';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React from 'react';
 
-import type { NavigationItem } from '~/types';
+import type { NavigationItem as NavigationItemType } from '~/types';
 
 type Props = {
-  items: NavigationItem[];
+  items: NavigationItemType[];
+  isOpen: boolean;
+  onClose: React.MouseEventHandler;
+  onToggle: React.MouseEventHandler;
 };
 
-export default function NavigationHeader({ items }: Props): JSX.Element {
-  const [isExpanded, setIsExpanded] = useState(false);
-
-  const handleToggle = () => {
-    setIsExpanded((value) => !value);
-  };
-
-  const handleClick = () => {
-    setIsExpanded(false);
-  };
-
+export default function Navigation({
+  items,
+  isOpen,
+  onClose,
+  onToggle,
+}: Props): JSX.Element {
   return (
     <nav className="relative">
-      <NavigationHeaderTriangle onClick={handleToggle} />
-      {isExpanded && (
-        <NavigationHeaderMenu items={items} onClick={handleClick} />
-      )}
+      <NavigationTriangle onClick={onToggle} />
+      <NavigationMenu isOpen={isOpen} items={items} onClick={onClose} />
     </nav>
   );
 }
 
-function NavigationHeaderTriangle({ onClick }): JSX.Element {
+function NavigationTriangle({ onClick }): JSX.Element {
   return (
-    <button className="p-5 focus:outline-none" onClick={onClick}>
+    <button
+      className="p-5 filter drop-shadow-xl focus:outline-none pointer-events-auto"
+      onClick={onClick}
+    >
       <span className="absolute bottom-11 -left-2 transform rotate-60">
         Navigation
       </span>
@@ -39,32 +39,48 @@ function NavigationHeaderTriangle({ onClick }): JSX.Element {
   );
 }
 
-function NavigationHeaderMenu({ items, onClick }): JSX.Element {
+function NavigationMenu({ items, isOpen, onClick }): JSX.Element {
+  return (
+    <Transition
+      enter="transition-opacity duration-75"
+      enterFrom="opacity-0"
+      enterTo="opacity-100"
+      leave="transition-opacity duration-150"
+      leaveFrom="opacity-100"
+      leaveTo="opacity-0"
+      show={isOpen}
+    >
+      <NavigationItems items={items} onClick={onClick} />
+    </Transition>
+  );
+}
+
+function NavigationItems({ items, onClick }): JSX.Element {
   return (
     <ul
-      className="absolute py-24 w-96 h-80 leading-snug text-center text-gray bg-white clip-arrow-up"
+      className="absolute py-24 w-96 h-80 leading-snug text-center text-gray bg-white drop-shadow-xl pointer-events-none clip-arrow-up"
       style={{ bottom: '-12.8rem', left: '-3.25rem' }}
     >
-      <NavigationHeaderItem href="/" index={0} onClick={onClick}>
+      <NavigationItem href="/" index={0} onClick={onClick}>
         Home
-      </NavigationHeaderItem>
+      </NavigationItem>
       {items.map((item, index) => {
         return (
-          <NavigationHeaderItem
+          <NavigationItem
             href={`/${item.slug}`}
             index={index + 1}
             key={item.slug}
             onClick={onClick}
           >
             {item.title}
-          </NavigationHeaderItem>
+          </NavigationItem>
         );
       })}
     </ul>
   );
 }
 
-function NavigationHeaderItem({ children, href, onClick, index }): JSX.Element {
+function NavigationItem({ children, href, onClick, index }): JSX.Element {
   // Since the navigation is a weird triangle we make sure the text of each
   // navigation item is not wider than the border of the shape
   const minMaxWidth = 115;
@@ -73,11 +89,12 @@ function NavigationHeaderItem({ children, href, onClick, index }): JSX.Element {
 
   return (
     <li
-      className="overflow-hidden m-auto overflow-ellipsis whitespace-nowrap"
+      className="overflow-hidden m-auto overflow-ellipsis whitespace-nowrap pointer-events-auto select-none"
       style={{ maxWidth }}
-      onClick={onClick}
     >
-      <Link href={href}>{children}</Link>
+      <Link href={href}>
+        <a onClick={onClick}>{children}</a>
+      </Link>
     </li>
   );
 }

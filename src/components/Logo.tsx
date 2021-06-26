@@ -3,10 +3,18 @@ import React from 'react';
 
 import Heading from '~/components/Heading';
 
-export default function Logo(): JSX.Element {
+type Props = {
+  onClick: React.MouseEventHandler;
+};
+
+export default function Logo({ onClick }: Props): JSX.Element {
   return (
-    <Heading className="text-2xl sm:text-4xl text-center">
-      <Link href="/">Splitter Orchester</Link>
+    <Heading className="text-2xl sm:text-4xl text-center select-none">
+      <Link href="/">
+        <a className="pointer-events-auto" onClick={onClick}>
+          Splitter Orchester
+        </a>
+      </Link>
     </Heading>
   );
 }
