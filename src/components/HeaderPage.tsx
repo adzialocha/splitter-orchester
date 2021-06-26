@@ -27,7 +27,7 @@ export default function HeaderPage({ items }: Props): JSX.Element {
   return (
     <>
       <HeaderPageOverlay isOpen={isOpen} onClick={handleClose} />
-      <Header className="fixed py-5 sm:py-10 w-full pointer-events-none">
+      <Header className="absolute md:fixed pt-5 sm:pt-10 w-full pointer-events-none">
         <Container>
           <Logo onClick={handleClose} />
           <Box className="flex justify-center p-5">

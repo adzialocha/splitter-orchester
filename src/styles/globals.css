@@ -35,3 +35,10 @@
     clip-path: polygon(100% 0%, 50% 100%, 0% 0%);
   }
 }
+
+@responsive {
+  .navigation-position {
+    bottom: -12.8rem;
+    left: -3.25rem;
+  }
+}

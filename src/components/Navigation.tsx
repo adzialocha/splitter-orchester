@@ -18,7 +18,7 @@ export default function Navigation({
   onToggle,
 }: Props): JSX.Element {
   return (
-    <nav className="relative">
+    <nav className="relative text-center">
       <NavigationTriangle onClick={onToggle} />
       <NavigationMenu isOpen={isOpen} items={items} onClick={onClose} />
     </nav>
@@ -57,10 +57,7 @@ function NavigationMenu({ items, isOpen, onClick }): JSX.Element {
 
 function NavigationItems({ items, onClick }): JSX.Element {
   return (
-    <ul
-      className="absolute py-24 w-96 h-80 leading-snug text-center text-gray bg-white drop-shadow-xl pointer-events-none clip-arrow-up"
-      style={{ bottom: '-12.8rem', left: '-3.25rem' }}
-    >
+    <ul className="md:absolute py-24 w-96 h-80 leading-snug text-center text-gray bg-white drop-shadow-xl pointer-events-none clip-arrow-up md:navigation-position">
       <NavigationItem href="/" index={0} onClick={onClick}>
         Home
       </NavigationItem>

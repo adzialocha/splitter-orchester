@@ -9,7 +9,7 @@ type Props = {
 
 export default function Logo({ onClick }: Props): JSX.Element {
   return (
-    <Heading className="text-2xl sm:text-4xl text-center select-none">
+    <Heading className="text-2xl sm:text-4xl text-center filter drop-shadow-lg select-none">
       <Link href="/">
         <a className="pointer-events-auto" onClick={onClick}>
           Splitter Orchester
