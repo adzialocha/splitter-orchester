@@ -1,3 +1,5 @@
+import type { Rule } from '@sanity/validation';
+
 export default {
   name: 'siteConfig',
   type: 'document',
@@ -14,6 +16,7 @@ export default {
           to: [{ type: 'post' }],
         },
       ],
+      validation: (rule): typeof Rule => rule.max(7),
     },
     {
       title: 'Footer Navigation',
