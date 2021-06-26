@@ -47,7 +47,7 @@ export default function HeaderPage({ items }: Props): JSX.Element {
 function HeaderPageOverlay({ isOpen, onClick }): JSX.Element {
   return (
     <Transition
-      enter="transition-opacity duration-75"
+      enter="transition-opacity duration-250"
       enterFrom="opacity-0"
       enterTo="opacity-100"
       leave="transition-opacity duration-150"

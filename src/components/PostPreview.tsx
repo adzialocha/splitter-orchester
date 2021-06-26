@@ -3,7 +3,7 @@ import React, { useMemo } from 'react';
 
 import type { Audio, Image } from 'sanity-schema';
 
-import { randomItem } from '~/random';
+import { randomItem, randomRange } from '~/random';
 
 import Box from '~/components/Box';
 
@@ -25,10 +25,22 @@ export default function PostPreview(props: Props): JSX.Element {
     ]);
   }, []);
 
+  const top = useMemo(() => {
+    // @TODO: Correct positioning
+    return randomRange(10, 500);
+  }, []);
+
+  const left = useMemo(() => {
+    // @TODO: Correct positioning
+    return randomRange(10, 500);
+  }, []);
+
   return (
-    <PostPreviewShape slug={props.slug}>
-      <PostPreviewContent {...props} />
-    </PostPreviewShape>
+    <Box className="absolute z-10" style={{ top, left }}>
+      <PostPreviewShape slug={props.slug}>
+        <PostPreviewContent {...props} />
+      </PostPreviewShape>
+    </Box>
   );
 }
 
@@ -46,7 +58,7 @@ function PostPreviewTrapez({ children, slug }): JSX.Element {
       <Box className="w-64 h-56 bg-white clip-arrow-up" />
       <Box className="w-64 h-56 bg-white clip-arrow-down" />
       <PostPreviewLink
-        className="flex absolute z-10 inset-0 items-center"
+        className="flex absolute inset-0 items-center"
         slug={slug}
       >
         {children}
@@ -59,7 +71,7 @@ function PostPreviewArrowUp({ children, slug }): JSX.Element {
   return (
     <Box className="relative w-64 h-56">
       <Box className="w-64 h-56 bg-white clip-arrow-up" />
-      <PostPreviewLink className="flex absolute z-10 inset-0 items-end" slug={slug}>
+      <PostPreviewLink className="flex absolute inset-0 items-end" slug={slug}>
         {children}
       </PostPreviewLink>
     </Box>
@@ -70,7 +82,7 @@ function PostPreviewArrowDown({ children, slug }): JSX.Element {
   return (
     <Box className="relative w-64 h-56">
       <Box className="w-64 h-56 bg-white clip-arrow-down" />
-      <PostPreviewLink className="flex absolute z-10 inset-0" slug={slug}>
+      <PostPreviewLink className="flex absolute inset-0" slug={slug}>
         {children}
       </PostPreviewLink>
     </Box>
