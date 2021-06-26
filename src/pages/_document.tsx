@@ -4,7 +4,7 @@ import React from 'react';
 export default class AppDocument extends Document {
   render(): JSX.Element {
     return (
-      <Html className="text-white font-sans font-medium" lang="en">
+      <Html className="font-sans font-medium text-white" lang="en">
         <Head />
         <body className="bg-gray">
           <Main />

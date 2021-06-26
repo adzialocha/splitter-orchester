@@ -38,10 +38,10 @@ function ModalContainer({ children }): JSX.Element {
     <Box
       aria-labelledby="modal-title"
       aria-modal="true"
-      className="fixed z-10 inset-0 overflow-y-auto"
+      className="overflow-y-auto fixed inset-0 z-10"
       role="dialog"
     >
-      <Box className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+      <Box className="flex sm:block justify-center items-end sm:p-0 px-4 pt-4 pb-20 min-h-screen text-center">
         {children}
       </Box>
     </Box>
@@ -52,7 +52,7 @@ function ModalOverlay({ onClose }): JSX.Element {
   return (
     <Box
       aria-hidden="true"
-      className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+      className="fixed inset-0 bg-gray bg-opacity-75 transition-opacity"
       onClick={onClose}
     />
   );
@@ -63,7 +63,7 @@ function ModalCenterHack(): JSX.Element {
   return (
     <span
       aria-hidden="true"
-      className="hidden sm:inline-block sm:align-middle sm:h-screen"
+      className="hidden sm:inline-block sm:h-screen sm:align-middle"
     >
       &#8203;
     </span>
@@ -72,7 +72,7 @@ function ModalCenterHack(): JSX.Element {
 
 function ModalContent({ children }): JSX.Element {
   return (
-    <Box className="inline-block align-bottom bg-white text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+    <Box className="inline-block overflow-hidden sm:my-8 sm:w-full sm:max-w-lg text-left align-bottom sm:align-middle bg-white shadow-xl transition-all transform">
       {children}
     </Box>
   );

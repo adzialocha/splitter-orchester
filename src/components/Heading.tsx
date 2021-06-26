@@ -7,5 +7,5 @@ type Props = {
 };
 
 export default function Heading({ children, className }: Props): JSX.Element {
-  return <h1 className={clsx('font-medium text-lg', className)}>{children}</h1>;
+  return <h1 className={clsx('text-lg font-medium', className)}>{children}</h1>;
 }

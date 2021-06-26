@@ -20,10 +20,10 @@ type Props = {
 export default function Layout({ children, navigations }: Props): JSX.Element {
   return (
     <>
-      <Header className="py-5 sm:py-10 fixed w-full">
+      <Header className="fixed py-5 sm:py-10 w-full">
         <Container>
           <Logo />
-          <Box className="p-5 flex justify-center">
+          <Box className="flex justify-center p-5">
             <Navigation items={navigations.main} />
           </Box>
         </Container>
