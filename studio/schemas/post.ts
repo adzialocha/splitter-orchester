@@ -59,7 +59,7 @@ export default {
         },
         {
           name: 'isFeatured',
-          title: 'Visible on homepage',
+          title: 'Visible',
           type: 'boolean',
           initialValue: false,
         },

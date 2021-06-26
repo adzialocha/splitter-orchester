@@ -6,9 +6,18 @@ export default {
   title: 'Site Settings',
   fields: [
     {
+      title: 'Main image',
+      description: 'This image will be displayed on the homepage',
+      name: 'mainImage',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    },
+    {
       title: 'Main Navigation',
       name: 'mainNavigation',
-      description: 'Select items for the main navigation',
+      description: 'Select items for the top navigation',
       type: 'array',
       of: [
         {
@@ -21,7 +30,7 @@ export default {
     {
       title: 'Footer Navigation',
       name: 'footerNavigation',
-      description: 'Select items for the footer navigation',
+      description: 'Select items for the bottom navigation',
       type: 'array',
       of: [
         {

@@ -19,7 +19,7 @@ export default function Layout({ children, navigations }: Props): JSX.Element {
     <>
       <HeaderPage items={navigations.main} />
       <AudioPlayerProvider>
-        <main className="pt-60">{children}</main>
+        <main className="pt-2 sm:pt-5">{children}</main>
         <AudioPlayer />
       </AudioPlayerProvider>
       <Footer className="py-5 sm:py-10">

@@ -106,6 +106,16 @@ export interface SiteConfig extends SanityDocument {
   _type: 'siteConfig';
 
   /**
+   * Main Image — `image`
+   */
+  mainImage?: {
+    _type: 'image';
+    asset: SanityAsset;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
    * Main Navigation — `array`
    *
    * Select items for the main navigation

@@ -13,6 +13,7 @@ type Props = {
   height?: number;
   source: SanityImageSource;
   width?: number;
+  className?: string;
 };
 
 const DEFAULT_SIZE = 500;
@@ -22,9 +23,11 @@ export default function SanityImage({
   height = DEFAULT_SIZE,
   width = DEFAULT_SIZE,
   fit = 'crop',
+  className,
 }: Props): JSX.Element {
   return (
     <Image
+      className={className}
       src={urlForImage(source).height(height).width(width).fit(fit).url()}
     />
   );

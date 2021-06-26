@@ -32,6 +32,18 @@ export const getNavigations = groq`
   }
 `;
 
+export const getMainImage = groq`
+  *[_type == "siteConfig" && _id == "defaultSiteConfig"][0] {
+    mainImage {
+      ...,
+      asset->{
+        ...,
+        "_key": _id
+      }
+    }
+  }
+`;
+
 export const getAllPosts = groq`
   *[_type == "post"] | order(publishedAt desc, _updatedAt desc) {
     ${postFields}

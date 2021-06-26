@@ -4,15 +4,15 @@ import type { ListItem } from '@sanity/desk-tool/structure-builder';
 
 export default (): ListItem[] =>
   S.list()
-    .title('Base')
+    .title('Administration')
     .items([
       S.listItem()
-        .title('Navigation')
+        .title('Website')
         .child(
           S.document()
             .schemaType('siteConfig')
             .documentId('defaultSiteConfig')
-            .title('Navigation'),
+            .title('Website'),
         ),
       ...S.documentTypeListItems().filter(
         (listItem) => !['siteConfig'].includes(listItem.getId()),
