@@ -70,7 +70,7 @@ function NavigationHeaderItem({ children, href, onClick, index }): JSX.Element {
 
   return (
     <li
-      className="overflow-hidden m-auto overflow-ellipsis"
+      className="overflow-hidden m-auto overflow-ellipsis whitespace-nowrap"
       style={{ maxWidth }}
       onClick={onClick}
     >
