@@ -18,7 +18,7 @@ type Props = {
   slug: string;
   text?: string;
   title: string;
-  onClick: React.MouseEventHandler;
+  onClick: (audio: Audio) => void;
 };
 
 export default function PostPreview(props: Props): JSX.Element {

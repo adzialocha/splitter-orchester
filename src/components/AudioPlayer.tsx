@@ -2,6 +2,7 @@ import React from 'react';
 
 import { useTrackedAudioPlayer } from '~/state';
 
+import Box from '~/components/Box';
 import Image from '~/components/Image';
 
 export default function AudioPlayer(): JSX.Element {
@@ -26,10 +27,9 @@ export default function AudioPlayer(): JSX.Element {
 
   return (
     url && (
-      <>
+      <Box className="fixed inset-x-0 bottom-0 p-5 text-gray bg-white">
         {track.title}
         <AudioPlayerWaveform
-          current={transport.current}
           total={transport.total}
           url={track.waveformUrl}
           onSeek={handleSeek}
@@ -37,12 +37,12 @@ export default function AudioPlayer(): JSX.Element {
         {!isPlaying && <button onClick={handleResume}>Resume</button>}
         {isPlaying && <button onClick={handlePause}>Pause</button>}
         <button onClick={handleStop}>Stop</button>
-      </>
+      </Box>
     )
   );
 }
 
-function AudioPlayerWaveform({ url, total, current, onSeek }): JSX.Element {
+function AudioPlayerWaveform({ url, total, onSeek }): JSX.Element {
   const handleClick = ({ target, clientX }) => {
     const percentage = (clientX - target.offsetLeft) / target.offsetWidth;
     const position = Math.round(percentage * total);
@@ -50,11 +50,11 @@ function AudioPlayerWaveform({ url, total, current, onSeek }): JSX.Element {
   };
 
   return (
-    <>
-      <div onClick={handleClick}>
-        <Image src={url} />
-        {`${current} / ${total}`}
-      </div>
-    </>
+    <Box
+      className="h-5 sm:h-20 bg-gray filter contrast-200"
+      onClick={handleClick}
+    >
+      <Image className="w-full h-full bg-cover" src={url} />
+    </Box>
   );
 }

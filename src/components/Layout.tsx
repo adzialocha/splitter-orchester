@@ -1,10 +1,8 @@
 import clsx from 'clsx';
 import React from 'react';
 
-import { AudioPlayerProvider } from '~/state';
 import type { Navigations } from '~/types';
 
-import AudioPlayer from '~/components/AudioPlayer';
 import Box from '~/components/Box';
 import Container from '~/components/Container';
 import Footer from '~/components/Footer';
@@ -25,10 +23,7 @@ export default function Layout({
   return (
     <Box className="flex flex-col h-screen">
       <HeaderPage items={navigations.main} />
-      <AudioPlayerProvider>
-        <main className="flex-grow pt-2 sm:pt-5">{children}</main>
-        <AudioPlayer />
-      </AudioPlayerProvider>
+      <main className="flex-grow pt-2 sm:pt-5">{children}</main>
       <Footer
         className={clsx('py-5 sm:py-10', {
           'md:hidden': !isFooterVisible,

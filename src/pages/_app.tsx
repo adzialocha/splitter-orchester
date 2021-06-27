@@ -8,6 +8,10 @@ import type { AppProps } from 'next/app';
 import '../styles/globals.css';
 import '../styles/nprogress.css';
 
+import { AudioPlayerProvider } from '~/state';
+
+import AudioPlayer from '~/components/AudioPlayer';
+
 function App({ Component, pageProps }: AppProps): JSX.Element {
   const router = useRouter();
 
@@ -41,7 +45,10 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
         />
         <title>Splitter Orchester</title>
       </Head>
-      <Component {...pageProps} />
+      <AudioPlayerProvider>
+        <Component {...pageProps} />
+        <AudioPlayer />
+      </AudioPlayerProvider>
     </>
   );
 }

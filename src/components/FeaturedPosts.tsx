@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
 import React, { useMemo } from 'react';
 
-import type { Post } from 'sanity-schema';
+import type { Audio, Post } from 'sanity-schema';
 
 import { useTrackedAudioPlayer } from '~/state';
 
@@ -43,7 +43,7 @@ export default function FeaturedPosts({ posts }: Props): JSX.Element {
     });
   }, [posts]);
 
-  const handleClick = ({ url }) => {
+  const handleClick = ({ url }: Audio) => {
     dispatch({ type: 'play', url });
   };
 
@@ -52,7 +52,7 @@ export default function FeaturedPosts({ posts }: Props): JSX.Element {
   }
 
   return (
-    <ParallaxContainer items={posts.length}>
+    <ParallaxContainer>
       {posts.map((post, index) => {
         return (
           <DynamicParallaxElement key={post.slug} order={order[index]}>
