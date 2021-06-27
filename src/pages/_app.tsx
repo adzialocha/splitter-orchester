@@ -35,6 +35,10 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
   return (
     <>
       <Head>
+        <meta
+          content="width=device-width, initial-scale=1, maximum-scale=1"
+          name="viewport"
+        />
         <title>Splitter Orchester</title>
       </Head>
       <Component {...pageProps} />
