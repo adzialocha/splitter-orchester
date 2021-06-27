@@ -6,6 +6,7 @@ import type { Audio, Image } from 'sanity-schema';
 import { randomItem, randomRange } from '~/random';
 
 import Box from '~/components/Box';
+import Paragraph from '~/components/Paragraph';
 
 type Props = {
   alternativeTitle?: string;
@@ -98,8 +99,8 @@ function PostPreviewContent({
 }: Props): JSX.Element {
   return (
     <Box className="p-5 w-full text-center text-gray">
-      {alternativeTitle || title}
-      {text && text}
+      <strong>{alternativeTitle || title}</strong>
+      <Paragraph>{text && text}</Paragraph>
     </Box>
   );
 }
