@@ -4,6 +4,7 @@ import { useTrackedAudioPlayer } from '~/state';
 
 import Box from '~/components/Box';
 import Image from '~/components/Image';
+import Paragraph from '~/components/Paragraph';
 
 export default function AudioPlayer(): JSX.Element {
   const [audioState, dispatch] = useTrackedAudioPlayer();
@@ -28,15 +29,15 @@ export default function AudioPlayer(): JSX.Element {
   return (
     url && (
       <Box className="fixed inset-x-0 bottom-0 p-5 text-gray bg-white">
-        {track.title}
+        <Paragraph>{track.title}</Paragraph>
         <AudioPlayerWaveform
           total={transport.total}
           url={track.waveformUrl}
           onSeek={handleSeek}
         />
-        {!isPlaying && <button onClick={handleResume}>Resume</button>}
-        {isPlaying && <button onClick={handlePause}>Pause</button>}
-        <button onClick={handleStop}>Stop</button>
+        {!isPlaying && <AudioPlayerPlay onClick={handleResume} />}
+        {isPlaying && <AudioPlayerPause onClick={handlePause} />}
+        <AudioPlayerStop onClick={handleStop} />
       </Box>
     )
   );
@@ -44,7 +45,8 @@ export default function AudioPlayer(): JSX.Element {
 
 function AudioPlayerWaveform({ url, total, onSeek }): JSX.Element {
   const handleClick = ({ target, clientX }) => {
-    const percentage = (clientX - target.offsetLeft) / target.offsetWidth;
+    const rect = target.getBoundingClientRect();
+    const percentage = (clientX - rect.left) / rect.width;
     const position = Math.round(percentage * total);
     onSeek(position);
   };
@@ -56,5 +58,50 @@ function AudioPlayerWaveform({ url, total, onSeek }): JSX.Element {
     >
       <Image className="w-full h-full bg-cover" src={url} />
     </Box>
+  );
+}
+
+function AudioPlayerPlay({ onClick }): JSX.Element {
+  return (
+    <button onClick={onClick}>
+      <svg
+        height="25"
+        viewBox="0 0 1200 1200"
+        width="25"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M512 0c-282.77 0-512 229.23-512 512s229.23 512 512 512 512-229.23 512-512-229.23-512-512-512zM512 928c-229.75 0-416-186.25-416-416s186.25-416 416-416 416 186.25 416 416-186.25 416-416 416zM384 288l384 224-384 224z" />
+      </svg>
+    </button>
+  );
+}
+
+function AudioPlayerPause({ onClick }): JSX.Element {
+  return (
+    <button onClick={onClick}>
+      <svg
+        height="25"
+        viewBox="0 0 1200 1200"
+        width="25"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M512 0c-282.77 0-512 229.23-512 512s229.23 512 512 512 512-229.23 512-512-229.23-512-512-512zM512 928c-229.75 0-416-186.25-416-416s186.25-416 416-416 416 186.25 416 416-186.25 416-416 416zM320 320h128v384h-128zM576 320h128v384h-128z" />
+      </svg>
+    </button>
+  );
+}
+
+function AudioPlayerStop({ onClick }): JSX.Element {
+  return (
+    <button onClick={onClick}>
+      <svg
+        height="25"
+        viewBox="0 0 1200 1200"
+        width="25"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M512 0c-282.77 0-512 229.23-512 512s229.23 512 512 512 512-229.23 512-512-229.23-512-512-512zM512 928c-229.75 0-416-186.25-416-416s186.25-416 416-416 416 186.25 416 416-186.25 416-416 416zM320 320h384v384h-384z" />
+      </svg>
+    </button>
   );
 }

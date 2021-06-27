@@ -25,7 +25,7 @@ export default function Layout({
       <HeaderPage items={navigations.main} />
       <main className="flex-grow pt-2 sm:pt-5">{children}</main>
       <Footer
-        className={clsx('py-5 sm:py-10', {
+        className={clsx('pt-5 sm:pt-10 pb-36', {
           'md:hidden': !isFooterVisible,
         })}
       >
