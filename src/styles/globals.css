@@ -30,9 +30,33 @@
   }
 }
 
+/* More fine-grained control over exact position and size of triangle and
+ * trapez shapes in navigation and post previews on homepage. Width / Height
+ * ratio is 1.2. */
 @responsive {
-  .navigation-position {
-    bottom: -12.8rem;
+  .shape-small {
+    width: 7rem;
+    height: 5.833rem;
+  }
+
+  .shape-medium {
+    width: 16rem;
+    height: 13.333rem;
+  }
+
+  .shape-medium-2x {
+    width: 16rem;
+    height: 26.666rem;
+  }
+
+  /* Shape used for main navigation */
+  .shape-navigation {
+    width: 24rem;
+    height: 20rem;
+  }
+
+  .shape-navigation-position {
+    bottom: -12.92rem;
     left: -3.25rem;
   }
 }

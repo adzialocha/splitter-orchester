@@ -34,7 +34,7 @@ function NavigationTriangle({ onClick }): JSX.Element {
       <span className="absolute bottom-11 -left-2 transform rotate-60">
         Navigation
       </span>
-      <div className="w-28 h-24 bg-white clip-arrow-down" />
+      <div className="bg-white shape-small clip-arrow-down" />
     </button>
   );
 }
@@ -57,7 +57,7 @@ function NavigationMenu({ items, isOpen, onClick }): JSX.Element {
 
 function NavigationItems({ items, onClick }): JSX.Element {
   return (
-    <ul className="sm:absolute py-24 w-96 h-80 leading-snug text-center text-gray bg-white drop-shadow-xl pointer-events-none clip-arrow-up sm:navigation-position">
+    <ul className="absolute py-24 leading-snug text-center text-gray bg-white drop-shadow-xl pointer-events-none clip-arrow-up shape-navigation shape-navigation-position">
       <NavigationItem href="/" index={0} onClick={onClick}>
         Home
       </NavigationItem>

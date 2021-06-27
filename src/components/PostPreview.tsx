@@ -55,9 +55,9 @@ function PostPreviewLink({ children, slug, className }): JSX.Element {
 
 function PostPreviewTrapez({ children, slug }): JSX.Element {
   return (
-    <Box className="relative w-64 h-112">
-      <Box className="w-64 h-56 bg-white clip-arrow-up" />
-      <Box className="w-64 h-56 bg-white clip-arrow-down" />
+    <Box className="relative shape-medium-2x">
+      <Box className="bg-white shape-medium clip-arrow-up" />
+      <Box className="bg-white shape-medium clip-arrow-down" />
       <PostPreviewLink
         className="flex absolute inset-0 items-center"
         slug={slug}
@@ -70,8 +70,8 @@ function PostPreviewTrapez({ children, slug }): JSX.Element {
 
 function PostPreviewArrowUp({ children, slug }): JSX.Element {
   return (
-    <Box className="relative w-64 h-56">
-      <Box className="w-64 h-56 bg-white clip-arrow-up" />
+    <Box className="relative shape-medium">
+      <Box className="bg-white shape-medium clip-arrow-up" />
       <PostPreviewLink className="flex absolute inset-0 items-end" slug={slug}>
         {children}
       </PostPreviewLink>
@@ -81,8 +81,8 @@ function PostPreviewArrowUp({ children, slug }): JSX.Element {
 
 function PostPreviewArrowDown({ children, slug }): JSX.Element {
   return (
-    <Box className="relative w-64 h-56">
-      <Box className="w-64 h-56 bg-white clip-arrow-down" />
+    <Box className="relative shape-medium">
+      <Box className="bg-white shape-medium clip-arrow-down" />
       <PostPreviewLink className="flex absolute inset-0" slug={slug}>
         {children}
       </PostPreviewLink>
