@@ -1,9 +1,11 @@
 import React from 'react';
 
+import Box from '~/components/Box';
+
 type Props = {
   children: React.ReactNode;
 };
 
 export default function Container({ children }: Props): JSX.Element {
-  return <div className="container px-5 mx-auto">{children}</div>;
+  return <Box className="container px-5 mx-auto">{children}</Box>;
 }

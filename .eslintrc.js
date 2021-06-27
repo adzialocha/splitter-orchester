@@ -20,6 +20,7 @@ module.exports = {
     'plugin:import/recommended',
     'plugin:import/typescript',
     'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:tailwindcss/recommended',
     // Keep prettier rules last to make sure its style changes are not

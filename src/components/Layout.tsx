@@ -13,9 +13,14 @@ import NavigationFooter from '~/components/NavigationFooter';
 type Props = {
   children: React.ReactNode;
   navigations?: Navigations;
+  isFooterVisible?: boolean;
 };
 
-export default function Layout({ children, navigations }: Props): JSX.Element {
+export default function Layout({
+  children,
+  navigations,
+  isFooterVisible = true,
+}: Props): JSX.Element {
   return (
     <Box className="flex flex-col h-screen">
       <HeaderPage items={navigations.main} />
@@ -23,11 +28,13 @@ export default function Layout({ children, navigations }: Props): JSX.Element {
         <main className="flex-grow pt-2 sm:pt-5">{children}</main>
         <AudioPlayer />
       </AudioPlayerProvider>
-      <Footer className="py-5 sm:py-10">
-        <Container>
-          <NavigationFooter items={navigations.footer} />
-        </Container>
-      </Footer>
+      {isFooterVisible && (
+        <Footer className="py-5 sm:py-10">
+          <Container>
+            <NavigationFooter items={navigations.footer} />
+          </Container>
+        </Footer>
+      )}
     </Box>
   );
 }

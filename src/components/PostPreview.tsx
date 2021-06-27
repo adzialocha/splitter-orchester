@@ -3,7 +3,7 @@ import React, { useMemo } from 'react';
 
 import type { Audio, Image } from 'sanity-schema';
 
-import { randomItem, randomRange } from '~/random';
+import { randomItem } from '~/random';
 
 import Box from '~/components/Box';
 import Paragraph from '~/components/Paragraph';
@@ -26,22 +26,10 @@ export default function PostPreview(props: Props): JSX.Element {
     ]);
   }, []);
 
-  const top = useMemo(() => {
-    // @TODO: Correct positioning
-    return randomRange(10, 500);
-  }, []);
-
-  const left = useMemo(() => {
-    // @TODO: Correct positioning
-    return randomRange(10, 500);
-  }, []);
-
   return (
-    <Box className="absolute z-10" style={{ top, left }}>
-      <PostPreviewShape slug={props.slug}>
-        <PostPreviewContent {...props} />
-      </PostPreviewShape>
-    </Box>
+    <PostPreviewShape slug={props.slug}>
+      <PostPreviewContent {...props} />
+    </PostPreviewShape>
   );
 }
 

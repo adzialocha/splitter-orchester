@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -32,7 +34,7 @@
 
 /* More fine-grained control over exact position and size of triangle and
  * trapez shapes in navigation and post previews on homepage. Width / Height
- * ratio is 1.2. */
+ * ratio is 1.2 */
 @responsive {
   .shape-small {
     width: 7rem;
@@ -58,5 +60,38 @@
   .shape-navigation-position {
     bottom: -12.92rem;
     left: -3.25rem;
+  }
+}
+
+/* Classes used for CSS-only parallax scrolling effect */
+@responsive {
+  .parallax-container {
+    perspective: 8px;
+    perspective-origin: 0 0;
+    -webkit-overflow-scrolling: touch;
+    transform-style: preserve-3d;
+  }
+
+  .parallax-element {
+    width: 500px;
+    height: 500px;
+    position: -webkit-sticky;
+    transform-origin: 0 0;
+  }
+
+  .parallax-element-0 {
+    transform: translateZ(0) scale(1);
+  }
+
+  .parallax-element-1 {
+    transform: translateZ(1px) scale(0.875);
+  }
+
+  .parallax-element-2 {
+    transform: translateZ(2px) scale(0.75);
+  }
+
+  .parallax-element-3 {
+    transform: translateZ(3px) scale(0.625);
   }
 }
