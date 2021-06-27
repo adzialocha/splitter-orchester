@@ -18,17 +18,15 @@ const cache: Cache = {};
 
 // Get data like `thumbnailUrl` and `title` from YouTube or Vimeo URLs
 export function useVideo(url: string): VideoThumbnail {
-  // Keep the unmounted state her to avoid any race conditions where the result
-  // arrives after the component got removed
-  let isUnmounted = false;
-
   const [video, setVideo] = useState<VideoThumbnailData>({
     isError: false,
   });
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    isUnmounted = false;
+    // Keep the unmounted state her to avoid any race conditions where the result
+    // arrives after the component got removed
+    let isUnmounted = false;
 
     const fetchThumbnail = async () => {
       try {

@@ -191,7 +191,7 @@ const useAudioPlayer = (): [State, Dispatch<Action>] => {
 
   useEffect(() => {
     initializePlayer();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return [state, dispatch];
 };
