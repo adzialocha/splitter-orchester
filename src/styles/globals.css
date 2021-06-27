@@ -30,10 +30,14 @@
   .clip-arrow-down {
     clip-path: polygon(100% 0%, 50% 100%, 0% 0%);
   }
+
+  .clip-rhombus {
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  }
 }
 
 /* More fine-grained control over exact position and size of triangle and
- * trapez shapes in navigation and post previews on homepage. Width / Height
+ * rhombus shapes in navigation and post previews on homepage. Width / Height
  * ratio is 1.2 */
 @responsive {
   .shape-small {
@@ -46,7 +50,7 @@
     height: 13.333rem;
   }
 
-  .shape-medium-2x {
+  .shape-large {
     width: 16rem;
     height: 26.666rem;
   }
@@ -73,8 +77,8 @@
   }
 
   .parallax-element {
-    width: 500px;
-    height: 500px;
+    width: 30rem;
+    height: 30rem;
     position: -webkit-sticky;
     transform-origin: 0 0;
   }

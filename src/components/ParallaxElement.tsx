@@ -12,11 +12,11 @@ type Props = {
 };
 
 // Throttle window size changes in fps
-const THROTTLE_FPS = 1;
+const THROTTLE_FPS = 4;
 
 // Distribute items in a grid with cell size in px, see `.parallax-element`
 // class
-const GRID_SIZE = 500;
+const GRID_SIZE = 480;
 
 // Move elements position randomly within this range in px
 const RANDOMNESS = 25;

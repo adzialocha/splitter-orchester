@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import React from 'react';
 
 import { AudioPlayerProvider } from '~/state';
@@ -28,13 +29,15 @@ export default function Layout({
         <main className="flex-grow pt-2 sm:pt-5">{children}</main>
         <AudioPlayer />
       </AudioPlayerProvider>
-      {isFooterVisible && (
-        <Footer className="py-5 sm:py-10">
-          <Container>
-            <NavigationFooter items={navigations.footer} />
-          </Container>
-        </Footer>
-      )}
+      <Footer
+        className={clsx('py-5 sm:py-10', {
+          'md:hidden': !isFooterVisible,
+        })}
+      >
+        <Container>
+          <NavigationFooter items={navigations.footer} />
+        </Container>
+      </Footer>
     </Box>
   );
 }

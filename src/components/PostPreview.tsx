@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import Link from 'next/link';
 import React, { useMemo } from 'react';
 
@@ -7,6 +8,7 @@ import { randomItem } from '~/random';
 
 import Box from '~/components/Box';
 import Paragraph from '~/components/Paragraph';
+import { urlForImage } from '~/lib/sanity';
 
 type Props = {
   alternativeTitle?: string;
@@ -20,14 +22,16 @@ type Props = {
 export default function PostPreview(props: Props): JSX.Element {
   const PostPreviewShape = useMemo(() => {
     return randomItem([
-      PostPreviewTrapez,
+      PostPreviewRhombus,
       PostPreviewArrowUp,
       PostPreviewArrowDown,
     ]);
   }, []);
 
+  const imageUrl = props.image && urlForImage(props.image).url();
+
   return (
-    <PostPreviewShape slug={props.slug}>
+    <PostPreviewShape imageUrl={imageUrl} slug={props.slug}>
       <PostPreviewContent {...props} />
     </PostPreviewShape>
   );
@@ -41,11 +45,25 @@ function PostPreviewLink({ children, slug, className }): JSX.Element {
   );
 }
 
-function PostPreviewTrapez({ children, slug }): JSX.Element {
+function PostPreviewDefault({ imageUrl, className }): JSX.Element {
   return (
-    <Box className="relative shape-medium-2x">
-      <Box className="bg-white shape-medium clip-arrow-up" />
-      <Box className="bg-white shape-medium clip-arrow-down" />
+    <Box
+      className={clsx(className, {
+        'bg-white': !imageUrl,
+        'bg-center bg-no-repeat bg-cover': imageUrl,
+      })}
+      style={{ backgroundImage: imageUrl && `url(${imageUrl})` }}
+    />
+  );
+}
+
+function PostPreviewRhombus({ children, slug, imageUrl }): JSX.Element {
+  return (
+    <Box className="relative shape-large">
+      <PostPreviewDefault
+        className="shape-large clip-rhombus"
+        imageUrl={imageUrl}
+      />
       <PostPreviewLink
         className="flex absolute inset-0 items-center"
         slug={slug}
@@ -56,10 +74,13 @@ function PostPreviewTrapez({ children, slug }): JSX.Element {
   );
 }
 
-function PostPreviewArrowUp({ children, slug }): JSX.Element {
+function PostPreviewArrowUp({ children, slug, imageUrl }): JSX.Element {
   return (
     <Box className="relative shape-medium">
-      <Box className="bg-white shape-medium clip-arrow-up" />
+      <PostPreviewDefault
+        className="shape-medium clip-arrow-up"
+        imageUrl={imageUrl}
+      />
       <PostPreviewLink className="flex absolute inset-0 items-end" slug={slug}>
         {children}
       </PostPreviewLink>
@@ -67,10 +88,13 @@ function PostPreviewArrowUp({ children, slug }): JSX.Element {
   );
 }
 
-function PostPreviewArrowDown({ children, slug }): JSX.Element {
+function PostPreviewArrowDown({ children, slug, imageUrl }): JSX.Element {
   return (
     <Box className="relative shape-medium">
-      <Box className="bg-white shape-medium clip-arrow-down" />
+      <PostPreviewDefault
+        className="shape-medium clip-arrow-down"
+        imageUrl={imageUrl}
+      />
       <PostPreviewLink className="flex absolute inset-0" slug={slug}>
         {children}
       </PostPreviewLink>
