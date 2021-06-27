@@ -19,6 +19,10 @@ type Props = {
   navigations: Navigations;
 };
 
+const MAIN_IMAGE_SIZE = 1200;
+
+// Load `PostPreview` component without SSR as it contains randomized values
+// which might differ otherwise between server-client side
 const DynamicPostPreview = dynamic(() => import('~/components/PostPreview'), {
   ssr: false,
 });
@@ -31,7 +35,14 @@ export default function HomePage({
   return (
     <Layout navigations={navigations}>
       <Container>
-        {mainImage && <SanityImage className="m-auto" source={mainImage} />}
+        {mainImage && (
+          <SanityImage
+            className="m-auto"
+            height={MAIN_IMAGE_SIZE}
+            source={mainImage}
+            width={MAIN_IMAGE_SIZE}
+          />
+        )}
       </Container>
       {featuredPosts.map((post) => {
         return (

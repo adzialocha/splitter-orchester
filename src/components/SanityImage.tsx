@@ -22,7 +22,7 @@ export default function SanityImage({
   source,
   height = DEFAULT_SIZE,
   width = DEFAULT_SIZE,
-  fit = 'crop',
+  fit = 'max',
   className,
 }: Props): JSX.Element {
   return (
