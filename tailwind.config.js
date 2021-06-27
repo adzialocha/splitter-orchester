@@ -8,15 +8,13 @@ module.exports = {
     extend: {
       colors: {
         gray: '#231f20',
+        'gray-300': '#888',
       },
       fontFamily: {
         sans: ['Futura', 'Trebuchet MS', 'Arial', 'sans-serif'],
       },
       rotate: {
         60: '60deg',
-      },
-      height: {
-        112: '28rem',
       },
     },
   },
