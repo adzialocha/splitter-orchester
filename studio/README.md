@@ -1,3 +1,3 @@
-# Sanity Blogging Content Studio
+# Sanity Content Studio
 
-Headless CMS Backend for Splitter Orchester page.
+Headless CMS Backend backed by [Sanity](https://www.sanity.io/) for Splitter Orchester page.
