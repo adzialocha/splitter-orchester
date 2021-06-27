@@ -2,21 +2,23 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import React, { useMemo } from 'react';
 
-import type { Audio, Image } from 'sanity-schema';
+import type { Audio, Image as ImageType } from 'sanity-schema';
 
 import { randomItem } from '~/random';
 
 import Box from '~/components/Box';
+import Image from '~/components/Image';
 import Paragraph from '~/components/Paragraph';
 import { urlForImage } from '~/lib/sanity';
 
 type Props = {
   alternativeTitle?: string;
   audio?: Audio;
-  image?: Image;
+  image?: ImageType;
   slug: string;
   text?: string;
   title: string;
+  onClick: React.MouseEventHandler;
 };
 
 export default function PostPreview(props: Props): JSX.Element {
@@ -31,42 +33,89 @@ export default function PostPreview(props: Props): JSX.Element {
   const imageUrl = props.image && urlForImage(props.image).url();
 
   return (
-    <PostPreviewShape imageUrl={imageUrl} slug={props.slug}>
+    <PostPreviewShape
+      audio={props.audio}
+      imageUrl={imageUrl}
+      slug={props.slug}
+      onClick={props.onClick}
+    >
       <PostPreviewContent {...props} />
     </PostPreviewShape>
   );
 }
 
-function PostPreviewLink({ children, slug, className }): JSX.Element {
+function PostPreviewLink({
+  audio,
+  children,
+  slug,
+  className = '',
+  isHiddenFirst,
+  onClick,
+}): JSX.Element {
+  const handleClick = (event) => {
+    event.preventDefault();
+    onClick(audio);
+  };
+
+  if (audio) {
+    return (
+      <a
+        className={clsx('flex absolute inset-0', className, {
+          'hover:opacity-100 opacity-0 transition-opacity': isHiddenFirst,
+        })}
+        href={`/${slug}`}
+        onClick={handleClick}
+      >
+        {children}
+      </a>
+    );
+  }
+
   return (
     <Link href={`/${slug}`}>
-      <a className={className}>{children}</a>
+      <a
+        className={clsx('flex absolute inset-0', className, {
+          'hover:opacity-100 opacity-0 transition-opacity': isHiddenFirst,
+        })}
+      >
+        {children}
+      </a>
     </Link>
   );
 }
 
 function PostPreviewDefault({ imageUrl, className }): JSX.Element {
   return (
-    <Box
-      className={clsx(className, {
-        'bg-white': !imageUrl,
-        'bg-center bg-no-repeat bg-cover': imageUrl,
-      })}
-      style={{ backgroundImage: imageUrl && `url(${imageUrl})` }}
-    />
+    <Box className={clsx('bg-white', className)}>
+      {imageUrl && (
+        <Image
+          className="object-cover w-full h-full group-hover:opacity-0 transition-opacity"
+          src={imageUrl}
+        />
+      )}
+    </Box>
   );
 }
 
-function PostPreviewRhombus({ children, slug, imageUrl }): JSX.Element {
+function PostPreviewRhombus({
+  children,
+  slug,
+  imageUrl,
+  audio,
+  onClick,
+}): JSX.Element {
   return (
-    <Box className="relative shape-large">
+    <Box className="group relative shape-large">
       <PostPreviewDefault
         className="shape-large clip-rhombus"
         imageUrl={imageUrl}
       />
       <PostPreviewLink
-        className="flex absolute inset-0 items-center"
+        audio={audio}
+        className="items-center"
+        isHiddenFirst={!!imageUrl}
         slug={slug}
+        onClick={onClick}
       >
         {children}
       </PostPreviewLink>
@@ -74,28 +123,51 @@ function PostPreviewRhombus({ children, slug, imageUrl }): JSX.Element {
   );
 }
 
-function PostPreviewArrowUp({ children, slug, imageUrl }): JSX.Element {
+function PostPreviewArrowUp({
+  audio,
+  children,
+  slug,
+  imageUrl,
+  onClick,
+}): JSX.Element {
   return (
-    <Box className="relative shape-medium">
+    <Box className="group relative shape-medium">
       <PostPreviewDefault
         className="shape-medium clip-arrow-up"
         imageUrl={imageUrl}
       />
-      <PostPreviewLink className="flex absolute inset-0 items-end" slug={slug}>
+      <PostPreviewLink
+        audio={audio}
+        className="items-end"
+        isHiddenFirst={!!imageUrl}
+        slug={slug}
+        onClick={onClick}
+      >
         {children}
       </PostPreviewLink>
     </Box>
   );
 }
 
-function PostPreviewArrowDown({ children, slug, imageUrl }): JSX.Element {
+function PostPreviewArrowDown({
+  audio,
+  children,
+  slug,
+  imageUrl,
+  onClick,
+}): JSX.Element {
   return (
-    <Box className="relative shape-medium">
+    <Box className="group relative shape-medium">
       <PostPreviewDefault
         className="shape-medium clip-arrow-down"
         imageUrl={imageUrl}
       />
-      <PostPreviewLink className="flex absolute inset-0" slug={slug}>
+      <PostPreviewLink
+        audio={audio}
+        isHiddenFirst={!!imageUrl}
+        slug={slug}
+        onClick={onClick}
+      >
         {children}
       </PostPreviewLink>
     </Box>
@@ -104,14 +176,14 @@ function PostPreviewArrowDown({ children, slug, imageUrl }): JSX.Element {
 
 function PostPreviewContent({
   alternativeTitle,
-  audio,
-  image,
   text,
   title,
 }: Props): JSX.Element {
   return (
     <Box className="p-5 w-full text-center text-gray">
-      <strong>{alternativeTitle || title}</strong>
+      <Paragraph>
+        <strong>{alternativeTitle || title}</strong>
+      </Paragraph>
       <Paragraph>{text && text}</Paragraph>
     </Box>
   );

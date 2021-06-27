@@ -3,6 +3,8 @@ import React, { useMemo } from 'react';
 
 import type { Post } from 'sanity-schema';
 
+import { useTrackedAudioPlayer } from '~/state';
+
 import ParallaxContainer from '~/components/ParallaxContainer';
 
 type Props = {
@@ -26,6 +28,8 @@ const DynamicParallaxElement = dynamic(
 );
 
 export default function FeaturedPosts({ posts }: Props): JSX.Element {
+  const [, dispatch] = useTrackedAudioPlayer();
+
   // Define order of elements. Since `posts` is already sorted by
   // publication date we can assume that the first element is the latest.
   const order = useMemo(() => {
@@ -38,6 +42,10 @@ export default function FeaturedPosts({ posts }: Props): JSX.Element {
       return counter;
     });
   }, [posts]);
+
+  const handleClick = ({ url }) => {
+    dispatch({ type: 'play', url });
+  };
 
   if (posts.length === 0) {
     return null;
@@ -55,6 +63,7 @@ export default function FeaturedPosts({ posts }: Props): JSX.Element {
               slug={post.slug}
               text={post.feature.text}
               title={post.title}
+              onClick={handleClick}
             />
           </DynamicParallaxElement>
         );
