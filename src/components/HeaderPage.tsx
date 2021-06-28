@@ -6,8 +6,8 @@ import type { NavigationItem } from '~/types';
 import Box from '~/components/Box';
 import Container from '~/components/Container';
 import Header from '~/components/Header';
-import Logo from '~/components/Logo';
 import Navigation from '~/components/Navigation';
+import Title from '~/components/Title';
 
 type Props = {
   items?: NavigationItem[];
@@ -29,7 +29,7 @@ export default function HeaderPage({ items }: Props): JSX.Element {
       <HeaderPageOverlay isOpen={isOpen} onClick={handleClose} />
       <Header className="absolute md:fixed z-30 pt-5 sm:pt-10 w-full pointer-events-none">
         <Container>
-          <Logo onClick={handleClose} />
+          <Title onClick={handleClose} />
           <Box
             className="flex justify-center sm:pt-5"
             style={{ paddingRight: '50%' }}

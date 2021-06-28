@@ -7,6 +7,7 @@ import Box from '~/components/Box';
 import Container from '~/components/Container';
 import Footer from '~/components/Footer';
 import HeaderPage from '~/components/HeaderPage';
+import Logo from '~/components/Logo';
 import NavigationFooter from '~/components/NavigationFooter';
 
 type Props = {
@@ -29,7 +30,8 @@ export default function Layout({
           'md:hidden': !isFooterVisible,
         })}
       >
-        <Container>
+        <Container className="mt-20">
+          <Logo className="m-auto mb-5 w-48" />
           <NavigationFooter items={navigations.footer} />
         </Container>
       </Footer>
