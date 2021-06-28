@@ -7,11 +7,9 @@ import type { Navigations } from '~/types';
 
 import Article from '~/components/Article';
 import Container from '~/components/Container';
-import Date from '~/components/Date';
 import Header from '~/components/Header';
 import Heading from '~/components/Heading';
 import Layout from '~/components/Layout';
-import Paragraph from '~/components/Paragraph';
 import SanityBlockContent from '~/components/SanityBlockContent';
 import SanityImage from '~/components/SanityImage';
 import Section from '~/components/Section';
@@ -27,15 +25,12 @@ type Props = {
 export default function Post({ post, navigations }: Props): JSX.Element {
   return (
     <Layout navigations={navigations}>
-      <Container>
-        <Article>
-          <Header>
+      <Container className="max-w-3xl">
+        <Article className="mx-auto mt-60 md:mt-72 md:ml-56">
+          <Header className="mb-5 text-center md:text-left">
             <Heading>{post.title}</Heading>
-            <Paragraph>
-              <Date dateString={post.publishedAt} />
-            </Paragraph>
           </Header>
-          <Section>
+          <Section className="mb-5">
             {post.feature && post.feature.image && (
               <SanityImage source={post.feature.image} />
             )}

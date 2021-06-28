@@ -9,6 +9,7 @@ import Footer from '~/components/Footer';
 import HeaderPage from '~/components/HeaderPage';
 import Logo from '~/components/Logo';
 import NavigationFooter from '~/components/NavigationFooter';
+import Paragraph from '~/components/Paragraph';
 
 type Props = {
   children: React.ReactNode;
@@ -30,8 +31,11 @@ export default function Layout({
           'md:hidden': !isFooterVisible,
         })}
       >
-        <Container className="mt-20">
+        <Container className="mt-20 text-center">
           <Logo className="m-auto mb-5 w-48" />
+          <Paragraph className="mb-3">
+            <strong>Splitter Orchester</strong>
+          </Paragraph>
           <NavigationFooter items={navigations.footer} />
         </Container>
       </Footer>

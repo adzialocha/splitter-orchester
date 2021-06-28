@@ -27,7 +27,7 @@ const serializers = {
 
 const imageOptions = {
   width: 1200,
-  height: 600,
+  height: 1200,
   fit: 'max',
 };
 
@@ -50,7 +50,7 @@ function BlockContentLink({ children, mark }): JSX.Element {
 }
 
 function BlockContentContainer({ children }): JSX.Element {
-  return <Section>{children}</Section>;
+  return <Section className="mb-5">{children}</Section>;
 }
 
 function BlockContentAudio({ node }): JSX.Element {
