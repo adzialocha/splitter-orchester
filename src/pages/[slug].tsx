@@ -3,7 +3,6 @@ import React from 'react';
 import type { GetStaticPaths, GetStaticProps } from 'next';
 import type { Post as PostSchema } from 'sanity-schema';
 
-import { getNavigations } from '~/helpers';
 import type { Navigations } from '~/types';
 
 import Article from '~/components/Article';
@@ -16,6 +15,7 @@ import Paragraph from '~/components/Paragraph';
 import SanityBlockContent from '~/components/SanityBlockContent';
 import SanityImage from '~/components/SanityImage';
 import Section from '~/components/Section';
+import { getNavigations } from '~/lib/navigation';
 import { getAllPostSlugs, getPostBySlug } from '~/lib/queries';
 import { getClient, sanityClient } from '~/lib/sanity.server';
 

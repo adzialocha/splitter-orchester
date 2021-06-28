@@ -39,7 +39,10 @@ export default function ParallaxElement({
     return [order % count, Math.floor(order / count)];
   }, [order, count]);
 
+  // Get a random parallax class
   const className = useMemo(() => {
+    // Use less `intense` effect when being at the border of page to avoid
+    // elements jumping out of view
     const value = randomRange(0, column >= count / 2 ? 2 : 4);
     return `md:parallax-element-${value}`;
   }, [column, count]);

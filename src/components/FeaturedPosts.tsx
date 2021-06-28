@@ -14,11 +14,15 @@ type Props = {
 // Probability of making a "gap" between featured posts on the homepage
 const HOLE_PROBABILIY = 0.1;
 
-// Load `PostPreview` component without SSR as it contains randomized values
-// which might differ otherwise between server-client side
-const DynamicPostPreview = dynamic(() => import('~/components/PostPreview'), {
-  ssr: false,
-});
+// Load `FeaturedPostsItem` and `ParallaxElement` components without SSR as it
+// contains randomized values which might differ otherwise between
+// server-client side
+const DynamicPostPreview = dynamic(
+  () => import('~/components/FeaturedPostsItem'),
+  {
+    ssr: false,
+  },
+);
 
 const DynamicParallaxElement = dynamic(
   () => import('~/components/ParallaxElement'),

@@ -6,7 +6,7 @@ import Box from '~/components/Box';
 type Props = {
   isOpen: boolean;
   children: React.ReactNode;
-  onClose: () => void;
+  onClose: React.MouseEventHandler;
 };
 
 export default function Modal({

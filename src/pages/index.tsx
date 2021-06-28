@@ -3,13 +3,13 @@ import React from 'react';
 import type { GetStaticProps } from 'next';
 import type { Post, SanityImage as SanityImageType } from 'sanity-schema';
 
-import { getNavigations } from '~/helpers';
 import type { Navigations } from '~/types';
 
 import Container from '~/components/Container';
 import FeaturedPosts from '~/components/FeaturedPosts';
 import Layout from '~/components/Layout';
 import SanityImage from '~/components/SanityImage';
+import { getNavigations } from '~/lib/navigation';
 import { getFeaturedPosts, getMainImage } from '~/lib/queries';
 import { getClient } from '~/lib/sanity.server';
 

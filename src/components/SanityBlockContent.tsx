@@ -1,11 +1,11 @@
 import BlockContent from '@sanity/block-content-to-react';
+import Link from 'next/link';
 import React from 'react';
 
 import type { BlockContent as BlockContentSchema } from 'sanity-schema';
 
 import EmbedAudio from '~/components/EmbedAudio';
 import EmbedVideo from '~/components/EmbedVideo';
-import Link from '~/components/Link';
 import Section from '~/components/Section';
 
 type Props = {
@@ -43,8 +43,8 @@ export default function SanityBlockContent({ blocks }: Props): JSX.Element {
 
 function BlockContentLink({ children, mark }): JSX.Element {
   return (
-    <Link className="underline" href={mark.href}>
-      {children}
+    <Link href={mark.href}>
+      <a className="underline">{children}</a>
     </Link>
   );
 }
