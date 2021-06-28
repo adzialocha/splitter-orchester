@@ -76,7 +76,7 @@ function AudioPlayerWaveform({ url, current, total, onSeek }): JSX.Element {
 
   return (
     <Box
-      className="relative sm:flex-grow my-1 sm:mx-5 w-full max-w-3xl h-5 sm:h-20 bg-gray filter contrast-200"
+      className="relative sm:flex-grow my-1 sm:mx-5 w-full max-w-3xl h-5 sm:h-10 bg-gray filter contrast-200"
       onClick={handleClick}
     >
       <Box
