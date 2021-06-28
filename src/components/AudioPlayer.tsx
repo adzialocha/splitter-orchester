@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 import { useTrackedAudioPlayer } from '~/state';
@@ -8,7 +9,7 @@ import Paragraph from '~/components/Paragraph';
 
 export default function AudioPlayer(): JSX.Element {
   const [audioState, dispatch] = useTrackedAudioPlayer();
-  const { url, isPlaying, transport, track } = audioState;
+  const { url, isPlaying, transport, track, info } = audioState;
 
   const handlePause = () => {
     dispatch({ type: 'pause' });
@@ -29,7 +30,7 @@ export default function AudioPlayer(): JSX.Element {
   return (
     url && (
       <AudioPlayerContainer>
-        <AudioPlayerTitle title={track.title} />
+        <AudioPlayerTitle subtitle={info.caption} title={track.title} />
         <AudioPlayerWaveform
           current={transport.current}
           total={transport.total}
@@ -38,6 +39,7 @@ export default function AudioPlayer(): JSX.Element {
         />
         <AudioPlayerTransport
           isPlaying={isPlaying}
+          slug={info.slug}
           onPause={handlePause}
           onPlay={handleResume}
           onStop={handleStop}
@@ -49,17 +51,24 @@ export default function AudioPlayer(): JSX.Element {
 
 function AudioPlayerContainer({ children }): JSX.Element {
   return (
-    <Box className="flex fixed inset-x-0 bottom-0 flex-col sm:flex-row justify-between items-center sm:p-5 px-3 pt-3 text-gray bg-white">
+    <Box className="flex fixed inset-x-0 bottom-0 flex-col sm:flex-row justify-between items-center sm:p-4 py-3 px-3 text-gray bg-white">
       {children}
     </Box>
   );
 }
 
-function AudioPlayerTitle({ title }): JSX.Element {
+function AudioPlayerTitle({ title, subtitle }): JSX.Element {
   return (
-    <Paragraph className="overflow-hidden w-full max-w-sm text-center sm:text-left overflow-ellipsis whitespace-nowrap">
-      {title}
-    </Paragraph>
+    <Box className="overflow-hidden flex-shrink w-full md:max-w-xs text-center sm:text-left">
+      <Paragraph className="overflow-hidden w-full overflow-ellipsis whitespace-nowrap">
+        <strong>{title}</strong>
+      </Paragraph>
+      {subtitle && (
+        <Paragraph className="hidden md:block overflow-hidden w-full overflow-ellipsis whitespace-nowrap">
+          {subtitle}
+        </Paragraph>
+      )}
+    </Box>
   );
 }
 
@@ -76,7 +85,7 @@ function AudioPlayerWaveform({ url, current, total, onSeek }): JSX.Element {
 
   return (
     <Box
-      className="relative sm:flex-grow my-1 sm:mx-5 w-full max-w-3xl h-5 sm:h-10 bg-gray filter contrast-200"
+      className="relative sm:flex-grow my-1 sm:mx-5 w-full max-w-3xl h-5 sm:h-10 bg-gray filter contrast-200 cursor-pointer"
       onClick={handleClick}
     >
       <Box
@@ -91,13 +100,15 @@ function AudioPlayerWaveform({ url, current, total, onSeek }): JSX.Element {
 }
 
 function AudioPlayerTransport({
+  slug,
   isPlaying,
   onPlay,
   onPause,
   onStop,
 }): JSX.Element {
   return (
-    <Box>
+    <Box className="flex items-center">
+      {slug && <AudioPlayerMore slug={slug} />}
       {!isPlaying && <AudioPlayerPlay onClick={onPlay} />}
       {isPlaying && <AudioPlayerPause onClick={onPause} />}
       <AudioPlayerStop onClick={onStop} />
@@ -107,9 +118,9 @@ function AudioPlayerTransport({
 
 function AudioPlayerButton({ onClick, path }): JSX.Element {
   return (
-    <button onClick={onClick}>
+    <button className="mt-1" onClick={onClick}>
       <svg
-        className="w-7 sm:w-8"
+        className="w-6 sm:w-8"
         viewBox="0 0 1200 1200"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -139,5 +150,13 @@ function AudioPlayerPause({ onClick }): JSX.Element {
 function AudioPlayerStop({ onClick }): JSX.Element {
   return (
     <AudioPlayerButton path="416zM320 320h384v384h-384z" onClick={onClick} />
+  );
+}
+
+function AudioPlayerMore({ slug }): JSX.Element {
+  return (
+    <Link href={`/${slug}`}>
+      <a className="mx-5 underline whitespace-nowrap">Read more</a>
+    </Link>
   );
 }

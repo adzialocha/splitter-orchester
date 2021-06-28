@@ -17,7 +17,7 @@ type Props = {
   slug: string;
   text?: string;
   title: string;
-  onClick: (audio: Audio) => void;
+  onClick: (audio: Audio, slug: string) => void;
 };
 
 const RANDOM_SHAPES = [
@@ -108,7 +108,7 @@ function FeaturedPostsItemLink({
 }): JSX.Element {
   const handleClick = (event) => {
     event.preventDefault();
-    onClick(audio);
+    onClick(audio, slug);
   };
 
   const classNameLink = clsx('flex absolute inset-0', className, {

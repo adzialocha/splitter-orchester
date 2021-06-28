@@ -47,8 +47,8 @@ export default function FeaturedPosts({ posts }: Props): JSX.Element {
     });
   }, [posts]);
 
-  const handleClick = ({ url }: Audio) => {
-    dispatch({ type: 'play', url });
+  const handleClick = ({ url, caption }: Audio, slug) => {
+    dispatch({ type: 'play', url, caption, slug });
   };
 
   if (posts.length === 0) {

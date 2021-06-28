@@ -20,6 +20,12 @@ const initialState = {
     waveformUrl: '',
   },
 
+  // Additional information for display
+  info: {
+    caption: '',
+    slug: '',
+  },
+
   // Current player transport status
   transport: {
     total: 0,
@@ -29,17 +35,20 @@ const initialState = {
 
 type Track = typeof initialState.track;
 
+type Info = typeof initialState.info;
+
 type Transport = typeof initialState.transport;
 
 type State = {
   isPlaying: boolean;
   url: string;
   track: Track;
+  info: Info;
   transport: Transport;
 };
 
 type Action =
-  | { type: 'play'; url: string }
+  | { type: 'play'; url: string; caption?: string; slug?: string }
   | { type: 'seek'; position: number }
   | { type: 'pause' }
   | { type: 'resume' }
@@ -54,10 +63,16 @@ const reducer: Reducer<State, Action> = (state, action) => {
         ...state,
         isPlaying: true,
         url: action.url,
+        info: {
+          ...state.info,
+          caption: action.caption || '',
+          slug: action.slug || '',
+        },
       };
     case 'seek':
       return {
         ...state,
+        isPlaying: true,
         transport: {
           ...state.transport,
           current: action.position,
@@ -157,6 +172,7 @@ const useAudioPlayer = (): [State, Dispatch<Action>] => {
       });
     } else if (type === 'seek') {
       audioPlayer.audio.currentTime = action.position;
+      audioPlayer.play();
     } else if (type === 'pause') {
       audioPlayer.pause();
     } else if (type === 'resume') {
