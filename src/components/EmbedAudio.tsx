@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import { useTrackedAudioPlayer } from '~/state';
 
@@ -12,15 +12,15 @@ type Props = {
 
 export default function EmbedAudio({ url, caption }: Props): JSX.Element {
   const [audioState, dispatch] = useTrackedAudioPlayer();
-  const isCurrentTrack = audioState.url && url;
+  const isCurrentTrack = audioState.url === url;
 
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     if (isCurrentTrack) {
       dispatch({ type: 'stop' });
     } else {
       dispatch({ type: 'play', url, caption });
     }
-  };
+  }, [isCurrentTrack, caption, dispatch, url]);
 
   return (
     <Box
