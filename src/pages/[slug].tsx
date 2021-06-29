@@ -11,8 +11,6 @@ import Header from '~/components/Header';
 import Heading from '~/components/Heading';
 import Layout from '~/components/Layout';
 import SanityBlockContent from '~/components/SanityBlockContent';
-import SanityImage from '~/components/SanityImage';
-import Section from '~/components/Section';
 import { getNavigations } from '~/lib/navigation';
 import { getAllPostSlugs, getPostBySlug } from '~/lib/queries';
 import { getClient, sanityClient } from '~/lib/sanity.server';
@@ -30,11 +28,6 @@ export default function Post({ post, navigations }: Props): JSX.Element {
           <Header className="mb-5 text-center md:text-left">
             <Heading>{post.title}</Heading>
           </Header>
-          <Section className="mb-5">
-            {post.feature && post.feature.image && (
-              <SanityImage source={post.feature.image} />
-            )}
-          </Section>
           {post.body && <SanityBlockContent blocks={post.body} />}
         </Article>
       </Container>
