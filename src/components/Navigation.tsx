@@ -86,7 +86,7 @@ function NavigationItem({ children, href, onClick, index }): JSX.Element {
 
   return (
     <li
-      className="overflow-hidden m-auto overflow-ellipsis whitespace-nowrap pointer-events-auto select-none"
+      className="m-auto pointer-events-auto select-none ellipsis"
       style={{ maxWidth }}
     >
       <Link href={href}>

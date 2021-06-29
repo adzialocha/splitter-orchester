@@ -34,6 +34,20 @@
   .clip-rhombus {
     clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
   }
+
+  .ellipsis {
+    @apply overflow-ellipsis whitespace-nowrap overflow-hidden;
+  }
+
+  @responsive {
+    .text-shadow {
+      text-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
+    }
+
+    .text-shadow-none {
+      text-shadow: none;
+    }
+  }
 }
 
 /* More fine-grained control over exact position and size of triangle and

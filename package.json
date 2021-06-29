@@ -56,6 +56,7 @@
   "dependencies": {
     "@react-hook/window-size": "^3.0.7",
     "@sanity/block-content-to-react": "^3.0.0",
+    "@tailwindcss/aspect-ratio": "^0.2.1",
     "@tailwindui/react": "^0.1.1",
     "clsx": "^1.1.1",
     "date-fns": "^2.22.1",

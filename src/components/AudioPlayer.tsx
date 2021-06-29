@@ -60,11 +60,11 @@ function AudioPlayerContainer({ children }): JSX.Element {
 function AudioPlayerTitle({ title, subtitle }): JSX.Element {
   return (
     <Box className="overflow-hidden flex-shrink w-full md:max-w-xs text-center sm:text-left">
-      <Paragraph className="overflow-hidden w-full overflow-ellipsis whitespace-nowrap">
+      <Paragraph className="w-full ellipsis">
         <strong>{title}</strong>
       </Paragraph>
       {subtitle && (
-        <Paragraph className="hidden md:block overflow-hidden w-full overflow-ellipsis whitespace-nowrap">
+        <Paragraph className="hidden md:block w-full ellipsis">
           {subtitle}
         </Paragraph>
       )}
