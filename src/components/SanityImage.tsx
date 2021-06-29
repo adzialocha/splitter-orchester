@@ -16,7 +16,7 @@ type Props = {
   className?: string;
 };
 
-const DEFAULT_SIZE = 500;
+const DEFAULT_SIZE = 1200;
 
 export default function SanityImage({
   source,
