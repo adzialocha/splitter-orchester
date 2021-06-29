@@ -2,22 +2,65 @@ import React from 'react';
 
 import { useTrackedAudioPlayer } from '~/state';
 
+import Box from '~/components/Box';
+import Paragraph from '~/components/Paragraph';
+
 type Props = {
   url: string;
   caption?: string;
 };
 
-export default function EmbedAudio({ url }: Props): JSX.Element {
-  const [, dispatch] = useTrackedAudioPlayer();
+export default function EmbedAudio({ url, caption }: Props): JSX.Element {
+  const [audioState, dispatch] = useTrackedAudioPlayer();
+  const isCurrentTrack = audioState.url && url;
 
   const handleClick = () => {
-    dispatch({ type: 'play', url });
+    if (isCurrentTrack) {
+      dispatch({ type: 'stop' });
+    } else {
+      dispatch({ type: 'play', url, caption });
+    }
   };
 
   return (
-    <>
-      {url}
-      <button onClick={handleClick}>Play</button>
-    </>
+    <Box
+      className="group flex items-end px-5 pb-3 my-8 sm:my-16 h-40 text-gray bg-white cursor-pointer"
+      onClick={handleClick}
+    >
+      {isCurrentTrack ? <EmbedAudioPlayStop /> : <EmbedAudioPlayIcon />}
+      <Paragraph className="pb-3 pl-2 w-full group-hover:underline ellipsis">
+        {caption || url}
+      </Paragraph>
+    </Box>
+  );
+}
+
+function EmbedAudioPlayIcon(): JSX.Element {
+  return (
+    <svg
+      className="w-12"
+      viewBox="0 0 1200 1200"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M512 0c-282.77 0-512 229.23-512 512s229.23 512 512 512 512-229.23 512-512-229.23-512-512-512zM512 928c-229.75 0-416-186.25-416-416s186.25-416 416-416 416 186.25 416 416-186.25 416-416 416zM384 288l384 224-384 224z"
+        fill="#231f20"
+      />
+    </svg>
+  );
+}
+
+function EmbedAudioPlayStop(): JSX.Element {
+  return (
+    <svg
+      className="w-12"
+      viewBox="0 0 1200 1200"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M512 0c-282.77 0-512 229.23-512 512s229.23 512 512 512 512-229.23 512-512-229.23-512-512-512zM512 928c-229.75 0-416-186.25-416-416s186.25-416 416-416 416 186.25 416 416-186.25 416-416 416zM320 320h384v384h-384z"
+        fill="#231f20"
+      />
+    </svg>
   );
 }

@@ -63,10 +63,12 @@ const reducer: Reducer<State, Action> = (state, action) => {
         ...state,
         isPlaying: true,
         url: action.url,
+        track: initialState.track,
+        transport: initialState.transport,
         info: {
-          ...state.info,
-          caption: action.caption || '',
-          slug: action.slug || '',
+          ...initialState.info,
+          caption: action.caption,
+          slug: action.slug,
         },
       };
     case 'seek':

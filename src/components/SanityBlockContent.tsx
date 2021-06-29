@@ -50,7 +50,7 @@ function BlockContentLink({ children, mark }): JSX.Element {
 }
 
 function BlockContentContainer({ children }): JSX.Element {
-  return <Section className="mb-5">{children}</Section>;
+  return <Section className="mb-5 block-content">{children}</Section>;
 }
 
 function BlockContentAudio({ node }): JSX.Element {

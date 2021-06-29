@@ -41,7 +41,7 @@ export default function EmbedVideo({ url, caption }: Props): JSX.Element {
             onClose={handleClose}
           />
           <Box
-            className="group relative my-5 w-full h-80 cursor-pointer"
+            className="group relative my-8 sm:my-16 w-full h-80 cursor-pointer"
             onClick={handleOpen}
           >
             <EmbedVideoPreview thumbnailUrl={thumbnailUrl} />
@@ -90,7 +90,7 @@ function EmbedVideoFullscreen({ isOpen, url, onClose }): JSX.Element {
 function EmbedVideoPlayIcon(): JSX.Element {
   return (
     <svg
-      className="w-12 sm:w-12"
+      className="w-12"
       viewBox="0 0 1200 1200"
       xmlns="http://www.w3.org/2000/svg"
     >

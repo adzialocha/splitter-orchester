@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import Link from 'next/link';
 import React from 'react';
 
@@ -61,9 +62,9 @@ function AudioPlayerTitle({ title, subtitle }): JSX.Element {
   return (
     <Box className="overflow-hidden flex-shrink w-full md:max-w-xs text-center sm:text-left">
       <Paragraph className="w-full ellipsis">
-        <strong>{title}</strong>
+        <strong>{title ? title : 'Loading ...'}</strong>
       </Paragraph>
-      {subtitle && (
+      {title && subtitle && (
         <Paragraph className="hidden md:block w-full ellipsis">
           {subtitle}
         </Paragraph>
@@ -85,16 +86,25 @@ function AudioPlayerWaveform({ url, current, total, onSeek }): JSX.Element {
 
   return (
     <Box
-      className="relative sm:flex-grow my-1 sm:mx-5 w-full max-w-3xl h-5 sm:h-10 bg-gray filter contrast-200 cursor-pointer"
+      className={clsx(
+        'relative sm:flex-grow my-1 sm:mx-5 w-full max-w-3xl h-5 sm:h-12 cursor-pointer',
+        {
+          'bg-gray filter-contrast-200': !!url,
+        },
+      )}
       onClick={handleClick}
     >
-      <Box
-        className="absolute top-0 bottom-0 left-0 bg-gray-300"
-        style={{ width: `${width}%` }}
-      />
-      <Box className="absolute inset-0 filter contrast-200">
-        <Image className="w-full h-full bg-cover" src={url} />
-      </Box>
+      {url && (
+        <>
+          <Box
+            className="absolute top-0 bottom-0 left-0 bg-gray-300"
+            style={{ width: `${width}%` }}
+          />
+          <Box className="absolute inset-0 filter contrast-200">
+            <Image className="w-full h-full bg-cover" src={url} />
+          </Box>
+        </>
+      )}
     </Box>
   );
 }

@@ -113,3 +113,16 @@
     transform: translateZ(3px) scale(0.625);
   }
 }
+
+/* Rendered Sanity block content */
+.block-content figure {
+  @apply my-8 sm:my-16;
+}
+
+.block-content img {
+  @apply m-auto;
+}
+
+.block-content p + p {
+  @apply my-5;
+}
