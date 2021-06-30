@@ -113,6 +113,10 @@
   .parallax-element-3 {
     transform: translateZ(3px) scale(0.625);
   }
+
+  .parallax-element-4 {
+    transform: translateZ(4px) scale(0.5);
+  }
 }
 
 /* Rendered Sanity block content */
