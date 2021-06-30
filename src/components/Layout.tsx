@@ -27,6 +27,7 @@ export default function Layout({
       className={clsx('overflow-x-scroll absolute inset-0 bg-gray', {
         'md:overflow-x-hidden': !isFooterVisible,
       })}
+      id="wrapper"
     >
       <Box className="flex flex-col h-screen">
         <HeaderPage items={navigations.main} />

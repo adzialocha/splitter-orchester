@@ -22,7 +22,10 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
     };
 
     const handleStop = () => {
-      window.scroll({
+      // Scroll to top after route changed. This uses the `#wrapper` container,
+      // which is used as the main element for scrolling inside the `Layout`
+      // component
+      document.getElementById('wrapper').scroll({
         top: 0,
       });
 
