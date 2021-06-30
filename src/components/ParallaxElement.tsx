@@ -2,7 +2,7 @@ import { useWindowWidth } from '@react-hook/window-size/throttled';
 import clsx from 'clsx';
 import React, { useMemo } from 'react';
 
-import { randomItem, randomRange } from '~/random';
+import { randomRange } from '~/random';
 
 import Box from '~/components/Box';
 
@@ -20,16 +20,7 @@ const THROTTLE_FPS = 4;
 const GRID_SIZE = 480;
 
 // Move elements position randomly within this range in px
-const RANDOMNESS = 50;
-
-// Definition of different `className` variations
-const VARIATIONS = [
-  'parallax-element-0',
-  'parallax-element-1',
-  'parallax-element-2',
-  'parallax-element-3',
-  'parallax-element-4',
-];
+const RANDOMNESS = 25;
 
 export default function ParallaxElement({
   children,
@@ -52,8 +43,11 @@ export default function ParallaxElement({
 
   // Get a random parallax class
   const className = useMemo(() => {
-    return randomItem(VARIATIONS);
-  }, []);
+    // Use less `intense` effect when being at the border of page to avoid
+    // elements jumping out of view
+    const value = randomRange(0, column >= count / 2 ? 2 : 5);
+    return `parallax-element-${value}`;
+  }, [column, count]);
 
   // Calculate offset to left border for centering grid
   const offset = useMemo(() => {
