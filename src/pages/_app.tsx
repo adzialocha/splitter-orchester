@@ -22,6 +22,10 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
     };
 
     const handleStop = () => {
+      window.scroll({
+        top: 0,
+      });
+
       NProgress.done();
     };
 
