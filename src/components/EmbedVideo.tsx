@@ -43,7 +43,7 @@ export default function EmbedVideo({ url, caption }: Props): JSX.Element {
         onClick={handleOpen}
       >
         <EmbedVideoPreview thumbnailUrl={thumbnailUrl} />
-        <Box className="flex absolute right-0 bottom-0 left-0 items-center p-5 group-hover:opacity-90">
+        <Box className="flex absolute right-0 bottom-0 left-0 items-center p-3 sm:p-5 group-hover:opacity-90">
           <EmbedVideoPlayIcon />
           <Paragraph className="pb-1 pl-2 w-full group-hover:underline ellipsis text-shadow">
             {videoTitle}

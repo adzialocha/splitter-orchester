@@ -24,7 +24,7 @@ export default function EmbedAudio({ url, caption }: Props): JSX.Element {
 
   return (
     <Box
-      className="group flex items-end px-5 pb-3 my-8 sm:my-16 h-40 text-gray bg-white cursor-pointer"
+      className="group flex items-end px-3 sm:px-5 pb-3 my-8 sm:my-16 h-40 text-gray bg-white cursor-pointer"
       onClick={handleClick}
     >
       {isCurrentTrack ? <EmbedAudioPlayStop /> : <EmbedAudioPlayIcon />}
