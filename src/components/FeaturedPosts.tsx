@@ -37,7 +37,7 @@ export default function FeaturedPosts({ posts }: Props): JSX.Element {
   // https://css-tricks.com/ios-13-broke-the-classic-pure-css-parallax-technique/
   const isParallaxDisabled = useMemo(() => {
     const md = new MobileDetect(window.navigator.userAgent);
-    return md.is('iPhone') || md.is('iPad') || md.is('iOS');
+    return md.is('iPhone') || md.is('iPad') || md.is('iOS') || md.is('Webkit');
   }, []);
 
   const handleClick = ({ url, caption }: Audio, slug) => {
