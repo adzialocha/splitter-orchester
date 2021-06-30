@@ -86,7 +86,6 @@
   .parallax-container {
     perspective: 8px;
     perspective-origin: 0 0;
-    -webkit-overflow-scrolling: touch;
     transform-style: preserve-3d;
   }
 
@@ -96,7 +95,6 @@
   }
 
   .parallax-element {
-    position: -webkit-sticky;
     transform-origin: 0 0;
   }
 

@@ -6,7 +6,7 @@ export default class AppDocument extends Document {
     return (
       <Html className="font-sans font-medium text-white" lang="en">
         <Head />
-        <body className="overflow-x-hidden bg-gray">
+        <body className="overflow-hidden">
           <Main />
           <NextScript />
         </body>
