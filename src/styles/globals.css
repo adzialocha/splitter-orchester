@@ -90,9 +90,12 @@
     transform-style: preserve-3d;
   }
 
-  .parallax-element {
+  .parallax-element-base {
     width: 30rem;
     height: 30rem;
+  }
+
+  .parallax-element {
     position: -webkit-sticky;
     transform-origin: 0 0;
   }

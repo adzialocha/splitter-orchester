@@ -60,6 +60,7 @@
     "@tailwindui/react": "^0.1.1",
     "clsx": "^1.1.1",
     "date-fns": "^2.22.1",
+    "mobile-detect": "^1.4.5",
     "next": "^11.0.1",
     "next-sanity": "^0.2.0",
     "nprogress": "^0.2.0",

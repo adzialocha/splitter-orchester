@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic';
 import React from 'react';
 
 import type { GetStaticProps } from 'next';
@@ -6,7 +7,6 @@ import type { Post, SanityImage as SanityImageType } from 'sanity-schema';
 import type { Navigations } from '~/types';
 
 import Container from '~/components/Container';
-import FeaturedPosts from '~/components/FeaturedPosts';
 import Layout from '~/components/Layout';
 import SanityImage from '~/components/SanityImage';
 import { getNavigations } from '~/lib/navigation';
@@ -21,6 +21,15 @@ type Props = {
 
 // Maximum size of main image which will be placed in the center top
 const MAIN_IMAGE_SIZE = 1200;
+
+// Load `FeaturedPosts` component without SSR as it contains randomized values
+// which might differ otherwise between server-client side
+const DynamicFeaturedPosts = dynamic(
+  () => import('~/components/FeaturedPosts'),
+  {
+    ssr: false,
+  },
+);
 
 export default function HomePage({
   featuredPosts,
@@ -39,7 +48,7 @@ export default function HomePage({
           />
         )}
       </Container>
-      <FeaturedPosts posts={featuredPosts} />
+      <DynamicFeaturedPosts posts={featuredPosts} />
     </Layout>
   );
 }

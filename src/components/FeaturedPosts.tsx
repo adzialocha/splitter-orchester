@@ -1,11 +1,13 @@
-import dynamic from 'next/dynamic';
+import MobileDetect from 'mobile-detect';
 import React, { useMemo } from 'react';
 
 import type { Audio, Post } from 'sanity-schema';
 
 import { useTrackedAudioPlayer } from '~/state';
 
+import FeaturedPostsItem from '~/components/FeaturedPostsItem';
 import ParallaxContainer from '~/components/ParallaxContainer';
+import ParallaxElement from '~/components/ParallaxElement';
 
 type Props = {
   posts: Post[];
@@ -13,23 +15,6 @@ type Props = {
 
 // Probability of making a "gap" between featured posts on the homepage
 const HOLE_PROBABILIY = 0.1;
-
-// Load `FeaturedPostsItem` and `ParallaxElement` components without SSR as it
-// contains randomized values which might differ otherwise between
-// server-client side
-const DynamicPostPreview = dynamic(
-  () => import('~/components/FeaturedPostsItem'),
-  {
-    ssr: false,
-  },
-);
-
-const DynamicParallaxElement = dynamic(
-  () => import('~/components/ParallaxElement'),
-  {
-    ssr: false,
-  },
-);
 
 export default function FeaturedPosts({ posts }: Props): JSX.Element {
   const [, dispatch] = useTrackedAudioPlayer();
@@ -47,6 +32,14 @@ export default function FeaturedPosts({ posts }: Props): JSX.Element {
     });
   }, [posts]);
 
+  // iOS 13 breaks support for `transformZ` and therefore also support for our
+  // CSS-only parallax effect. See:
+  // https://css-tricks.com/ios-13-broke-the-classic-pure-css-parallax-technique/
+  const isParallaxDisabled = useMemo(() => {
+    const md = new MobileDetect(window.navigator.userAgent);
+    return md.is('iPhone') || md.is('iPad') || md.is('iOS');
+  }, []);
+
   const handleClick = ({ url, caption }: Audio, slug) => {
     dispatch({ type: 'play', url, caption, slug });
   };
@@ -56,11 +49,15 @@ export default function FeaturedPosts({ posts }: Props): JSX.Element {
   }
 
   return (
-    <ParallaxContainer>
+    <ParallaxContainer isDisabled={isParallaxDisabled}>
       {posts.map((post, index) => {
         return (
-          <DynamicParallaxElement key={post.slug} order={order[index]}>
-            <DynamicPostPreview
+          <ParallaxElement
+            isDisabled={isParallaxDisabled}
+            key={post.slug}
+            order={order[index]}
+          >
+            <FeaturedPostsItem
               alternativeTitle={post.feature.title}
               audio={post.feature.audio}
               image={post.feature.image}
@@ -69,7 +66,7 @@ export default function FeaturedPosts({ posts }: Props): JSX.Element {
               title={post.title}
               onClick={handleClick}
             />
-          </DynamicParallaxElement>
+          </ParallaxElement>
         );
       })}
     </ParallaxContainer>
