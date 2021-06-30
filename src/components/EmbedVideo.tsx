@@ -27,33 +27,29 @@ export default function EmbedVideo({ url, caption }: Props): JSX.Element {
     setIsFullscreen(false);
   };
 
+  if (isLoading || isError) {
+    return null;
+  }
+
   return (
     <>
-      {isLoading ? (
-        <p>Loading ..</p>
-      ) : isError ? (
-        <p>Error</p>
-      ) : (
-        <>
-          <EmbedVideoFullscreen
-            isOpen={isFullscreen}
-            url={url}
-            onClose={handleClose}
-          />
-          <Box
-            className="group relative my-8 sm:my-16 w-full h-80 cursor-pointer"
-            onClick={handleOpen}
-          >
-            <EmbedVideoPreview thumbnailUrl={thumbnailUrl} />
-            <Box className="flex absolute right-0 bottom-0 left-0 items-center p-5 group-hover:opacity-90">
-              <EmbedVideoPlayIcon />
-              <Paragraph className="pb-1 pl-2 w-full group-hover:underline ellipsis text-shadow">
-                {videoTitle}
-              </Paragraph>
-            </Box>
-          </Box>
-        </>
-      )}
+      <EmbedVideoFullscreen
+        isOpen={isFullscreen}
+        url={url}
+        onClose={handleClose}
+      />
+      <Box
+        className="group relative my-8 sm:my-16 w-full h-80 cursor-pointer"
+        onClick={handleOpen}
+      >
+        <EmbedVideoPreview thumbnailUrl={thumbnailUrl} />
+        <Box className="flex absolute right-0 bottom-0 left-0 items-center p-5 group-hover:opacity-90">
+          <EmbedVideoPlayIcon />
+          <Paragraph className="pb-1 pl-2 w-full group-hover:underline ellipsis text-shadow">
+            {videoTitle}
+          </Paragraph>
+        </Box>
+      </Box>
     </>
   );
 }
