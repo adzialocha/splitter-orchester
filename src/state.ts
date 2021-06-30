@@ -58,7 +58,14 @@ type Action =
 
 const reducer: Reducer<State, Action> = (state, action) => {
   switch (action.type) {
-    case 'play':
+    case 'play': {
+      if (action.url === state.url) {
+        return {
+          ...state,
+          isPlaying: true,
+        };
+      }
+
       return {
         ...initialState,
         isPlaying: true,
@@ -69,6 +76,7 @@ const reducer: Reducer<State, Action> = (state, action) => {
           slug: action.slug,
         },
       };
+    }
     case 'seek':
       return {
         ...state,
