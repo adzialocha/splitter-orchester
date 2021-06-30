@@ -7,7 +7,6 @@ import type { Navigations } from '~/types';
 
 import Article from '~/components/Article';
 import Container from '~/components/Container';
-import Header from '~/components/Header';
 import Heading from '~/components/Heading';
 import Layout from '~/components/Layout';
 import SanityBlockContent from '~/components/SanityBlockContent';
@@ -25,9 +24,9 @@ export default function Post({ post, navigations }: Props): JSX.Element {
     <Layout navigations={navigations}>
       <Container className="max-w-3xl">
         <Article className="mx-auto mt-60 md:mt-72 md:ml-56">
-          <Header className="mb-5 text-center md:text-left">
-            <Heading>{post.title}</Heading>
-          </Header>
+          <Heading className="mb-5 text-center md:text-left">
+            {post.title}
+          </Heading>
           {post.body && <SanityBlockContent blocks={post.body} />}
         </Article>
       </Container>
