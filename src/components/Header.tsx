@@ -23,21 +23,23 @@ export default function Header({ navigation }: Props): JSX.Element {
   };
 
   return (
-    <header className="absolute md:fixed z-30 pt-5 sm:pt-10 w-full pointer-events-none">
+    <>
       <HeaderOverlay isOpen={isOpen} onClick={handleClose} />
-      <Title onClick={handleClose} />
-      <Box
-        className="flex justify-center sm:pt-5"
-        style={{ paddingRight: '35%' }}
-      >
-        <Navigation
-          isOpen={isOpen}
-          items={navigation}
-          onClose={handleClose}
-          onToggle={handleToggle}
-        />
-      </Box>
-    </header>
+      <header className="absolute md:fixed z-30 pt-5 sm:pt-10 w-full pointer-events-none">
+        <Title onClick={handleClose} />
+        <Box
+          className="flex justify-center sm:pt-5"
+          style={{ paddingRight: '35%' }}
+        >
+          <Navigation
+            isOpen={isOpen}
+            items={navigation}
+            onClose={handleClose}
+            onToggle={handleToggle}
+          />
+        </Box>
+      </header>
+    </>
   );
 }
 
