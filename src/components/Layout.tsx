@@ -20,14 +20,17 @@ export default function Layout({
 }: Props): JSX.Element {
   return (
     <Box
-      className={clsx('overflow-x-scroll absolute inset-0 bg-gray', {
-        'md:overflow-x-hidden': !isFooterVisible,
-      })}
+      className={clsx(
+        'overflow-x-hidden overflow-y-scroll absolute inset-0 bg-gray',
+        {
+          'md:overflow-x-hidden': !isFooterVisible,
+        },
+      )}
       id="wrapper"
     >
       <Box className="flex flex-col h-screen">
         <Header navigation={navigations.main} />
-        <main className="flex-grow pt-2 sm:pt-5">{children}</main>
+        <main className="flex-grow pt-2 md:pt-5">{children}</main>
         <Footer isVisible={isFooterVisible} navigation={navigations.footer} />
       </Box>
     </Box>

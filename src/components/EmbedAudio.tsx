@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import React, { useCallback } from 'react';
 
 import { useTrackedAudioPlayer } from '~/state';
@@ -8,9 +9,14 @@ import Paragraph from '~/components/Paragraph';
 type Props = {
   url: string;
   caption?: string;
+  className?: string;
 };
 
-export default function EmbedAudio({ url, caption }: Props): JSX.Element {
+export default function EmbedAudio({
+  url,
+  caption,
+  className,
+}: Props): JSX.Element {
   const [audioState, dispatch] = useTrackedAudioPlayer();
   const isCurrentTrack = audioState.url === url;
 
@@ -24,7 +30,10 @@ export default function EmbedAudio({ url, caption }: Props): JSX.Element {
 
   return (
     <Box
-      className="group flex items-end px-3 sm:px-5 pb-3 my-8 sm:my-16 h-40 text-gray bg-white cursor-pointer"
+      className={clsx(
+        'group flex items-end px-3 md:px-5 pb-3 my-8 md:my-16 h-40 text-gray bg-white cursor-pointer',
+        className,
+      )}
       onClick={handleClick}
     >
       {isCurrentTrack ? <EmbedAudioPlayStop /> : <EmbedAudioPlayIcon />}

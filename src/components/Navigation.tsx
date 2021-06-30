@@ -34,7 +34,7 @@ function NavigationTriangle({ onClick }): JSX.Element {
       <span className="absolute bottom-11 -left-2 transform rotate-60">
         Navigation
       </span>
-      <div className="bg-white shape-small clip-arrow-down" />
+      <div className="bg-white mix-blend-exclusion shape-small clip-arrow-down" />
     </button>
   );
 }

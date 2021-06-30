@@ -4,8 +4,17 @@ import React from 'react';
 type Props = {
   children: React.ReactNode;
   className?: string;
+  level?: string;
 };
 
-export default function Heading({ children, className }: Props): JSX.Element {
-  return <h1 className={clsx('text-lg font-medium', className)}>{children}</h1>;
+export default function Heading({
+  children,
+  className,
+  level = 'h1',
+}: Props): JSX.Element {
+  return React.createElement(
+    level,
+    { className: clsx('text-lg', className) },
+    children,
+  );
 }

@@ -25,12 +25,9 @@ export default function Header({ navigation }: Props): JSX.Element {
   return (
     <>
       <HeaderOverlay isOpen={isOpen} onClick={handleClose} />
-      <header className="absolute md:fixed z-30 pt-5 sm:pt-10 w-full pointer-events-none">
+      <header className="absolute md:fixed z-30 pt-5 md:pt-10 w-full pointer-events-none">
         <Title onClick={handleClose} />
-        <Box
-          className="flex justify-center sm:pt-5"
-          style={{ paddingRight: '35%' }}
-        >
+        <Box className="flex justify-center md:pt-5 nav-left md:nav-right">
           <Navigation
             isOpen={isOpen}
             items={navigation}

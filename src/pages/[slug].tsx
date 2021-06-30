@@ -7,7 +7,7 @@ import type { Navigations } from '~/types';
 
 import Article from '~/components/Article';
 import Container from '~/components/Container';
-import Heading from '~/components/Heading';
+import HeadingWithSymbol from '~/components/HeadingWithSymbol';
 import Layout from '~/components/Layout';
 import SanityBlockContent from '~/components/SanityBlockContent';
 import { getNavigations } from '~/lib/navigation';
@@ -23,10 +23,10 @@ export default function Post({ post, navigations }: Props): JSX.Element {
   return (
     <Layout navigations={navigations}>
       <Container className="max-w-3xl">
-        <Article className="mx-auto mt-60 md:mt-72 md:ml-56">
-          <Heading className="mb-5 text-center md:text-left">
+        <Article className="mx-auto md:mt-20 max-w-md md:max-w-3xl">
+          <HeadingWithSymbol className="md:block-content-even" isFirst>
             {post.title}
-          </Heading>
+          </HeadingWithSymbol>
           {post.body && <SanityBlockContent blocks={post.body} />}
         </Article>
       </Container>

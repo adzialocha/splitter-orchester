@@ -52,7 +52,7 @@ export default function AudioPlayer(): JSX.Element {
 
 function AudioPlayerContainer({ children }): JSX.Element {
   return (
-    <Box className="flex fixed inset-x-0 bottom-0 flex-col sm:flex-row justify-between items-center sm:p-4 py-3 px-3 text-gray bg-white">
+    <Box className="flex fixed inset-x-0 bottom-0 flex-col md:flex-row justify-between items-center md:p-4 py-3 px-3 text-gray bg-white">
       {children}
     </Box>
   );
@@ -60,7 +60,7 @@ function AudioPlayerContainer({ children }): JSX.Element {
 
 function AudioPlayerTitle({ title, subtitle }): JSX.Element {
   return (
-    <Box className="overflow-hidden flex-shrink w-full md:max-w-xs text-center sm:text-left">
+    <Box className="overflow-hidden flex-shrink w-full md:max-w-xs text-center md:text-left">
       <Paragraph className="w-full ellipsis">
         <strong>{title ? title : 'Loading ...'}</strong>
       </Paragraph>
@@ -87,7 +87,7 @@ function AudioPlayerWaveform({ url, current, total, onSeek }): JSX.Element {
   return (
     <Box
       className={clsx(
-        'relative sm:flex-grow my-1 sm:mx-5 w-full max-w-3xl h-5 sm:h-12 cursor-pointer',
+        'relative md:flex-grow my-1 md:mx-5 w-full max-w-3xl h-5 md:h-12 cursor-pointer',
         {
           'bg-gray filter-contrast-200': !!url,
         },
@@ -130,7 +130,7 @@ function AudioPlayerButton({ onClick, path }): JSX.Element {
   return (
     <button className="mt-1" onClick={onClick}>
       <svg
-        className="w-6 sm:w-8"
+        className="w-6 md:w-8"
         viewBox="0 0 1200 1200"
         xmlns="http://www.w3.org/2000/svg"
       >

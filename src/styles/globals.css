@@ -119,15 +119,44 @@
   }
 }
 
-/* Rendered Sanity block content */
-.block-content figure {
-  @apply my-8 sm:my-16;
+@responsive {
+  .block-content-even {
+    @apply ml-56;
+  }
+
+  .block-content-odd {
+    @apply mr-56;
+  }
 }
 
-.block-content img {
-  @apply m-auto;
+/* Section symbols for headings in block content */
+.symbol-logo {
+  left: -17rem;
+  bottom: -7rem;
+  width: 12rem;
 }
 
-.block-content p + p {
-  @apply my-5;
+.symbol-hollow-arrow {
+  right: 20rem;
+  bottom: 8rem;
+  width: 45rem;
+  height: 37.5rem;
+}
+
+.symbol-solid-arrow {
+  left: 20rem;
+  bottom: 8rem;
+  width: 64rem;
+  height: 53.333333rem;
+}
+
+/* Move navigation menu to left or right corner */
+@responsive {
+  .nav-right {
+    padding-left: 70%;
+  }
+
+  .nav-left {
+    padding-right: 30%;
+  }
 }

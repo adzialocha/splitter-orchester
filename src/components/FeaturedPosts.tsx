@@ -25,7 +25,7 @@ export default function FeaturedPosts({ posts }: Props): JSX.Element {
     // This is a trick to make "holes" when counting up the position of the
     // post preview. We achieve this by simply counting up twice per
     // element if we want a gap inbetween.
-    let counter = 0;
+    let counter = -1;
     return posts.map(() => {
       counter += Math.random() > HOLE_PROBABILIY ? 1 : 2;
       return counter;
