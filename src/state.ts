@@ -60,11 +60,9 @@ const reducer: Reducer<State, Action> = (state, action) => {
   switch (action.type) {
     case 'play':
       return {
-        ...state,
+        ...initialState,
         isPlaying: true,
         url: action.url,
-        track: initialState.track,
-        transport: initialState.transport,
         info: {
           ...initialState.info,
           caption: action.caption,
@@ -81,11 +79,7 @@ const reducer: Reducer<State, Action> = (state, action) => {
         },
       };
     case 'stop':
-      return {
-        ...state,
-        isPlaying: false,
-        url: '',
-      };
+      return initialState;
     case 'pause':
       return {
         ...state,
@@ -185,6 +179,11 @@ const useAudioPlayer = (): [State, Dispatch<Action>] => {
   };
 
   const handleTrackUpdate = () => {
+    // Do not send updates when audio is not playing anymore
+    if (!audioPlayer.audio.playing) {
+      return;
+    }
+
     dispatch({
       type: 'transport',
       current: Math.floor(audioPlayer.audio.currentTime),
@@ -192,6 +191,7 @@ const useAudioPlayer = (): [State, Dispatch<Action>] => {
   };
 
   const handleTrackEnded = () => {
+    // Move transport to the beginning and pause when track ends
     audioPlayer.audio.currentTime = 0;
 
     dispatch({
