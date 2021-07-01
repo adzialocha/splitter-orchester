@@ -136,7 +136,7 @@ function FeaturedPostsItemContent({
   title,
 }: Props): JSX.Element {
   return (
-    <Box className="p-5 w-full text-center text-gray">
+    <Box className="py-5 px-10 w-full text-center text-gray">
       <Paragraph>
         <strong>{alternativeTitle || title}</strong>
       </Paragraph>
