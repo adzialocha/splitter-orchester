@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import React from 'react';
 
+import locale from '~/locale';
 import type { NavigationItem } from '~/types';
 
 import Container from '~/components/Container';
@@ -27,7 +28,7 @@ export default function Footer({
       <Container className="mt-20 text-center">
         <Logo className="m-auto mb-5 w-48" />
         <Paragraph className="mb-3">
-          <strong>Splitter Orchester</strong>
+          <strong>{locale.title}</strong>
         </Paragraph>
         <NavigationFooter items={navigation} />
         <SocialMedia />

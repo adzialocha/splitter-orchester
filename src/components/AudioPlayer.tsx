@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import React from 'react';
 
+import locale from '~/locale';
 import { useTrackedAudioPlayer } from '~/state';
 
 import Box from '~/components/Box';
@@ -65,7 +66,7 @@ function AudioPlayerTitle({ title, subtitle }): JSX.Element {
   return (
     <Box className="overflow-hidden flex-shrink w-full md:max-w-xs text-center md:text-left">
       <Paragraph className="w-full ellipsis">
-        <strong>{title ? title : 'Loading ...'}</strong>
+        <strong>{title ? title : locale.loading}</strong>
       </Paragraph>
       {title && subtitle && (
         <Paragraph className="hidden md:block w-full ellipsis">
@@ -152,7 +153,7 @@ function AudioPlayerStop({ onClick }): JSX.Element {
 function AudioPlayerMore({ slug }): JSX.Element {
   return (
     <Link href={`/${slug}`}>
-      <a className="mx-5 underline whitespace-nowrap">Read more</a>
+      <a className="mx-5 underline whitespace-nowrap">{locale.readMore}</a>
     </Link>
   );
 }

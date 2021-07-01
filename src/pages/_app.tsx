@@ -8,9 +8,12 @@ import type { AppProps } from 'next/app';
 import '../styles/globals.css';
 import '../styles/nprogress.css';
 
+import locale from '~/locale';
 import { AudioPlayerProvider } from '~/state';
 
 import AudioPlayer from '~/components/AudioPlayer';
+
+const BASE_PATH = 'https://splitter.berlin';
 
 function App({ Component, pageProps }: AppProps): JSX.Element {
   const router = useRouter();
@@ -50,23 +53,14 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
           content="width=device-width, initial-scale=1, maximum-scale=1"
           name="viewport"
         />
-        <meta content="Splitter Orchester" name="title" />
+        <meta content={locale.title} name="title" />
+        <meta content={locale.description} name="description" />
+        <meta content={locale.keywords} name="keywords" />
+        <meta content={locale.description} property="og:description" />
+        <meta content={locale.title} property="og:title" />
+        <meta content={BASE_PATH} property="og:url" />
         <meta
-          content="Splitter Orchester combines the collective power of 24 of Berlin’s most consistently creative, self motivated and conceptually optimistic musicians"
-          name="description"
-        />
-        <meta
-          content="Orchestra, Music, Splitter, Experimental, Improvisation, Echtzeitmusik, Ensemble, Sound, Noise, Berlin"
-          name="keywords"
-        />
-        <meta
-          content="Splitter Orchester combines the collective power of 24 of Berlin’s most consistently creative, self motivated and conceptually optimistic musicians"
-          property="og:description"
-        />
-        <meta content="Splitter Orchester" property="og:title" />
-        <meta content="https://splitter.berlin" property="og:url" />
-        <meta
-          content="https://splitter.berlin/splitter-orchester.jpg"
+          content={`${BASE_PATH}/splitter-orchester.jpg`}
           property="og:image"
         />
         <meta content="image/jpeg" property="og:image:type" />
@@ -77,7 +71,7 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
         <meta content="English" name="language" />
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
         <link href="/favicon.ico" rel="alternate icon" />
-        <title>Splitter Orchester</title>
+        <title>{locale.title}</title>
       </Head>
       <AudioPlayerProvider>
         <Component {...pageProps} />

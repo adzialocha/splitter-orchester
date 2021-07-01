@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import React from 'react';
 
+import locale from '~/locale';
+
 import Heading from '~/components/Heading';
 
 type Props = {
@@ -12,7 +14,7 @@ export default function Title({ onClick }: Props): JSX.Element {
     <Heading className="text-2xl md:text-4xl font-medium text-center select-none">
       <Link href="/">
         <a className="pointer-events-auto" onClick={onClick}>
-          Splitter Orchester
+          {locale.title}
         </a>
       </Link>
     </Heading>

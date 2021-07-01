@@ -2,6 +2,7 @@ import { Transition } from '@tailwindui/react';
 import Link from 'next/link';
 import React from 'react';
 
+import locale from '~/locale';
 import type { NavigationItem as NavigationItemType } from '~/types';
 
 type Props = {
@@ -32,7 +33,7 @@ function NavigationTriangle({ onClick }): JSX.Element {
       onClick={onClick}
     >
       <span className="absolute bottom-11 -left-2 transform rotate-60">
-        Navigation
+        {locale.navigation}
       </span>
       <div className="bg-white shape-small clip-arrow-down" />
     </button>
@@ -58,14 +59,11 @@ function NavigationMenu({ items, isOpen, onClick }): JSX.Element {
 function NavigationItems({ items, onClick }): JSX.Element {
   return (
     <ul className="absolute py-24 leading-snug text-center text-gray bg-white drop-shadow-xl pointer-events-none clip-arrow-up shape-navigation shape-navigation-position">
-      <NavigationItem href="/" index={0} onClick={onClick}>
-        Home
-      </NavigationItem>
       {items.map((item, index) => {
         return (
           <NavigationItem
             href={`/${item.slug}`}
-            index={index + 1}
+            index={index}
             key={item.slug}
             onClick={onClick}
           >
