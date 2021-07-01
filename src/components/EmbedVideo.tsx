@@ -4,6 +4,7 @@ import ReactPlayerVimeo from 'react-player/vimeo';
 import ReactPlayerYouTube from 'react-player/youtube';
 
 import { useVideo } from '~/hooks';
+import { useTrackedAudioPlayer } from '~/state';
 
 import Box from '~/components/Box';
 import IconPlay from '~/components/IconPlay';
@@ -22,11 +23,16 @@ export default function EmbedVideo({
   caption,
   className,
 }: Props): JSX.Element {
+  const [, dispatch] = useTrackedAudioPlayer();
   const { thumbnailUrl, isLoading, isError, title } = useVideo(url);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const videoTitle = caption || title;
 
   const handleOpen = () => {
+    // Stop audio before showing video
+    dispatch({ type: 'stop' });
+
+    // Show fullscreen video
     setIsFullscreen(true);
   };
 
