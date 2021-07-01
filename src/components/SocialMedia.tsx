@@ -3,11 +3,13 @@ import React from 'react';
 import Box from '~/components/Box';
 import IconFacebook from '~/components/IconFacebook';
 import IconSoundcloud from '~/components/IconSoundcloud';
+import List from '~/components/List';
+import ListItem from '~/components/ListItem';
 
 export default function SocialMedia(): JSX.Element {
   return (
     <Box>
-      <ul className="flex justify-center mt-5">
+      <List>
         <SocialMediaItem
           href="https://facebook.com/SplitterOrchester"
           icon={IconFacebook}
@@ -16,17 +18,17 @@ export default function SocialMedia(): JSX.Element {
           href="https://soundcloud.com/splitterorchester"
           icon={IconSoundcloud}
         />
-      </ul>
+      </List>
     </Box>
   );
 }
 
 function SocialMediaItem({ icon: IconComponent, href }): JSX.Element {
   return (
-    <li>
+    <ListItem>
       <a href={href} rel="noreferrer" target="_blank">
-        <IconComponent className="mx-1 w-8" />
+        <IconComponent className="w-8" />
       </a>
-    </li>
+    </ListItem>
   );
 }
