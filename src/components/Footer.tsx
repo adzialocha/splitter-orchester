@@ -7,6 +7,7 @@ import Container from '~/components/Container';
 import Logo from '~/components/Logo';
 import NavigationFooter from '~/components/NavigationFooter';
 import Paragraph from '~/components/Paragraph';
+import SocialMedia from '~/components/SocialMedia';
 
 type Props = {
   navigation: NavigationItem[];
@@ -29,6 +30,7 @@ export default function Footer({
           <strong>Splitter Orchester</strong>
         </Paragraph>
         <NavigationFooter items={navigation} />
+        <SocialMedia />
       </Container>
     </footer>
   );
