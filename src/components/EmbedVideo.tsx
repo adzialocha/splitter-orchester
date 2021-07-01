@@ -61,7 +61,7 @@ export default function EmbedVideo({
         <EmbedVideoPreview thumbnailUrl={thumbnailUrl} />
         <Box className="flex absolute right-0 bottom-0 left-0 items-center p-3 md:p-5 group-hover:opacity-90">
           <IconPlay className="w-6 md:w-7" />
-          <Paragraph className="pb-1 pl-2 w-full group-hover:underline ellipsis text-shadow">
+          <Paragraph className="pb-1 pl-2 w-full group-hover:underline ellipsis">
             {videoTitle}
           </Paragraph>
         </Box>
