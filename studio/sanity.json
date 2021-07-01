@@ -15,14 +15,10 @@
     "@sanity/default-layout",
     "@sanity/default-login",
     "@sanity/desk-tool",
-    "dashboard-widget-document-list"
+    "dashboard-widget-document-list",
+    "vercel-deploy"
   ],
   "env": {
-    "production": {
-      "plugins": [
-        "vercel-deploy"
-      ]
-    },
     "development": {
       "plugins": [
         "@sanity/vision"
