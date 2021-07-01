@@ -41,7 +41,7 @@ export default function HomePage({
       <Container>
         {mainImage && (
           <SanityImage
-            className="m-auto max-w-xl max-h-xl"
+            className="m-auto max-w-xl"
             height={MAIN_IMAGE_SIZE}
             source={mainImage}
             width={MAIN_IMAGE_SIZE}
