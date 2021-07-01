@@ -25,7 +25,7 @@ export default function HeadingWithSymbol({
     <>
       <Heading
         className={clsx('mb-5 font-black text-center md:text-left', className, {
-          'mt-52 md:mt-52': headingLevel === 'h1',
+          'mt-56': headingLevel === 'h1',
           'mt-20 md:mt-96': headingLevel === 'h2',
         })}
         level={headingLevel}
