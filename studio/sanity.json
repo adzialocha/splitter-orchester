@@ -11,9 +11,12 @@
   "plugins": [
     "@sanity/base",
     "@sanity/components",
+    "@sanity/dashboard",
     "@sanity/default-layout",
     "@sanity/default-login",
-    "@sanity/desk-tool"
+    "@sanity/desk-tool",
+    "vercel-deploy",
+    "dashboard-widget-document-list"
   ],
   "env": {
     "development": {
@@ -34,6 +37,14 @@
     {
       "implements": "part:@sanity/base/document-actions/resolver",
       "path": "./resolveDocumentActions"
+    },
+    {
+      "implements": "part:@sanity/dashboard/config",
+      "path": "./dashboardConfig"
+    },
+    {
+      "implements": "part:@sanity/base/brand-logo",
+      "path": "./../src/components/Logo"
     }
   ]
 }

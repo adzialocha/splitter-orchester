@@ -4,7 +4,7 @@ import type { ListItem } from '@sanity/desk-tool/structure-builder';
 
 export default (): ListItem[] =>
   S.list()
-    .title('Administration')
+    .title('Content')
     .items([
       S.listItem()
         .title('Website')
