@@ -86,6 +86,10 @@ export default function SanityBlockContent({ blocks }: Props): JSX.Element {
 }
 
 function BlockContentLink({ children, mark }): JSX.Element {
+  if (!mark.href) {
+    return children;
+  }
+
   return (
     <Link href={mark.href}>
       <a className="underline">{children}</a>
