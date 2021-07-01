@@ -6,6 +6,7 @@ import ReactPlayerYouTube from 'react-player/youtube';
 import { useVideo } from '~/hooks';
 
 import Box from '~/components/Box';
+import IconPlay from '~/components/IconPlay';
 import Image from '~/components/Image';
 import Modal from '~/components/Modal';
 import Paragraph from '~/components/Paragraph';
@@ -53,7 +54,7 @@ export default function EmbedVideo({
       >
         <EmbedVideoPreview thumbnailUrl={thumbnailUrl} />
         <Box className="flex absolute right-0 bottom-0 left-0 items-center p-3 md:p-5 group-hover:opacity-90">
-          <EmbedVideoPlayIcon />
+          <IconPlay className="w-6 md:w-7" />
           <Paragraph className="pb-1 pl-2 w-full group-hover:underline ellipsis text-shadow">
             {videoTitle}
           </Paragraph>
@@ -89,20 +90,5 @@ function EmbedVideoFullscreen({ isOpen, url, onClose }): JSX.Element {
         />
       )}
     </Modal>
-  );
-}
-
-function EmbedVideoPlayIcon(): JSX.Element {
-  return (
-    <svg
-      className="w-12"
-      viewBox="0 0 1200 1200"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M512 0c-282.77 0-512 229.23-512 512s229.23 512 512 512 512-229.23 512-512-229.23-512-512-512zM512 928c-229.75 0-416-186.25-416-416s186.25-416 416-416 416 186.25 416 416-186.25 416-416 416zM384 288l384 224-384 224z"
-        fill="white"
-      />
-    </svg>
   );
 }

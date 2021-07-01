@@ -5,6 +5,9 @@ import React from 'react';
 import { useTrackedAudioPlayer } from '~/state';
 
 import Box from '~/components/Box';
+import IconPause from '~/components/IconPause';
+import IconPlay from '~/components/IconPlay';
+import IconStop from '~/components/IconStop';
 import Image from '~/components/Image';
 import Paragraph from '~/components/Paragraph';
 
@@ -126,41 +129,24 @@ function AudioPlayerTransport({
   );
 }
 
-function AudioPlayerButton({ onClick, path }): JSX.Element {
+function AudioPlayerButton({ icon: IconComponent, onClick }): JSX.Element {
   return (
     <button className="mt-1" onClick={onClick}>
-      <svg
-        className="w-6 md:w-8"
-        viewBox="0 0 1200 1200"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d={`M512 0c-282.77 0-512 229.23-512 512s229.23 512 512 512 512-229.23 512-512-229.23-512-512-512zM512 928c-229.75 0-416-186.25-416-416s186.25-416 416-416 416 186.25 416 416-186.25 416-416 ${path}`}
-        />
-      </svg>
+      <IconComponent className="w-6 md:w-8" isInverted />
     </button>
   );
 }
 
 function AudioPlayerPlay({ onClick }): JSX.Element {
-  return (
-    <AudioPlayerButton path="416zM384 288l384 224-384 224z" onClick={onClick} />
-  );
+  return <AudioPlayerButton icon={IconPlay} onClick={onClick} />;
 }
 
 function AudioPlayerPause({ onClick }): JSX.Element {
-  return (
-    <AudioPlayerButton
-      path="416zM320 320h128v384h-128zM576 320h128v384h-128z"
-      onClick={onClick}
-    />
-  );
+  return <AudioPlayerButton icon={IconPause} onClick={onClick} />;
 }
 
 function AudioPlayerStop({ onClick }): JSX.Element {
-  return (
-    <AudioPlayerButton path="416zM320 320h384v384h-384z" onClick={onClick} />
-  );
+  return <AudioPlayerButton icon={IconStop} onClick={onClick} />;
 }
 
 function AudioPlayerMore({ slug }): JSX.Element {

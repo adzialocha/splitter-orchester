@@ -4,6 +4,8 @@ import React, { useCallback } from 'react';
 import { useTrackedAudioPlayer } from '~/state';
 
 import Box from '~/components/Box';
+import IconPlay from '~/components/IconPlay';
+import IconStop from '~/components/IconStop';
 import Paragraph from '~/components/Paragraph';
 
 type Props = {
@@ -36,40 +38,14 @@ export default function EmbedAudio({
       )}
       onClick={handleClick}
     >
-      {isCurrentTrack ? <EmbedAudioPlayStop /> : <EmbedAudioPlayIcon />}
-      <Paragraph className="pb-3 pl-2 w-full group-hover:underline ellipsis">
+      {isCurrentTrack ? (
+        <IconStop className="w-6 md:w-7" isInverted />
+      ) : (
+        <IconPlay className="w-6 md:w-7" isInverted />
+      )}
+      <Paragraph className="md:pb-1 pl-2 w-full group-hover:underline ellipsis">
         {caption || url}
       </Paragraph>
     </Box>
-  );
-}
-
-function EmbedAudioPlayIcon(): JSX.Element {
-  return (
-    <svg
-      className="w-12"
-      viewBox="0 0 1200 1200"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M512 0c-282.77 0-512 229.23-512 512s229.23 512 512 512 512-229.23 512-512-229.23-512-512-512zM512 928c-229.75 0-416-186.25-416-416s186.25-416 416-416 416 186.25 416 416-186.25 416-416 416zM384 288l384 224-384 224z"
-        fill="#231f20"
-      />
-    </svg>
-  );
-}
-
-function EmbedAudioPlayStop(): JSX.Element {
-  return (
-    <svg
-      className="w-12"
-      viewBox="0 0 1200 1200"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M512 0c-282.77 0-512 229.23-512 512s229.23 512 512 512 512-229.23 512-512-229.23-512-512-512zM512 928c-229.75 0-416-186.25-416-416s186.25-416 416-416 416 186.25 416 416-186.25 416-416 416zM320 320h384v384h-384z"
-        fill="#231f20"
-      />
-    </svg>
   );
 }
