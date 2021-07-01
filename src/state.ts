@@ -188,7 +188,7 @@ const useAudioPlayer = (): [State, Dispatch<Action>] => {
 
   const handleTrackUpdate = () => {
     // Do not send updates when audio is not playing anymore
-    if (!audioPlayer.audio.playing) {
+    if (audioPlayer.audio.paused) {
       return;
     }
 
