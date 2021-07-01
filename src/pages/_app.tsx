@@ -50,6 +50,8 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
           content="width=device-width, initial-scale=1, maximum-scale=1"
           name="viewport"
         />
+        <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
+        <link href="/favicon.ico" rel="alternate icon" />
         <title>Splitter Orchester</title>
       </Head>
       <AudioPlayerProvider>
