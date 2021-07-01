@@ -84,6 +84,12 @@ function EmbedVideoFullscreen({ isOpen, url, onClose }): JSX.Element {
       ) : (
         <ReactPlayerVimeo
           className="aspect-w-16 aspect-h-9"
+          config={{
+            playerOptions: {
+              responsive: true,
+              autoplay: true,
+            },
+          }}
           height="100%"
           url={url}
           width="100%"
