@@ -50,6 +50,31 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
           content="width=device-width, initial-scale=1, maximum-scale=1"
           name="viewport"
         />
+        <meta content="Splitter Orchester" name="title" />
+        <meta
+          content="Splitter Orchester combines the collective power of 24 of Berlin’s most consistently creative, self motivated and conceptually optimistic musicians"
+          name="description"
+        />
+        <meta
+          content="Orchestra, Music, Splitter, Experimental, Improvisation, Echtzeitmusik, Ensemble, Sound, Noise, Berlin"
+          name="keywords"
+        />
+        <meta
+          content="Splitter Orchester combines the collective power of 24 of Berlin’s most consistently creative, self motivated and conceptually optimistic musicians"
+          property="og:description"
+        />
+        <meta content="Splitter Orchester" property="og:title" />
+        <meta content="https://splitter.berlin" property="og:url" />
+        <meta
+          content="https://splitter.berlin/splitter-orchester.jpg"
+          property="og:image"
+        />
+        <meta content="image/jpeg" property="og:image:type" />
+        <meta content="2048" property="og:image:width" />
+        <meta content="1365" property="og:image:height" />
+        <meta content="index, follow" name="robots" />
+        <meta content="text/html; charset=utf-8" httpEquiv="Content-Type" />
+        <meta content="English" name="language" />
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
         <link href="/favicon.ico" rel="alternate icon" />
         <title>Splitter Orchester</title>
