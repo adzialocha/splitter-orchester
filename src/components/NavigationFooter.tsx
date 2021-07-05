@@ -10,7 +10,7 @@ type Props = {
   items: NavigationItem[];
 };
 
-export default function Navigation({ items }: Props): JSX.Element {
+export default function NavigationFooter({ items }: Props): JSX.Element {
   return (
     <List>
       {items.map((item) => {
