@@ -28,7 +28,7 @@ export default function SanityImage({
   return (
     <Image
       className={className}
-      src={urlForImage(source).height(height).width(width).fit(fit).url()}
+      src={urlForImage(source).maxHeight(height).maxWidth(width).fit(fit).url()}
     />
   );
 }
