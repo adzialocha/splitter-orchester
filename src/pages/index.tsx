@@ -20,7 +20,7 @@ type Props = {
 };
 
 // Maximum size of main image which will be placed in the center top
-const MAIN_IMAGE_SIZE = 1200;
+const MAIN_IMAGE_SIZE = 1600;
 
 // Load `FeaturedPosts` component without SSR as it contains randomized values
 // which might differ otherwise between server-client side
@@ -41,7 +41,7 @@ export default function HomePage({
       <Container>
         {mainImage && (
           <SanityImage
-            className="m-auto w-full max-w-xl"
+            className="m-auto w-full max-w-3xl"
             height={MAIN_IMAGE_SIZE}
             source={mainImage}
             width={MAIN_IMAGE_SIZE}
