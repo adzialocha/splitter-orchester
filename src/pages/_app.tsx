@@ -64,8 +64,8 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
           property="og:image"
         />
         <meta content="image/jpeg" property="og:image:type" />
-        <meta content="2048" property="og:image:width" />
-        <meta content="1365" property="og:image:height" />
+        <meta content="3189" property="og:image:width" />
+        <meta content="2126" property="og:image:height" />
         <meta content="index, follow" name="robots" />
         <meta content="text/html; charset=utf-8" httpEquiv="Content-Type" />
         <meta content="English" name="language" />
