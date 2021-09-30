@@ -5,11 +5,11 @@ type Track = {
   title: string;
   streamUrl: string;
   waveformUrl: string;
+  duration: number;
 };
 
 export default class SoundCloud {
   playing: boolean;
-  duration: number;
   audio: HTMLAudioElement;
 
   private events: { [key: string]: EventListener };
@@ -17,8 +17,8 @@ export default class SoundCloud {
 
   constructor() {
     this.playing = false;
-    this.duration = 0;
     this.audio = document.createElement('audio');
+    this.audio.crossOrigin = 'anonymous';
     this.events = {};
   }
 
@@ -51,37 +51,44 @@ export default class SoundCloud {
   }
 
   async resolve(url: string): Promise<Track> {
+    const encodedParam = encodeURIComponent(url);
+    const fullUrl = `${SOUNDCLOUD_API_URL}/resolve?url=${encodedParam}`;
+
     // Resolve Soundcloud URL to track URL
-    const encodedUrl = encodeURIComponent(url);
-    const resolveResult = await this.request(
-      `${SOUNDCLOUD_API_URL}/resolve?url=${encodedUrl}`,
-    );
+    const resolveResult = await this.request(fullUrl);
     const {
       waveform_url: waveformUrl,
-      stream_url: streamLocation,
+      uri: trackUrl,
       title,
+      duration,
     } = await resolveResult.json();
 
     // Get authenticated streaming URL
-    const streamResult = await this.request(streamLocation);
-    const { location: streamUrl } = await streamResult.json();
+    const streamResult = await this.request(`${trackUrl}/streams`);
+    const { http_mp3_128_url: streamUrl } = await streamResult.json();
 
     this.track = {
       title,
       streamUrl,
       waveformUrl,
+      duration,
     };
 
     return this.track;
   }
 
   play(url?: string): void {
+    let src;
     if (url) {
-      this.audio.src = url;
+      src = url;
     } else if (this.track) {
-      this.audio.src = this.track.streamUrl;
+      src = this.track.streamUrl;
     } else {
       throw Error('No track given');
+    }
+
+    if (this.audio.src !== src) {
+      this.audio.src = src;
     }
 
     this.audio.play();
