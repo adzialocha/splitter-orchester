@@ -1,11 +1,9 @@
 import { Reducer, useEffect, useReducer } from 'react';
 import { createContainer } from 'react-tracked';
-import SoundCloudAudio from 'soundcloud-audio';
 
 import type { Dispatch } from 'react';
 
-// Soundcloud Developer API Client ID
-const CLIENT_ID = 'b8a71a1bbc08a31096a72300e47f4569';
+import SoundCloudAudio from '~/lib/soundcloud';
 
 const initialState = {
   // Is true when user pressed the `Play` button
@@ -150,7 +148,7 @@ const useAudioPlayer = (): [State, Dispatch<Action>] => {
     }
 
     // Create an instance of the player
-    audioPlayer = new SoundCloudAudio(CLIENT_ID);
+    audioPlayer = new SoundCloudAudio();
 
     // Register a couple of audio events so we can update the state accordingly
     // when things change
@@ -158,21 +156,20 @@ const useAudioPlayer = (): [State, Dispatch<Action>] => {
     audioPlayer.on('ended', handleTrackEnded);
   };
 
-  const handleDispatch = ({ type, ...action }) => {
+  const handleDispatch = async ({ type, ...action }) => {
     if (type === 'play') {
       // Resolve the data first before we can move on
-      audioPlayer.resolve(action.url, (track) => {
-        audioPlayer.play({ streamUrl: track.streamUrl });
+      const track = await audioPlayer.resolve(action.url);
+      audioPlayer.play(track.streamUrl);
 
-        // Store track data for UI
-        dispatch({
-          type: 'resolve',
-          track: {
-            title: track.title,
-            waveformUrl: track.waveform_url,
-          },
-          duration: Math.floor(track.duration / 1000),
-        });
+      // Store track data for UI
+      dispatch({
+        type: 'resolve',
+        track: {
+          title: track.title,
+          waveformUrl: track.waveformUrl,
+        },
+        duration: Math.floor(track.duration / 1000),
       });
     } else if (type === 'seek') {
       audioPlayer.audio.currentTime = action.position;
