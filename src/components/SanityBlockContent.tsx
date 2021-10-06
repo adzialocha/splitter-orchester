@@ -46,40 +46,9 @@ function sectionClassNames(node) {
 }
 
 export default function SanityBlockContent({ blocks }: Props): JSX.Element {
-  // Count the number of sections in this body. "Sections" are actually defined
-  // by headings. Each heading introduces a new section with the title already
-  // defining the first
-  let sectionsCount = 0;
-
-  // Go through all blocks and assign a section index to each of them by
-  // keeping track of the preceeding headings
-  const sections = blocks
-    .reduce((acc, block, indexBlock) => {
-      // eslint-disable-next-line
-      // @ts-ignore: `style` actually exists on some blocks ..
-      if (block.style && /^h\d/.test(block.style)) {
-        sectionsCount += 1;
-      }
-
-      acc.push({
-        ...block,
-        indexSection: sectionsCount,
-        indexBlock,
-      });
-
-      return acc;
-    }, [])
-    .map((block) => {
-      return {
-        ...block,
-        totalSections: sectionsCount + 1, // Add the title
-        totalBlocks: blocks.length,
-      };
-    });
-
   return (
     <BlockContent
-      blocks={sections}
+      blocks={blocks}
       imageOptions={imageOptions}
       serializers={serializers}
     />

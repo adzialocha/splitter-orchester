@@ -12,6 +12,7 @@ type Props = {
   isFirst?: boolean;
   isLast?: boolean;
   isOdd?: boolean;
+  isSingle?: boolean;
 };
 
 export default function HeadingWithSymbol({
@@ -20,6 +21,7 @@ export default function HeadingWithSymbol({
   headingLevel = 'h1',
   isFirst = false,
   isOdd = false,
+  isSingle = false,
 }: Props): JSX.Element {
   return (
     <>
@@ -32,15 +34,17 @@ export default function HeadingWithSymbol({
       >
         {children}
       </Heading>
-      <Box className={clsx('hidden md:block relative', className)}>
-        {isFirst ? (
-          <HeadingWithLogo />
-        ) : isOdd ? (
-          <HeadingWithHollowArrow />
-        ) : (
-          <HeadingWithSolidArrow />
-        )}
-      </Box>
+      {isSingle ? null : (
+        <Box className={clsx('hidden md:block relative', className)}>
+          {isFirst ? (
+            <HeadingWithLogo />
+          ) : isOdd ? (
+            <HeadingWithHollowArrow />
+          ) : (
+            <HeadingWithSolidArrow />
+          )}
+        </Box>
+      )}
     </>
   );
 }
