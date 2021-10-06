@@ -30,6 +30,22 @@ export default {
               },
             ],
           },
+          {
+            title: 'Post link',
+            name: 'internalLink',
+            type: 'object',
+            fields: [
+              {
+                name: 'reference',
+                type: 'reference',
+                title: 'Post',
+                to: [{ type: 'post' }],
+                options: {
+                  weak: true,
+                },
+              },
+            ],
+          },
         ],
       },
     },

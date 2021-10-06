@@ -6,6 +6,12 @@ const postFields = groq`
   feature,
   body[]{
     ...,
+    markDefs[]{
+      ...,
+      _type == "internalLink" => {
+        "slug": @.reference->slug
+      }
+    },
     asset->{
       ...,
       "_key": _id

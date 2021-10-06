@@ -17,7 +17,8 @@ type Props = {
 };
 
 const markSerializers = {
-  link: BlockContentLink,
+  link: BlockContentExternalLink,
+  internalLink: BlockContentLink,
 };
 
 const serializers = {
@@ -86,13 +87,29 @@ export default function SanityBlockContent({ blocks }: Props): JSX.Element {
 }
 
 function BlockContentLink({ children, mark }): JSX.Element {
+  const { slug = {} } = mark;
+
+  if (!slug.current) {
+    return children;
+  }
+
+  return (
+    <Link href={`/${slug.current}`}>
+      <a className="underline">{children}</a>
+    </Link>
+  );
+}
+
+function BlockContentExternalLink({ children, mark }): JSX.Element {
   if (!mark.href) {
     return children;
   }
 
   return (
     <Link href={mark.href}>
-      <a className="underline">{children}</a>
+      <a className="underline" target="_blank">
+        {children}
+      </a>
     </Link>
   );
 }
