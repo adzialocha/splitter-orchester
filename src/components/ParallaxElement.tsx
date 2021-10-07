@@ -17,10 +17,10 @@ const THROTTLE_FPS = 4;
 
 // Distribute items in a grid with cell size in px, see `.parallax-element`
 // class
-const GRID_SIZE = 480;
+const GRID_SIZE = 400;
 
 // Move elements position randomly within this range in px
-const RANDOMNESS = 25;
+const RANDOMNESS = 75;
 
 export default function ParallaxElement({
   children,
