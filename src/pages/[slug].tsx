@@ -21,7 +21,7 @@ type Props = {
 };
 
 export default function Post({ post, navigations }: Props): JSX.Element {
-  const extendedBlocks = extendBlocksData(post.body);
+  const extendedBlocks = post.body ? extendBlocksData(post.body) : [];
   const isSingle =
     post.body &&
     extendedBlocks.length > 0 &&
