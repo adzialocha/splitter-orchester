@@ -1,3 +1,5 @@
+import type { Rule } from '@sanity/validation';
+
 export default {
   title: 'Block Content',
   name: 'blockContent',
@@ -27,6 +29,10 @@ export default {
                 title: 'URL',
                 name: 'href',
                 type: 'url',
+                validation: (rule): typeof Rule =>
+                  rule.uri({
+                    scheme: ['http', 'https', 'mailto', 'tel'],
+                  }),
               },
             ],
           },
