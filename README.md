@@ -31,7 +31,7 @@ yarn sanity:types
 
 ### Vercel
 
-1. Run `npm run vercel` to initialize and deploy the project, you can alternatively do this through the Vercel web dashboard.
+1. Run `yarn vercel` to initialize and deploy the project, you can alternatively do this through the Vercel web dashboard.
 2. After setup you can run the following (optional) commands for deployment:
 
     ```bash
