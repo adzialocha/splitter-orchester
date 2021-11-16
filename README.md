@@ -6,6 +6,7 @@ Website of the [Splitter Orchester](https://splitter.berlin) from Berlin built w
 ## Requirements
 
 * NodeJS 14 or higher
+* yarn
 * Sanity Account for Headless CMS
 * Vercel Account for deployment (recommended)
 
@@ -13,17 +14,17 @@ Website of the [Splitter Orchester](https://splitter.berlin) from Berlin built w
 
 ```bash
 # Install dependencies
-npm install
+yarn
 
 # Run development servers concurrently. Open localhost:3000 for website,
 # localhost:3333 for Sanity CMS backend
-npm start
+yarn start
 
 # Check linter errors
-npm run lint
+yarn lint
 
 # Helper script to generate TypeScript definitions from Sanity schema
-npm run sanity:types
+yarn sanity:types
 ```
 
 ## Deployment
@@ -35,8 +36,8 @@ npm run sanity:types
 
     ```bash
     # Deploy page on Vercel (optional)
-    npm run vercel
-    npm run vercel:production
+    yarn vercel
+    yarn vercel:production
     ```
 
 ### Static page hosting
@@ -45,12 +46,8 @@ Build and export all files which can be directly used for any static page hostin
 
 ```bash
 # Build Next.js and Sanity project
-npm run build
+yarn build
 
 # Exports static files to `out` folder (required step)
-npm run next:export
+yarn next:export
 ```
-
-## License
-
-`UNLICENSED`
