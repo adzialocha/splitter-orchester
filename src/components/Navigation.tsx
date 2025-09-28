@@ -87,8 +87,8 @@ function NavigationItem({ children, href, onClick, index }): JSX.Element {
       className="m-auto pointer-events-auto select-none ellipsis"
       style={{ maxWidth }}
     >
-      <Link href={href}>
-        <a onClick={onClick}>{children}</a>
+      <Link href={href} onClick={onClick}>
+        {children}
       </Link>
     </li>
   );

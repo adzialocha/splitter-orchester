@@ -1,9 +1,9 @@
-import { defineConfig } from 'sanity'
-import { structureTool } from 'sanity/structure'
+import { defineConfig } from 'sanity';
+import { structureTool } from 'sanity/structure';
 
-import deskStructure from './deskStructure'
-import resolveDocumentActions from './resolveDocumentActions'
-import { schemaTypes } from './schemas/schema'
+import deskStructure from './deskStructure';
+import resolveDocumentActions from './resolveDocumentActions';
+import { schemaTypes } from './schemas/schema';
 
 export default defineConfig({
   name: 'splitter-orchester-studio',
@@ -27,4 +27,4 @@ export default defineConfig({
   schema: {
     types: schemaTypes,
   },
-})
+});

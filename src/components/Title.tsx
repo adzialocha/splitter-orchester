@@ -12,10 +12,8 @@ type Props = {
 export default function Title({ onClick }: Props): JSX.Element {
   return (
     <Heading className="text-2xl md:text-4xl font-medium text-center select-none">
-      <Link href="/">
-        <a className="pointer-events-auto" onClick={onClick}>
-          {locale.title}
-        </a>
+      <Link className="pointer-events-auto" href="/" onClick={onClick}>
+        {locale.title}
       </Link>
     </Heading>
   );
