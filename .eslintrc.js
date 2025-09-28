@@ -45,6 +45,8 @@ module.exports = {
     'prettier/prettier': 1,
     // We don't need prop-types when we are using Typescript
     'react/prop-types': 0,
+    // React 17+ with new JSX transform doesn't require React in scope
+    'react/react-in-jsx-scope': 0,
     // Sort all props in React components
     'react/jsx-sort-props': [
       'error',
