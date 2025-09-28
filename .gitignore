@@ -4,13 +4,10 @@ node_modules
 out
 public/studio
 studio/dist
-studio/.sanity
+studio/.sanity/runtime
 
-# Yarn 4
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
-.pnp.*
+# PNPM
+.pnpm-store
+
+# TypeScript
+tsconfig.tsbuildinfo

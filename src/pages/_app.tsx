@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import NProgress from 'nprogress';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
 import type { AppProps } from 'next/app';
 
