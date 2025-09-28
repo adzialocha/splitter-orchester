@@ -47,11 +47,11 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-tailwindcss": "^1.17.0",
     "lerna": "^4.0.0",
-    "postcss": "^7",
-    "postcss-preset-env": "^6.7.0",
+    "postcss": "^8.4.0",
+    "postcss-preset-env": "^9.0.0",
     "prettier": "^2.4.1",
     "sanity-codegen": "^0.9.5",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
+    "tailwindcss": "^3.4.0",
     "typescript": "^4.4.3",
     "vercel": "^23.1.2"
   },
@@ -73,6 +73,7 @@
     "react-tracked": "^1.7.4"
   },
   "engines": {
-    "node": ">=22.0.0"
+    "node": ">=22.0.0",
+    "yarn": ">=4.0.0"
   }
 }

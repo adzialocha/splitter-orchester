@@ -4,3 +4,12 @@ node_modules
 out
 public/studio
 studio/dist
+
+# Yarn 4
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
