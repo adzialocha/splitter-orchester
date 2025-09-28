@@ -5,7 +5,7 @@
   "main": "package.json",
   "scripts": {
     "build": "sanity build ../public/studio -y",
-    "start": "sanity start",
+    "start": "sanity dev",
     "types": "sanity-codegen"
   },
   "repository": {
@@ -17,24 +17,13 @@
   "license": "UNLICENSED",
   "homepage": "https://github.com/adzialocha/splitter-orchester#readme",
   "dependencies": {
-    "@sanity/base": "^2.21.10",
-    "@sanity/components": "^2.14.0",
-    "@sanity/core": "^2.21.11",
-    "@sanity/dashboard": "^2.21.10",
-    "@sanity/default-layout": "^2.21.10",
-    "@sanity/default-login": "^2.21.10",
-    "@sanity/desk-tool": "^2.21.10",
-    "@sanity/ui": "^0.36.12",
-    "@sanity/vision": "^2.21.10",
-    "prop-types": "^15.7",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "sanity-plugin-dashboard-widget-document-list": "^0.0.13",
-    "sanity-plugin-vercel-deploy": "^2.0.1",
-    "styled-components": "^5.3.1"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sanity": "^3.0.0",
+    "styled-components": "^6.1.15"
   },
   "devDependencies": {
-    "@sanity/cli": "^2.21.10",
+    "@sanity/cli": "^3.0.0",
     "sanity-codegen": "^0.9.5"
   }
 }

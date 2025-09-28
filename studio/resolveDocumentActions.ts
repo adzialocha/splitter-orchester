@@ -1,20 +1,8 @@
-import defaultResolve, {
-  PublishAction,
-} from 'part:@sanity/base/document-actions';
-
-type DocumentAction = {
-  title: string;
-  disabled: boolean;
-};
-
-type Props = {
-  type: string;
-};
-
-export default function resolveDocumentActions(props: Props): DocumentAction[] {
-  if (props.type === 'siteConfig') {
-    return [PublishAction];
+export default function resolveDocumentActions(prev: any[], context: any) {
+  if (context.schemaType === 'siteConfig') {
+    // For siteConfig, only allow publish action (remove other actions like delete)
+    return prev.filter(action => action.action === 'publish');
   }
 
-  return [...defaultResolve(props)];
+  return prev;
 }

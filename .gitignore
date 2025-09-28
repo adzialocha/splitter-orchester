@@ -4,6 +4,7 @@ node_modules
 out
 public/studio
 studio/dist
+studio/.sanity
 
 # Yarn 4
 .yarn/*
