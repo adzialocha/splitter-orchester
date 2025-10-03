@@ -1,7 +1,6 @@
 import BlockContent from '@sanity/block-content-to-react';
 import clsx from 'clsx';
 import Link from 'next/link';
-import React from 'react';
 
 import type { BlockContent as BlockContentSchema } from 'sanity-schema';
 
@@ -63,8 +62,8 @@ function BlockContentLink({ children, mark }): JSX.Element {
   }
 
   return (
-    <Link href={`/${slug.current}`}>
-      <a className="underline">{children}</a>
+    <Link className="underline" href={`/${slug.current}`}>
+      {children}
     </Link>
   );
 }
@@ -75,10 +74,8 @@ function BlockContentExternalLink({ children, mark }): JSX.Element {
   }
 
   return (
-    <Link href={mark.href}>
-      <a className="underline" target="_blank">
-        {children}
-      </a>
+    <Link className="underline" href={mark.href} target="_blank">
+      {children}
     </Link>
   );
 }

@@ -1,5 +1,5 @@
-import BlockImagePreview from 'part:@sanity/components/previews/block-image';
 import React from 'react';
+import { MediaPreview } from 'sanity';
 
 // Reuse hook from app codebase :-P
 import { useVideo } from '../../src/hooks';
@@ -20,5 +20,5 @@ export default function EmbedVideoPreview({ value }: Props): JSX.Element {
     );
   };
 
-  return <BlockImagePreview media={renderMedia} title={value.title} />;
+  return <MediaPreview media={renderMedia} title={value.title} />;
 }

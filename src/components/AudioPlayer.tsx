@@ -1,6 +1,5 @@
 import clsx from 'clsx';
 import Link from 'next/link';
-import React from 'react';
 
 import locale from '~/locale';
 import { useTrackedAudioPlayer } from '~/state';
@@ -152,8 +151,8 @@ function AudioPlayerStop({ onClick }): JSX.Element {
 
 function AudioPlayerMore({ slug }): JSX.Element {
   return (
-    <Link href={`/${slug}`}>
-      <a className="mx-5 underline whitespace-nowrap">{locale.readMore}</a>
+    <Link className="mx-5 underline whitespace-nowrap" href={`/${slug}`}>
+      {locale.readMore}
     </Link>
   );
 }

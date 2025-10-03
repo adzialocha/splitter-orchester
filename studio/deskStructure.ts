@@ -1,8 +1,6 @@
-import S from '@sanity/desk-tool/structure-builder';
+import { StructureBuilder } from 'sanity/desk';
 
-import type { ListItem } from '@sanity/desk-tool/structure-builder';
-
-export default (): ListItem[] =>
+export default (S: StructureBuilder) =>
   S.list()
     .title('Content')
     .items([

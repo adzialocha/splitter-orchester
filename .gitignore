@@ -4,3 +4,10 @@ node_modules
 out
 public/studio
 studio/dist
+studio/.sanity/runtime
+
+# PNPM
+.pnpm-store
+
+# TypeScript
+tsconfig.tsbuildinfo

@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import Link from 'next/link';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 
 import type { Audio, Image as ImageType } from 'sanity-schema';
 
@@ -124,8 +124,8 @@ function FeaturedPostsItemLink({
   }
 
   return (
-    <Link href={`/${slug}`}>
-      <a className={classNameLink}>{children}</a>
+    <Link className={classNameLink} href={`/${slug}`}>
+      {children}
     </Link>
   );
 }
