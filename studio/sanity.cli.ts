@@ -5,4 +5,7 @@ export default defineCliConfig({
     projectId: 'a8gjiary',
     dataset: 'production',
   },
+  project: {
+    basePath: '/studio',
+  },
 });

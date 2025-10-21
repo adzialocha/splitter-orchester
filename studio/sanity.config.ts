@@ -14,8 +14,6 @@ export default defineConfig({
   projectId: 'a8gjiary',
   dataset: 'production',
 
-  basePath: '/studio',
-
   plugins: [
     structureTool({
       structure: deskStructure,
